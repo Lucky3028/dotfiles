@@ -1,0 +1,104 @@
+snippets:
+  # cd
+  - name: --
+    keyword: --
+    snippet: cd -
+  - name: ..
+    keyword: ..
+    snippet: cd ..
+  - name: ../..
+    keyword: ../..
+    snippet: cd ../..
+  - name: ../../..
+    keyword: ../../..
+    snippet: cd ../../..
+  # git
+  - name: git
+    keyword: g
+    snippet: git
+  - name: git checkout
+    keyword: ch
+    snippet: checkout
+    context:
+      lbuffer: ^git\s
+  - name: git branch
+    keyword: b
+    snippet: branch
+    context:
+      lbuffer: ^git\s
+  - name: git commit
+    keyword: c
+    snippet: commit
+    context:
+      lbuffer: ^git\s
+  - name: git status
+    keyword: st
+    snippet: status
+    context:
+      lbuffer: ^git\s
+  # java version
+  - name: java -v
+    keyword: -v
+    snippet: -version
+    global: true
+    context:
+      lbuffer: ^java\s
+  - name: java --v
+    keyword: --v
+    snippet: -version
+    global: true
+    context:
+      lbuffer: ^java\s
+  - name: java -V
+    keyword: -V
+    snippet: -version
+    global: true
+    context:
+      lbuffer: ^java\s
+  - name: java --V
+    keyword: --V
+    snippet: -version
+    global: true
+    context:
+      lbuffer: ^java\s
+
+### hack ###
+.default-options: &default-options
+  --exit-0: true
+  --select-1: true
+  --tiebreak: begin,index
+  --height: 60%
+  --cycle: true
+  --preview-window: right:50%
+.multi-options: &multi-options
+  <<: *default-options
+  --multi: true
+.format-options: &format-options
+  <<: *default-options
+  --nth: "3"
+### end hack ###
+
+completions:
+  - name: kill
+    patterns: 
+      - "^kill( -9)? $"
+    sourceCommand: "ps -ef | sed 1d"
+    options:
+      --multi: true
+      --prompt: "'Kill Process> '"
+    callback: "awk '{print $2}'"
+  # curl
+  - name: curl
+    patterns:
+      - ^\s*(curl)(\s+\S+)*\s+$
+    sourceCommand: cat "$ZENO_HOME/snippets/curl/snippet.txt"
+    options: *multi-options
+    callback: paste -s -d ' ' -
+  # git
+  - name: git-branch
+    patterns:
+      - ^\s*(git)(\s+-\S+)*\s+(branch)(\s+\S+)*\s+$
+    sourceCommand: >
+      "$ZENO_HOME/scripts/git-local-branches.zsh"
+    options: *format-options
+    callback: awk '{ print $3 }'

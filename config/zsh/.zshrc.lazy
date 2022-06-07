@@ -1,0 +1,70 @@
+### zsh plugins ###
+zinit wait lucid blockf light-mode for \
+    atload'async_init' @'mafredri/zsh-async' \
+    @'zsh-users/zsh-autosuggestions' \
+    @'zsh-users/zsh-completions' \
+    @'zdharma-continuum/fast-syntax-highlighting' \
+    @'zdharma-continuum/history-search-multi-word'
+
+### navi ###
+__navi_search() {
+    LBUFFER="$(navi --print --query="$LBUFFER")"
+    zle reset-prompt
+}
+__navi_atload() {
+    export NAVI_CONFIG="$HOME/.config/navi/config.yml"
+
+    zle -N __navi_search
+    bindkey '^N' __navi_search
+}
+zinit wait lucid light-mode as'program' from'gh-r' for \
+    atload'__navi_atload' \
+    @'denisidoro/navi'
+
+### GitHub CLI ###
+zinit wait lucid light-mode as'program' from'gh-r' for \
+    pick'./usr/bin/gh' \
+    atclone'./usr/bin/gh completion -s zsh >_gh' atpull'%atclone' \
+    @'cli/cli' 
+
+### zeno.zsh ###
+export ZENO_HOME="$HOME/.config/zeno"
+export ZENO_ENABLE_SOCK=1
+export ZENO_DISABLE_BUILTIN_COMPLETION=1
+export ZENO_GIT_CAT="bat --color=always"
+export ZENO_GIT_TREE="exa --tree"
+
+__zeno_atload() {
+    bindkey ' '  zeno-auto-snippet
+    bindkey '^M' zeno-auto-snippet-and-accept-line
+    bindkey '^P' zeno-completion
+}
+
+zinit wait lucid light-mode for \
+    atload'__zeno_atload' \
+    @'yuki-yano/zeno.zsh'
+
+### zsh-replace-multiple-dots ###
+__replace_multiple_dots_atload() {
+    # goのみ除外
+    replace_multiple_dots_exclude_go() {
+        if [[ "$LBUFFER" =~ '^go ' ]]; then
+            zle self-insert
+        else
+            zle .replace_multiple_dots
+        fi
+    }
+
+    zle -N .replace_multiple_dots replace_multiple_dots
+    zle -N replace_multiple_dots replace_multiple_dots_exclude_go
+}
+
+zinit wait lucid light-mode for \
+    atload'__replace_multiple_dots_atload' \
+    @'momo-lab/zsh-replace-multiple-dots'
+
+### autoloads ###
+autoload -Uz cdr
+autoload -Uz chpwd_recent_dirs
+autoload -Uz _zinit
+zpcompinit
