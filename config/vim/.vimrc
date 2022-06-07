@@ -33,3 +33,6 @@ nnoremap j gj
 nnoremap k gk
 " 不可視文字を可視化(タブが「▸-」と表示される)
 set list listchars=tab:\▸\-
+" マウスのホイールスクロールを有効化
+set mouse=a
+set ttymouse=xterm2
