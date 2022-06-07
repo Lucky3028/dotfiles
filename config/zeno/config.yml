@@ -22,13 +22,13 @@ snippets:
     context:
       lbuffer: ^git\s
   - name: git branch
-    keyword: b
+    keyword: br
     snippet: branch
     context:
       lbuffer: ^git\s
-  - name: git commit
-    keyword: c
-    snippet: commit
+  - name: git commit -m
+    keyword: cm
+    snippet: commit -m
     context:
       lbuffer: ^git\s
   - name: git status
