@@ -1,3 +1,5 @@
+% zinit, zsh
+
 # Self-update zinit
 zinit self-update
 

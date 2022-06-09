@@ -1,3 +1,5 @@
+% ssh
+
 # Edit SSH config
 vim ~/.ssh/config
 
