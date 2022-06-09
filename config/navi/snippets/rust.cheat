@@ -1,0 +1,8 @@
+# Format codes
+cargo fmt
+
+# Fix warns
+cargo fix
+
+# Lint codes
+cargo clippy
