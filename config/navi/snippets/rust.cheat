@@ -6,3 +6,9 @@ cargo fix
 
 # Lint codes
 cargo clippy
+
+# Self-update rustup
+rustup self update
+
+# Update Rust
+rustup update
