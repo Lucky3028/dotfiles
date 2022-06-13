@@ -36,6 +36,17 @@ snippets:
     snippet: status
     context:
       lbuffer: ^git\s
+  # GitHub CLI
+  - name: abbr for OwnerName(GiganticMinecraft)
+    keyword: giga
+    snippet: GiganticMinecraft
+    context:
+      lbuffer: ^gh\srepo\sclone\s
+  - name: abbr for OwnerName(Lucky3028)
+    keyword: lucky
+    snippet: Lucky3028
+    context:
+      lbuffer: ^gh\srepo\sclone\s
   # java version
   - name: java -v
     keyword: -v
