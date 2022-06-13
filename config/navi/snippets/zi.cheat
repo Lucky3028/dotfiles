@@ -1,0 +1,7 @@
+% zi, zsh
+
+# Self-update zi
+zi self-update
+
+# Update zi plugins
+zi update

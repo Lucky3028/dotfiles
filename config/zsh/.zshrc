@@ -48,3 +48,8 @@ zshaddhistory() {
     local line="${1%%$'\n'}"
     [[ ! "$line" =~ "^(cd|jj?|lazygit|la|ll|ls|rm|rmdir)($| )" ]]
 }
+
+# Start docker automatically
+if [ $(service docker status | awk '{print $4}') = "not" ]; then
+    sudo service docker start > /dev/null
+fi

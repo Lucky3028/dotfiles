@@ -1,7 +1,0 @@
-% zinit, zsh
-
-# Self-update zinit
-zinit self-update
-
-# Update zinit plugins
-zinit update
