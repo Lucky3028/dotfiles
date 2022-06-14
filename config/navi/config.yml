@@ -17,7 +17,7 @@ finder:
 
 cheats:
   paths:
-    - $HOME/.config/navi/snippets
+    - $HOME/.config/navi/cheats
 
 # search:
   # tags: git,!checkout # equivalent to the --tag-rules option
