@@ -1,0 +1,5 @@
+% notify, notify-send
+
+# Send notification to Windows
+wsl-notify-send --appId <appName> -c <summary> <body>
+
