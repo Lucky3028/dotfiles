@@ -1,0 +1,5 @@
+% GitHub-CLI, gh, ci
+
+# Wait actions and notify
+gh run watch && wsl-notify-send --appId "GitHub Actions Workflow" -c "GitHub Actions Workflow" "GitHUb Action Workflow has done!"
+
