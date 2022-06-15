@@ -1,0 +1,4 @@
+% git
+
+# Pull submodule
+git submodule update --init --recursive
