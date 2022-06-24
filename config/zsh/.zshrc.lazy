@@ -27,6 +27,8 @@ zinit wait lucid light-mode as'program' from'gh-r' for \
     atclone'./usr/bin/gh completion -s zsh >_gh' atpull'%atclone' \
     @'cli/cli' 
 
+zinit wait lucid light-mode for 0xTadash1/zsh-quick-volta
+
 ### wsl-notify-send ###
 zinit wait lucid light-mode as'program' from'gh-r' for \
     cp'wsl* -> wsl-notify-send' \
