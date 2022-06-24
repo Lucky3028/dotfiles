@@ -26,3 +26,6 @@ export ZENO_ENABLE_SOCK=1
 export ZENO_DISABLE_BUILTIN_COMPLETION=1
 export ZENO_GIT_CAT="bat --color=always"
 export ZENO_GIT_TREE="exa --tree"
+
+# Volta
+export VOLTA_HOME="$HOME/.volta"

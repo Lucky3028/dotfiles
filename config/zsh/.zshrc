@@ -12,7 +12,8 @@ typeset -U fpath
 path=(
     "$DENO_INSTALL/bin"(N-/)
     "$CARGO_HOME/bin"(N-/)
-    "$path[@]"	
+    "$VOLTA_HOME/bin"(N-/)
+    "$path[@]"
 )
 
 fpath=(
