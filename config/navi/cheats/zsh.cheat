@@ -4,10 +4,10 @@
 fd
 
 # replace grep
-rg <word>
+rg "<word>"
 
 # replace grep with file pattern matching
-rg <word> -g <filePattern>
+rg "<word>" -g "<filePattern>"
 
 # replace cat: batcat
 bat
