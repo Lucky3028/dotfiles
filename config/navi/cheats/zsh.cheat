@@ -1,0 +1,11 @@
+# replace find
+fd
+
+# replace grep
+ripgrep
+
+# replace grep
+rg
+
+# replace cat
+bat
