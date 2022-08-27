@@ -2,3 +2,5 @@
 
 # Pull submodule
 git submodule update --init --recursive
+# Show latest log without prompt
+git --no-pager log --pretty=oneline -n1
