@@ -1,3 +1,5 @@
 [user]
 	email = Lucky3028@users.noreply.github.com
 	name = Lucky3028
+[core]
+	autocrlf = input
