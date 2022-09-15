@@ -27,6 +27,7 @@ zinit wait lucid light-mode as'program' from'gh-r' for \
     atclone'./usr/bin/gh completion -s zsh >_gh' atpull'%atclone' \
     @'cli/cli'
 
+### Volta ###
 zinit wait lucid light-mode for 0xTadash1/zsh-quick-volta
 
 ### wsl-notify-send ###
@@ -60,6 +61,7 @@ __replace_multiple_dots_atload() {
     zle -N replace_multiple_dots replace_multiple_dots_exclude_go
 }
 
+### zsh-replace-multiple-dots ###
 zinit wait lucid light-mode for \
     atload'__replace_multiple_dots_atload' \
     @'momo-lab/zsh-replace-multiple-dots'
