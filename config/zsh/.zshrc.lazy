@@ -25,7 +25,7 @@ zinit wait lucid light-mode as'program' from'gh-r' for \
 zinit wait lucid light-mode as'program' from'gh-r' for \
     pick'./usr/bin/gh' \
     atclone'./usr/bin/gh completion -s zsh >_gh' atpull'%atclone' \
-    @'cli/cli' 
+    @'cli/cli'
 
 zinit wait lucid light-mode for 0xTadash1/zsh-quick-volta
 
