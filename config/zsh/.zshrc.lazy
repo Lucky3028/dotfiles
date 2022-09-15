@@ -61,7 +61,6 @@ __replace_multiple_dots_atload() {
     zle -N replace_multiple_dots replace_multiple_dots_exclude_go
 }
 
-### zsh-replace-multiple-dots ###
 zinit wait lucid light-mode for \
     atload'__replace_multiple_dots_atload' \
     @'momo-lab/zsh-replace-multiple-dots'
