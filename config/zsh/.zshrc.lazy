@@ -41,7 +41,6 @@ __zeno_atload() {
     bindkey '^M' zeno-auto-snippet-and-accept-line
     bindkey '^P' zeno-completion
 }
-
 zinit wait lucid light-mode for \
     atload'__zeno_atload' \
     @'yuki-yano/zeno.zsh'
@@ -60,10 +59,55 @@ __replace_multiple_dots_atload() {
     zle -N .replace_multiple_dots replace_multiple_dots
     zle -N replace_multiple_dots replace_multiple_dots_exclude_go
 }
-
 zinit wait lucid light-mode for \
     atload'__replace_multiple_dots_atload' \
     @'momo-lab/zsh-replace-multiple-dots'
+
+### Commands Replacement ###
+# du -> dust
+zinit wait lucid light-mode as'program' from'gh-r' for \
+    pick'./dust*/dust' \
+    @'bootandy/dust'
+
+# cat -> bat
+zinit wait lucid light-mode as'program' from'gh-r' for \
+    pick'./bat*/bat' \
+    @'sharkdp/bat'
+
+# ls -> exa
+zinit wait lucid light-mode as'program' from'gh-r' for \
+    pick'./bin/exa' \
+    @'ogham/exa'
+
+# find -> fd
+zinit wait lucid light-mode as'program' from'gh-r' for \
+    pick'./fd*/fd' \
+    @'sharkdp/fd'
+
+# ps -> procs
+zinit wait lucid light-mode as'program' from'gh-r' for \
+    pick'./procs*/procs' \
+    @'dalance/procs'
+
+# top -> btm
+zinit wait lucid light-mode as'program' from'gh-r' for @'ClementTsang/bottom'
+
+# cd -> zoxide
+__zoxide_atload() {
+  eval "$(zoxide init zsh)"
+}
+zinit wait lucid light-mode as'program' from'gh-r' for \
+    cp'zoxide -> z' \
+    atload'__zoxide_atload' \
+    @'ajeetdsouza/zoxide'
+
+# grep -> rg
+zinit wait lucid light-mode as'program' from'gh-r' for \
+    pick'./ripgrep*/rg' \
+    @'BurntSushi/ripgrep'
+
+# curl -> httpie
+zinit wait lucid light-mode as'program' from'gh-r' for @'httpie/httpie'
 
 ### autoloads ###
 autoload -Uz cdr
