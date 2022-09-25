@@ -97,7 +97,6 @@ __zoxide_atload() {
   eval "$(zoxide init zsh)"
 }
 zinit wait lucid light-mode as'program' from'gh-r' for \
-    cp'zoxide -> z' \
     atload'__zoxide_atload' \
     @'ajeetdsouza/zoxide'
 
