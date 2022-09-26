@@ -92,14 +92,6 @@ zinit wait lucid light-mode as'program' from'gh-r' for \
 # top -> btm
 zinit wait lucid light-mode as'program' from'gh-r' for @'ClementTsang/bottom'
 
-# cd -> zoxide
-__zoxide_atload() {
-  eval "$(zoxide init zsh)"
-}
-zinit wait lucid light-mode as'program' from'gh-r' for \
-    atload'__zoxide_atload' \
-    @'ajeetdsouza/zoxide'
-
 # grep -> rg
 zinit wait lucid light-mode as'program' from'gh-r' for \
     pick'./ripgrep*/rg' \
