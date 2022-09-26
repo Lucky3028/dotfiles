@@ -13,6 +13,7 @@ path=(
     "$DENO_INSTALL/bin"(N-/)
     "$CARGO_HOME/bin"(N-/)
     "$VOLTA_HOME/bin"(N-/)
+    "$GO_HOME/bin"(N-/)
     "$path[@]"
 )
 

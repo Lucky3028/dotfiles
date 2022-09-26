@@ -29,3 +29,6 @@ export ZENO_GIT_TREE="exa --tree"
 
 # Volta
 export VOLTA_HOME="$HOME/.volta"
+
+# Go
+export GO_HOME="/usr/local/go"
