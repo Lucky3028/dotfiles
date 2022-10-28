@@ -10,6 +10,9 @@ if [ $SHLVL = 1 ] ; then
 fi
 #Added by bash script: end
 
+# XDG_CONFIG
+export XDG_CONFIG_HOME="$HOME/.config"
+
 # deno
 export DENO_INSTALL="$HOME/.deno"
 
