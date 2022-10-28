@@ -1,6 +1,6 @@
 #!/bin/bash
 # Move current dir to repository root
-# cf. 
+# cf.
 cd $(dirname $0)/../
 find $(pwd)/config/zsh -type f -print | xargs -I{} ln -s {} ~/
 ln -s $(pwd)/config/p10k/.p10k.zsh ~/
