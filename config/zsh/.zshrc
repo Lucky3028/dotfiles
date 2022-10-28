@@ -52,6 +52,6 @@ zshaddhistory() {
 }
 
 # Start docker automatically
-if [ $(service docker status | awk '{print $3}') = "not" ]; then
+if [ $(service docker status | awk '{print $4}') = "not" ]; then
     sudo service docker start > /dev/null
 fi
