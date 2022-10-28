@@ -36,6 +36,7 @@ zinit wait lucid light-mode as'program' from'gh-r' for \
     @'stuartleeks/wsl-notify-send'
 
 ### zeno.zsh ###
+# This plugin requires Deno
 __zeno_atload() {
     bindkey ' '  zeno-auto-snippet
     bindkey '^M' zeno-auto-snippet-and-accept-line
