@@ -7,6 +7,11 @@ zinit wait lucid blockf light-mode for \
     @'zdharma-continuum/history-search-multi-word' \
     @'mollifier/cd-gitroot'
 
+### fzf ###
+zinit wait lucid light-mode as'program' from'gh-r' for \
+    pick'./fzf*/fzf' \
+    @'junegunn/fzf'
+
 ### navi ###
 __navi_search() {
     LBUFFER="$(navi --print --query="$LBUFFER")"
