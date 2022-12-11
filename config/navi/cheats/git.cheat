@@ -4,3 +4,5 @@
 git submodule update --init --recursive
 # Show latest log without prompt
 git --no-pager log --pretty=oneline -n1
+# Update submodule
+git submodule update --remote <submodule_path>
