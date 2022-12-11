@@ -3,3 +3,5 @@
 	name = Lucky3028
 [core]
 	autocrlf = input
+[init]
+	defaultBranch = main
