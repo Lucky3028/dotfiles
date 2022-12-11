@@ -72,6 +72,9 @@ snippets:
     global: true
     context:
       lbuffer: ^java\s
+  - name: cd-gitroot
+    keyword: cdg
+    snippet: cd-gitroot
 
 ### hack ###
 .default-options: &default-options
