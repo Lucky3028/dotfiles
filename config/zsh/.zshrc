@@ -51,3 +51,5 @@ zshaddhistory() {
     [[ ! "$line" =~ "^(cd|jj?|lazygit|la|ll|ls|rm|rmdir)($| )" ]]
 }
 
+# Set keyboard layout
+setxkbmap -rules evdev -model jp106 -layout jp
