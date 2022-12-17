@@ -52,6 +52,11 @@ zinit wait lucid light-mode as'program' from'gh-r' for \
 #    atload'__zeno_atload' \
 #    @'yuki-yano/zeno.zsh'
 
+### zabrze ###
+zinit wait lucid light-mode as'program' from'gh-r' for \
+    atload'eval "$(zabrze init --bind-keys)"' \
+    Ryooooooga/zabrze
+
 ### zsh-replace-multiple-dots ###
 __replace_multiple_dots_atload() {
     # goのみ除外
