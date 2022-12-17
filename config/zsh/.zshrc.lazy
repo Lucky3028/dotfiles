@@ -41,16 +41,16 @@ zinit wait lucid light-mode as'program' from'gh-r' for \
     cp'wsl* -> wsl-notify-send' \
     @'stuartleeks/wsl-notify-send'
 
-### zeno.zsh ###
-# This plugin requires Deno
-__zeno_atload() {
-    bindkey ' '  zeno-auto-snippet
-    bindkey '^M' zeno-auto-snippet-and-accept-line
-    bindkey '^P' zeno-completion
-}
-zinit wait lucid light-mode for \
-    atload'__zeno_atload' \
-    @'yuki-yano/zeno.zsh'
+### zabrze ###
+zinit wait lucid light-mode as'program' from'gh-r' for \
+    atload'eval "$(zabrze init --bind-keys)"' \
+    Ryooooooga/zabrze
+
+### pmy ###
+zinit wait lucid light-mode as'program' from'gh-r' for \
+    pick'pmy*/pmy' \
+    atload'eval "$(pmy init)"' \
+    relastle/pmy
 
 ### zsh-replace-multiple-dots ###
 __replace_multiple_dots_atload() {

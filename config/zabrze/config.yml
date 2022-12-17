@@ -1,0 +1,51 @@
+abbrevs:
+  # git
+  - name: git
+    abbr: g
+    snippet: git
+  - name: git checkout
+    abbr: ch
+    snippet: checkout
+    global: true
+    context: ^git\s
+  - name: git branch
+    abbr: b
+    snippet: branch
+    global: true
+    context: ^git\s
+  - name: git commit
+    abbr: c
+    snippet: commit
+    global: true
+    context: ^git\s
+  - name: git commit -m
+    abbr: cm
+    snippet: commit -m
+    global: true
+    context: ^git\s
+  - name: git commit --amend
+    abbr: ca
+    snippet: commit --amend
+    global: true
+    context: ^git\s
+  - name: git status
+    abbr: s
+    snippet: status
+    global: true
+    context: ^git\s
+  - name: git add
+    abbr: a
+    snippet: add
+    global: true
+    context: ^git\s
+  - name: git add -i
+    abbr: ai
+    snippet: add -i
+    global: true
+    context: ^git\s
+  - name: git diff
+    abbr: d
+    snippet: diff
+    global: true
+    context: ^git\s
+

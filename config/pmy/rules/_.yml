@@ -1,0 +1,9 @@
+# https://ryooooooga.hateblo.jp/entry/2020/12/31/173650
+- description: editor
+  regexp-left: ^\s*(?P<cmd>(nvim|vim|vi))\s+(?P<args>\S+\s+)*)(?P<query>\S*)$
+  cmd-groups:
+    - stmt: fd --color=always --hidden --type=f
+      after: paste -s -d ' ' -
+  fuzzy-finder-cmd: fzf --multi --preview="bat {}" --query=<query>
+  buffer-left: '<cmd> <args>'
+  buffer-right: '[]'
