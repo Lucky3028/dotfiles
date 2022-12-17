@@ -30,6 +30,10 @@ export ZENO_DISABLE_BUILTIN_COMPLETION=1
 export ZENO_GIT_CAT="bat --color=always"
 export ZENO_GIT_TREE="exa --tree"
 
+# pmy
+export PMY_RULE_PATH="$XDG_CONFIG_HOME/pmy/rules"
+export PMY_SNIPPET_PATH="$XDG_CONFIG_HOME/pmy/snippets"
+
 # Volta
 export VOLTA_HOME="$HOME/.volta"
 

@@ -57,6 +57,12 @@ zinit wait lucid light-mode as'program' from'gh-r' for \
     atload'eval "$(zabrze init --bind-keys)"' \
     Ryooooooga/zabrze
 
+### pmy ###
+zinit wait lucid light-mode as'program' from'gh-r' for \
+    pick'pmy*/pmy' \
+    atload'eval "$(pmy init)"' \
+    relastle/pmy
+
 ### zsh-replace-multiple-dots ###
 __replace_multiple_dots_atload() {
     # goのみ除外

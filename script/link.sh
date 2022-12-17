@@ -39,6 +39,7 @@ DIRS=(
   zeno
   gh-cli
   zabrze
+  pmy
 )
 mkdir -p "$XDG_CONFIG_DIR"
 for dir in "${DIRS[@]}"; do
