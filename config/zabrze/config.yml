@@ -48,4 +48,9 @@ abbrevs:
     snippet: diff
     global: true
     context: ^git\s
+  - name: git push
+    abbr: p
+    snippet: push
+    global: true
+    context: ^git\s
 
