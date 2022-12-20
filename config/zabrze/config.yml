@@ -49,8 +49,13 @@ abbrevs:
     global: true
     context: ^git\s
   - name: git push
-    abbr: p
+    abbr: ps
     snippet: push
+    global: true
+    context: ^git\s
+  - name: git pull
+    abbr: pl
+    snippet: pull
     global: true
     context: ^git\s
 
