@@ -1,4 +1,7 @@
 abbrevs:
+  - name: cd-gitroot
+    abbr: cdg
+    snippet: cd-gitroot
   # git
   - name: git
     abbr: g
