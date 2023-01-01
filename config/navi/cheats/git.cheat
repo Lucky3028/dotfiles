@@ -2,13 +2,13 @@
 
 # Pull submodule
 git submodule update --init --recursive
-# Show latest log without prompt
-git --no-pager log --pretty=oneline -n1
-# Show the SHA hash of latest commit
-git show --format='%h' --no-patch
 # Update submodule
 git submodule update --remote <submodule_path>
 # Add submodule
 git submodule add <repo_url> <dir_name>
+# Show latest log without prompt
+git --no-pager log --pretty=oneline -n1
+# Show the SHA hash of latest commit
+git show --format='%h' --no-patch
 # Remove merged branch(es)
 git branch --merged | egrep -v "(^\*|master|main|develop)" | xargs git branch -d
