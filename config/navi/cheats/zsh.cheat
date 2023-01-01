@@ -11,3 +11,18 @@ rg "<word>" -g "<filePattern>"
 
 # replace cat: batcat
 bat
+
+# replace ls: exa
+exa
+
+# replae find: fd
+fd
+
+# replace ps: procs
+procs
+
+# replace top: btm
+btm
+
+# replace curl: httpie
+http
