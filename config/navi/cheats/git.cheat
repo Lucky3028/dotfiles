@@ -12,3 +12,8 @@ git --no-pager log --pretty=oneline -n1
 git show --format='%h' --no-patch
 # Remove merged branch(es)
 git branch --merged | egrep -v "(^\*|master|main|develop)" | xargs git branch -d
+# Checkout remote branch
+git fetch <remote> <remote-branch> && git checkout <remote-branch>
+
+; TODO: remote branchをリストから選択するだけで実行可能にする
+$ remote: git remote | awk '{print $NF}'
