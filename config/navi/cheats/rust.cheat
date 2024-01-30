@@ -1,0 +1,16 @@
+% Rust, cargo, rustup
+
+# Format codes
+cargo fmt
+
+# Fix warns
+cargo fix
+
+# Lint codes
+cargo clippy
+
+# Self-update rustup
+rustup self update
+
+# Update Rust
+rustup update

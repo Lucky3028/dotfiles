@@ -1,0 +1,22 @@
+% git
+
+# Pull submodule
+git submodule update --init --recursive
+# Update submodule
+git submodule update --remote <submodule_path>
+# Add submodule
+git submodule add <repo_url> <dir_name>
+# Show latest log without prompt
+git --no-pager log --pretty=oneline -n 1
+# Show logs without prompt
+git --no-pager log --pretty=oneline -n <commits-count>
+# Show the SHA hash of latest commit
+git log --format='%h' -n 1
+# Remove merged branch(es)
+git branch --merged | egrep -v "(^\*|master|main|develop)" | xargs git branch -d
+# Checkout remote branch
+git fetch <remote-name> <remote-branch-name> && git switch <remote-branch-name>
+
+$ remote-branch: git branch -r
+$ remote-name: BR=$(echo <remote-branch>); echo ${BR%%/*}
+$ remote-branch-name: BR=$(echo <remote-branch>); echo ${BR#*/}

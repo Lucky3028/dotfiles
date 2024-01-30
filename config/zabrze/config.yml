@@ -1,0 +1,81 @@
+abbrevs:
+  - name: cd-gitroot
+    abbr: cdg
+    snippet: cd-gitroot
+  # git
+  - name: git
+    abbr: g
+    snippet: git
+  - name: git switch
+    abbr: sw
+    snippet: switch
+    global: true
+    context: ^git\s
+  - name: git restore
+    abbr: rs
+    snippet: restore
+    global: true
+    context: ^git\s
+  - name: git branch
+    abbr: b
+    snippet: branch
+    global: true
+    context: ^git\s
+  - name: git commit
+    abbr: c
+    snippet: commit
+    global: true
+    context: ^git\s
+  - name: git commit -m
+    abbr: cm
+    snippet: commit -m
+    global: true
+    context: ^git\s
+  - name: git commit --amend
+    abbr: ca
+    snippet: commit --amend
+    global: true
+    context: ^git\s
+  - name: git status
+    abbr: s
+    snippet: status
+    global: true
+    context: ^git\s
+  - name: git add
+    abbr: a
+    snippet: add
+    global: true
+    context: ^git\s
+  - name: git add -i
+    abbr: ai
+    snippet: add -i
+    global: true
+    context: ^git\s
+  - name: git diff
+    abbr: d
+    snippet: diff
+    global: true
+    context: ^git\s
+  - name: git push
+    abbr: ps
+    snippet: push
+    global: true
+    context: ^git\s
+  - name: git pull
+    abbr: pl
+    snippet: pull
+    global: true
+    context: ^git\s
+  # replacement
+  - name: ls -> eza
+    abbr: ls
+    snippet: eza
+  - name: cat -> bat
+    abbr: cat
+    snippet: bat
+  - name: find -> fd
+    abbr: find
+    snippet: fd
+  - name: grep -> rg
+    abbr: grep
+    snippet: rg

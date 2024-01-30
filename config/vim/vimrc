@@ -1,0 +1,39 @@
+" # MISC
+" Disable beep
+set belloff=all
+" Enable clipboard sharing
+set clipboard=unnamedplus
+" Enable scroll with mouse wheel
+set mouse=a
+set ttymouse=xterm2
+" Let cursor move per line
+nnoremap j gj
+nnoremap k gk
+" Enable commands auto-completing
+set wildmode=list:longest
+
+" # Search
+" Enable increment search
+set incsearch
+" Show highlight
+set hlsearch
+
+" # Appearance
+" Show line number
+set number
+" Show file name with multiple windows
+set laststatus=1
+" Enable syntax colors
+syntax on
+" Show ruler
+set ruler
+" Show matched braces
+set showmatch
+" Show cursor line
+set cursorline
+" Let cursor display after the character
+set virtualedit=onemore
+" Show invisible characters
+set list listchars=tab:\>\-
+" Follow indents when insert a new line
+set autoindent

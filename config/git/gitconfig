@@ -1,0 +1,13 @@
+[user]
+	email = me@cap-l.cc
+	name = Lucky3028
+[core]
+	autocrlf = input
+	editor = vim
+[init]
+	defaultBranch = main
+[push]
+	default = current
+	autoSetupRemote = true
+[pull]
+	ff = only

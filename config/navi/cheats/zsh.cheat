@@ -1,0 +1,25 @@
+% zsh
+
+# replace find: fd-find
+fd
+
+# replace grep
+rg "<word>"
+
+# replace grep with file pattern matching
+rg "<word>" -g "<filePattern>"
+
+# replace cat: batcat
+bat
+
+# replace ls: eza
+eza
+
+# replae find: fd
+fd
+
+# replace curl: httpie
+http
+
+# extract tar
+tar -xvf <file_name>
