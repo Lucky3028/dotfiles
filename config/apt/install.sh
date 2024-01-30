@@ -22,6 +22,7 @@ apt-get update && apt-get upgrade -y && apt-get install -y --no-install-recommen
   libfuse-dev \
   libsqlite3-dev \
   libssl-dev \
+  software-properties-common \
   unzip \
   wget \
   zip \
