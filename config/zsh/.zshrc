@@ -8,7 +8,7 @@ path=(
 )
 
 fpath=(
-  "${XDG_CONFIG_HOME}/zsh/completions"(N-/)
+  "${XDG_DATA_HOME}/zsh/completions"(N-/)
   "${XDG_DATA_HOME}/gh-rd/completions"(N-/)
   "$fpath[@]"
 )
