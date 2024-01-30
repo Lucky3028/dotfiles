@@ -50,8 +50,8 @@ apply = [ 'defer' ]
 [plugins.compinit]
 inline = "autoload -Uz compinit && zsh-defer compinit"
 
-# [plugins.p10k]
-# inline = "[ -f ~/.p10k.zsh ] && source ~/.p10k.zsh"
+[plugins.p10k]
+inline = 'source "${XDG_CONFIG_HOME}/.p10k.zsh"'
 
 [plugins.p10k-instant-prompt]
 inline = '[ -f "${XDG_CACHE_HOME}/p10k-instant-prompt-${(%):-%n}.zsh" ] && source "${XDG_CACHE_HOME}/p10k-instant-prompt-${(%):-%n}.zsh"'
@@ -61,9 +61,9 @@ github = "b4b4r07/enhancd"
 apply = [ 'defer' ]
 
 [plugins.direnv]
-local = "${XDG_DATA_HOME}/gh-rd/packages/github.com/direnv/direnv"
+local = "~/.local/share/gh-rd/packages/github.com/direnv/direnv"
 apply = [ 'defer' ]
 
 [plugins.zabrze]
-local = "${XDG_DATA_HOME}/gh-rd/packages/github.com/Ryooooooga/zabrze"
+local = "~/.local/share/gh-rd/packages/github.com/Ryooooooga/zabrze"
 apply = [ 'defer' ]
