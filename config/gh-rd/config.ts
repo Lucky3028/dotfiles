@@ -1,36 +1,11 @@
 import { defineConfig } from "https://raw.githubusercontent.com/Ryooooooga/gh-rd/main/src/config/types.ts";
 
-const saveCommandOutput = async (
-  cmd: [string, ...string[]],
-  to: string,
-) => {
-  const { stdout } = await new Deno.Command(cmd[0], {
-    args: cmd.slice(1),
-    stderr: "inherit",
-  }).output();
-
-  await Deno.writeFile(to, stdout);
-}
-
-const saveRemoteFile = async (
-  from: string,
-  to: string,
-) => {
-  const res = await fetch(new URL(from));
-  if (res.body !== null) {
-    await Deno.writeFile(to, res.body);
-  }
-}
-
 export default defineConfig({
   tools: [
     {
       name: "rossmacarthur/sheldon",
-      async onDownload({ packageDir, bin: { sheldon } }) {
-        await saveCommandOutput(
-          [sheldon, "source"],
-          `${packageDir}/sheldon.zsh`,
-        );
+      async onDownload({ bin: { sheldon }, $ }) {
+        await $`${sheldon} source > sheldon.zsh`;
       },
     },
     {
@@ -45,13 +20,10 @@ export default defineConfig({
     {
       name: "direnv/direnv",
       rename: [
-        { from: "direnv*", to: "direnv" },
+        { from: "direnv*", to: "direnv", chmod: 0o755 },
       ],
-      async onDownload({ packageDir, bin: { direnv } }) {
-        await saveCommandOutput(
-          [direnv, "hook", "zsh"],
-          `${packageDir}/direnv.zsh`,
-        );
+      async onDownload({ bin: { direnv }, $ }) {
+        await $`${direnv} hook zsh > direnv.zsh`;
       },
     },
     {
@@ -62,29 +34,22 @@ export default defineConfig({
     },
     {
       name: "cli/cli",
-      async onDownload ({ packageDir, bin: { gh } }) {
-        await saveCommandOutput(
-          [gh, "completion", "--shell", "zsh"],
-          `${packageDir}/_gh`,
-        );
+      async onDownload({ bin: { gh }, $ }) {
+        await $`${gh} completion --shell zsh > _gh`;
       },
     },
     {
       name: "Ryooooooga/zabrze",
-      async onDownload({ packageDir, bin: { zabrze } }) {
-        await saveCommandOutput(
-          [zabrze, "init", "--bind-keys"],
-          `${packageDir}/zabrze.zsh`,
-        );
+      async onDownload({ bin: { zabrze }, $ }) {
+        await $`${zabrze} init --bind-keys > zabrze.zsh`;
       },
     },
     {
       name: "eza-community/eza",
-      async onDownload({ packageDir }) {
-        await saveRemoteFile(
+      async onDownload({ packageDir, $ }) {
+        await $.request(
           "https://raw.githubusercontent.com/eza-community/eza/main/completions/zsh/_eza",
-          `${packageDir}/_eza`,
-        );
+        ).pipeToPath(`${packageDir}/_eza`);
       },
     },
     {
@@ -92,11 +57,8 @@ export default defineConfig({
       rename: [
         { from: "yq_*", to: "yq", chmod: 0o755 },
       ],
-      async onDownload({ packageDir, bin: { yq } }) {
-        await saveCommandOutput(
-          [yq, "shell-completion", "zsh"],
-          `${packageDir}/_yq`,
-        );
+      async onDownload({ bin: { yq }, $ }) {
+        await $`${yq} shell-completion zsh > _yq`;
       },
     },
     {
