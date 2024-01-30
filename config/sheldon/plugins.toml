@@ -61,9 +61,9 @@ github = "b4b4r07/enhancd"
 apply = [ 'defer' ]
 
 [plugins.direnv]
-local = "${XDG_DATA_HOME}/gh-rd/packages/github.com/direnv/direnv"
+local = "~/.local/share/gh-rd/packages/github.com/direnv/direnv"
 apply = [ 'defer' ]
 
 [plugins.zabrze]
-local = "${XDG_DATA_HOME}/gh-rd/packages/github.com/Ryooooooga/zabrze"
+local = "~/.local/share/gh-rd/packages/github.com/Ryooooooga/zabrze"
 apply = [ 'defer' ]
