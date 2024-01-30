@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -euxo pipefail
+set -x
 
 export CURRENT_DIR="$(cd "$(dirname "$0")" || exit 1; pwd)"
 export REPO_DIR="$(cd "$(dirname "$0")/.." || exit 1; pwd)"

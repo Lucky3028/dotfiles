@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -euxo pipefail
+set -x
 
 if [ -n "${SKIP_APT}" ]; then
   echo "Skip apt-get some deps."
