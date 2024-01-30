@@ -13,7 +13,7 @@ export HISTSIZE=10000
 export SAVEHIST=10000
 
 # Sheldon
-export SHELDON_CONFIG_DIR="$ZDOTDIR"
+export SHELDON_CONFIG_DIR="${XDG_CONFIG_HOME}/sheldon"
 
 # gh-rd
 export GHRD_CONFIG_HOME="${XDG_CONFIG_HOME}/gh-rd"
