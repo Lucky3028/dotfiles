@@ -17,6 +17,7 @@ add-apt-repository -y ppa:git-core/ppa
 apt-get update && apt-get upgrade -y && apt-get install -y --no-install-recommends \
   ca-certificates \
   curl \
+  git \
   gnupg \
   gpg \
   libfuse-dev \
