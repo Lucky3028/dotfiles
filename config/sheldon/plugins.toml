@@ -62,8 +62,8 @@ apply = [ 'defer' ]
 
 [plugins.direnv]
 local = "~/.local/share/gh-rd/packages/github.com/direnv/direnv"
-apply = [ 'defer' ]
+apply = [ 'defer', 'source' ]
 
 [plugins.zabrze]
 local = "~/.local/share/gh-rd/packages/github.com/Ryooooooga/zabrze"
-apply = [ 'defer' ]
+apply = [ 'defer', 'source' ]
