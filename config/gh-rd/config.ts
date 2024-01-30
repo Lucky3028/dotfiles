@@ -47,6 +47,12 @@ export default defineConfig({
       rename: [
         { from: "direnv*", to: "direnv" },
       ],
+      async onDownload({ packageDir, bin: { direnv } }) {
+        await saveCommandOutput(
+          [direnv, "hook", "zsh"],
+          `${packageDir}/direnv.zsh`,
+        );
+      },
     },
     {
       name: "sharkdp/bat",
