@@ -67,5 +67,8 @@ export default defineConfig({
     {
       name: "sharkdp/fd",
     },
+    {
+      name: "evilmartians/lefthook"
+    }
   ],
 });
