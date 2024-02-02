@@ -48,7 +48,7 @@ github = "mollifier/cd-gitroot"
 apply = [ 'defer' ]
 
 [plugins.compinit]
-inline = 'autoload -Uz compinit && zsh-defer compinit  -d "${XDG_DATA_HOME}/zcompdump"'
+inline = 'autoload -Uz compinit && zsh-defer compinit -d "${XDG_DATA_HOME}/zcompdump"'
 
 [plugins.p10k]
 inline = 'source "${XDG_CONFIG_HOME}/zsh/.p10k.zsh"'
