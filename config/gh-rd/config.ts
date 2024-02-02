@@ -68,7 +68,11 @@ export default defineConfig({
       name: "sharkdp/fd",
     },
     {
-      name: "evilmartians/lefthook"
+      name: "evilmartians/lefthook",
+      use: "*_Linux_x86_64",
+      rename: [
+        { from: "lefthook*", to: "lefthook", chmod: 0o755 },
+      ],
     }
   ],
 });
