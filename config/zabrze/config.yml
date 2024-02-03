@@ -28,7 +28,7 @@ abbrevs:
     context: ^git\s
   - name: git commit -m
     abbr: cm
-    snippet: commit -m
+    snippet: 'commit -m ""'
     global: true
     context: ^git\s
   - name: git commit --amend
