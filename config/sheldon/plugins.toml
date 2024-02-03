@@ -43,10 +43,6 @@ apply = [ 'defer' ]
 github = "zdharma-continuum/history-search-multi-word"
 apply = [ 'defer' ]
 
-[plugins.cd-gitroot]
-github = "mollifier/cd-gitroot"
-apply = [ 'defer' ]
-
 [plugins.compinit]
 inline = 'autoload -Uz compinit && zsh-defer compinit -d "${XDG_DATA_HOME}/zcompdump"'
 
