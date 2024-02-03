@@ -2,6 +2,11 @@
 
 set -x
 
+if [ -n "${SKIP_GHRD}" ]; then
+  echo "Skip install gh-rd."
+  exit 0
+fi
+
 source "$(dirname "$0")/common.sh"
 
 export PATH="${DENO_INSTALL}/bin:$PATH"
