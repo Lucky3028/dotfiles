@@ -15,7 +15,6 @@ sed -i.bak -r 's@http://(jp\.)?archive\.ubuntu\.com/ubuntu/?@http://ftp.udx.icsc
 apt-get update && apt-get upgrade -y && apt-get install -y --no-install-recommends \
   ca-certificates \
   curl \
-  expect \
   gnupg \
   gpg \
   libfuse-dev \
