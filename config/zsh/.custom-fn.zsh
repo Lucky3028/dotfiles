@@ -7,8 +7,8 @@ function ga() {
     # 改行と文字列の最初と最後のスペースを削除
     selected=$(echo $(tr '\n' ' ' <<<"$selected") | sed 's/^ *\| *$//')
     # echoしたものを引数に入れないと、なぜか「pathspec '' did not match any files」と言われる
-    git add $(echo "$selected")
-
-    echo "Completed: git add $selected"
+    if git add $(echo "$selected"); then
+      echo "Completed: git add $selected"
+    fi
   fi
 }
