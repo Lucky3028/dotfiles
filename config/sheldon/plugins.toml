@@ -65,4 +65,4 @@ local = "~/.local/share/gh-rd/packages/github.com/Ryooooooga/zabrze"
 apply = [ 'defer', 'source' ]
 
 [plugins.custom-fn]
-inline = 'zsh-defer source "${XDG_CONFIG_HOME}/zsh/.custom-fn.zsh"'
+inline = 'source "${XDG_CONFIG_HOME}/zsh/.custom-fn.zsh"'
