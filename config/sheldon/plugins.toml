@@ -55,11 +55,3 @@ inline = '[ -f "${XDG_CACHE_HOME}/p10k-instant-prompt-${(%):-%n}.zsh" ] && sourc
 [plugins.enhancd]
 github = "b4b4r07/enhancd"
 apply = [ 'defer' ]
-
-[plugins.direnv]
-local = "~/.local/share/gh-rd/packages/github.com/direnv/direnv"
-apply = [ 'defer', 'source' ]
-
-[plugins.zabrze]
-local = "~/.local/share/gh-rd/packages/github.com/Ryooooooga/zabrze"
-apply = [ 'defer', 'source' ]

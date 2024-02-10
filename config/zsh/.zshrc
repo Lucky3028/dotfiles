@@ -14,7 +14,13 @@ fpath=(
 )
 
 # Load sheldon
-source "${XDG_DATA_HOME}/gh-rd/packages/github.com/rossmacarthur/sheldon/sheldon.zsh"
+eval "${XDG_DATA_HOME}/gh-rd/packages/github.com/rossmacarthur/sheldon/sheldon.zsh"
+
+# Load direnv
+eval "${XDG_DATA_HOME}/gh-rd/packages/github.com/rossmacarthur/direnv/direnv/direnv.zsh"
+
+# Load zabrze
+eval "${XDG_DATA_HOME}/gh-rd/packages/github.com/Ryooooooga/zabrze/zabrze.zsh"
 
 # Remove some commands from commands history file
 # https://qiita.com/sho-t/items/d44bfbc783db7ca278c0
