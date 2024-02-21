@@ -40,7 +40,7 @@ apt-get update && apt-get install -y --no-install-recommends \
 # https://docs.docker.com/engine/install/ubuntu/
 # https://docs.docker.com/engine/install/linux-postinstall/
 
-# Skip above if docker has already installed
+# Skip below if docker has already installed
 if type "docker" >/dev/null 2>&1; then
   echo "Skip install docker."
   exit 0
