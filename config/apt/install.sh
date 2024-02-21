@@ -29,7 +29,7 @@ apt-get update && apt-get upgrade -y && apt-get install -y --no-install-recommen
 
 # Add apt repository for git to install latest version
 add-apt-repository -y ppa:git-core/ppa
-apt-get update && apt-get upgrade -y && apt-get install -y --no-install-recommends \
+apt-get update && apt-get install -y --no-install-recommends \
   git
 
 # Docker
