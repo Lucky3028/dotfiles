@@ -8,10 +8,12 @@ if [ "$EUID" -ne 0 ]; then
   exit 1
 fi
 
-# Install some deps
+# Install commands with apt
 
 # Set apt repositories for JP
 sed -i.bak -r 's@http://(jp\.)?archive\.ubuntu\.com/ubuntu/?@http://ftp.udx.icscoe.jp/Linux/ubuntu/@g' /etc/apt/sources.list
+
+# Install required deps
 apt-get update && apt-get upgrade -y && apt-get install -y --no-install-recommends \
   ca-certificates \
   curl \
@@ -27,9 +29,9 @@ apt-get update && apt-get upgrade -y && apt-get install -y --no-install-recommen
   zip \
   zsh
 
-# Add apt repository for git to install latest version
+# Add apt repository for git to install latest version and install
 add-apt-repository -y ppa:git-core/ppa
-apt-get update && apt-get upgrade -y && apt-get install -y --no-install-recommends \
+apt-get update && apt-get install -y --no-install-recommends \
   git
 
 # Docker
@@ -38,8 +40,13 @@ apt-get update && apt-get upgrade -y && apt-get install -y --no-install-recommen
 # https://docs.docker.com/engine/install/ubuntu/
 # https://docs.docker.com/engine/install/linux-postinstall/
 
-# Skip above if docker has already installed
+# Skip below if docker has already installed
 if type "docker" >/dev/null 2>&1; then
+  echo "Skip install docker."
+  exit 0
+fi
+
+if [ -n "${SKIP_DOCKER}" ]; then
   echo "Skip install docker."
   exit 0
 fi
