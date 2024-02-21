@@ -44,6 +44,11 @@ if type "docker" >/dev/null 2>&1; then
   exit 0
 fi
 
+if [ -n "${SKIP_DOCKER}" ]; then
+  echo "Skip install docker."
+  exit 0
+fi
+
 install -m 0755 -d /etc/apt/keyrings
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
 echo \
