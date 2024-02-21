@@ -8,10 +8,12 @@ if [ "$EUID" -ne 0 ]; then
   exit 1
 fi
 
-# Install some deps
+# Install commands with apt
 
 # Set apt repositories for JP
 sed -i.bak -r 's@http://(jp\.)?archive\.ubuntu\.com/ubuntu/?@http://ftp.udx.icscoe.jp/Linux/ubuntu/@g' /etc/apt/sources.list
+
+# Install required deps
 apt-get update && apt-get upgrade -y && apt-get install -y --no-install-recommends \
   ca-certificates \
   curl \
@@ -27,7 +29,7 @@ apt-get update && apt-get upgrade -y && apt-get install -y --no-install-recommen
   zip \
   zsh
 
-# Add apt repository for git to install latest version
+# Add apt repository for git to install latest version and install
 add-apt-repository -y ppa:git-core/ppa
 apt-get update && apt-get install -y --no-install-recommends \
   git
