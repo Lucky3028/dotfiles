@@ -3,6 +3,7 @@ typeset -U fpath
 
 path=(
   "${DENO_INSTALL}/bin"(N-/)
+  "${VOLTA_HOME}/bin"(N-/)
   "${XDG_DATA_HOME}/gh-rd/bin"(N-/)
   "$path[@]"
 )

@@ -6,6 +6,9 @@ export XDG_CACHE_HOME="$HOME/.cache"
 # Deno
 export DENO_INSTALL="${XDG_DATA_HOME}/deno"
 
+# Volta
+export VOLTA_HOME="${XDG_DATA_HOME}/volta"
+
 # zsh
 export ZDOTDIR="${XDG_CONFIG_HOME}/zsh"
 export HISTFILE="${XDG_DATA_HOME}/zsh_history"
