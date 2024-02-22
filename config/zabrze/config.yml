@@ -1,7 +1,4 @@
 abbrevs:
-  - name: cd-gitroot
-    abbr: cdg
-    snippet: cd-gitroot
   - name: git commit with git-cz
     abbr: gc
     snippet: git-cz --disable-emoji
