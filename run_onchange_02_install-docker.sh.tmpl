@@ -2,6 +2,11 @@
 
 set -euxo pipefail
 
+# Exit when the script is running in a docker container
+if [ -e /.dockerenv ]; then
+  exit 0
+fi
+
 {{ if eq .chezmoi.osRelease.id "ubuntu" }}
 
 sudo install -m 0755 -d /etc/apt/keyrings
