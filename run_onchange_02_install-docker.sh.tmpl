@@ -21,7 +21,7 @@ DEBIAN_FRONTEND=noninteractive sudo apt-get install -y --no-install-recommends \
 
 {{ else if eq .chezmoi.osRelease.id "arch" }}
 
-sudo pacman -Sy docker
+sudo pacman -Sy --needed docker
 
 {{ end }}
 
