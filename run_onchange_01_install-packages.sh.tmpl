@@ -7,6 +7,7 @@ set -euxo pipefail
 sudo apt update && DEBIAN_FRONTEND=noninteractive sudo apt install -y --no-install-recommends \
   ca-certificates \
   curl \
+  git \
   gnupg \
   gnupg-agent \
   gpg \
@@ -35,6 +36,7 @@ sudo pacman -Sy \
   ca-certificates \
   ccid \
   curl \
+  git \
   gnupg \
   gpg \
   gzip \
