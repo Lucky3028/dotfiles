@@ -4,11 +4,11 @@ set -euxo pipefail
 
 {{ if eq .chezmoi.osRelease.id "ubuntu" }}
 
+# gitは、最新版のgitビルドを提供しているPPAが、古いアルゴリズムの証明書を使用しているので使いたくないため、公式にリリースされているバージョンを使用する
 sudo apt-get update
 DEBIAN_FRONTEND=noninteractive sudo apt-get install -y --no-install-recommends \
   ca-certificates \
   curl \
-  # 最新版のgitビルドを提供しているPPAが、古いアルゴリズムの証明書を使用しているので使いたくないため、公式にリリースされているバージョンを使用する
   git \
   gnupg \
   gnupg-agent \
