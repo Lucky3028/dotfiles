@@ -1,0 +1,56 @@
+#!/bin/bash
+
+set -euxo pipefail
+
+{{ if eq .chezmoi.osRelease.id "ubuntu" }}
+
+sudo apt update && DEBIAN_FRONTEND=noninteractive sudo apt install -y --no-install-recommends \
+  ca-certificates \
+  curl \
+  gnupg \
+  gnupg-agent \
+  gpg \
+  gzip \
+  less \
+  libfuse-dev \
+  libsqlite3-dev \
+  libssl-dev \
+  lsb-release \
+  openssh-client \
+  pcscd \
+  scdaemon \
+  socat \
+  sudo \
+  procps \
+  unzip \
+  vim-gtk3 \
+  wget \
+  xz-utils \
+  zip \
+  zsh
+
+{{ else if eq .chezmoi.osRelease.id "arch" }}
+
+sudo pacman -Sy \
+  ca-certificates \
+  ccid \
+  curl \
+  gnupg \
+  gpg \
+  gzip \
+  less \
+  lsb-release \
+  openssh \
+  opensc \
+  socat \
+  sudo \
+  procps \
+  unzip \
+  vim \
+  wget \
+  xz \
+  zip \
+  zsh
+
+{{ end }}
+
