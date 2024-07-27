@@ -1,0 +1,35 @@
+
+
+
+
+
+
+{{ if eq .chezmoi.os "linux" }}
+{{   if (.chezmoi.kernel.osrelease | lower | contains "microsoft") }}
+
+# Use Yubikey in WSL
+
+export SSH_AUTH_SOCK="/tmp/wsl2-ssh-pagent.sock"
+
+WIN_USERNAME="lucky"
+GO_BIN_DIR="/mnt/c/Users/${WIN_USERNAME}/go/bin"
+WIN_GPG_DIR="C:/Users/${WIN_USERNAME}/AppData/Local/gnupg"
+WIN_HOME_DIR="/mnt/c/Users/${WIN_USERNAME}"
+WSL_GPG_DIR="$(gpgconf --list-dirs socketdir)"
+
+if ! pgrep -f 'socat.*gpg-agent.*npiperelay' > /dev/null; then
+  rm -f "${WSL_GPG_DIR}/S.gpg-agent"
+  setsid nohup socat \
+    UNIX-LISTEN:"${WSL_GPG_DIR}/S.gpg-agent,fork" \
+    EXEC:"${GO_BIN_DIR}"'/npiperelay.exe -ei -ep -s -a "'"${WIN_GPG_DIR}"'/S.gpg-agent",nofork' >/dev/null 2>&1 &
+fi
+
+if ! pgrep -f 'socat.*wsl2-ssh-pagent.*' > /dev/null; then
+  rm -f "${SSH_AUTH_SOCK}"
+  setsid nohup socat \
+    UNIX-LISTEN:"${SSH_AUTH_SOCK},fork" \
+    EXEC:"${GO_BIN_DIR}"'/wsl2-ssh-pageant.exe' > /dev/null 2>&1 &
+fi
+
+{{   end }}
+{{ end }}
