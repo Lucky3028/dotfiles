@@ -81,4 +81,6 @@ set mouse=a
 set cursorline
 " コマンドモードでのコマンド補完を有効化する
 set wildmenu
-
+" j/k キーを使用時に常に表示行単位で行移動する
+nnoremap j gj
+nnoremap k gk
