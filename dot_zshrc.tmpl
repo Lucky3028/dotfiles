@@ -15,8 +15,6 @@ fpath=(
 
 # Use Yubikey in WSL
 
-export SSH_AUTH_SOCK="/tmp/wsl2-ssh-pagent.sock"
-
 WIN_USERNAME="lucky"
 GO_BIN_DIR="/mnt/c/Users/${WIN_USERNAME}/go/bin"
 WIN_GPG_DIR="C:/Users/${WIN_USERNAME}/AppData/Local/gnupg"
@@ -29,6 +27,8 @@ if ! pgrep -f 'socat.*gpg-agent.*npiperelay' > /dev/null; then
     UNIX-LISTEN:"${WSL_GPG_DIR}/S.gpg-agent,fork" \
     EXEC:"${GO_BIN_DIR}"'/npiperelay.exe -ei -ep -s -a "'"${WIN_GPG_DIR}"'/S.gpg-agent",nofork' >/dev/null 2>&1 &
 fi
+
+export SSH_AUTH_SOCK="/tmp/wsl2-ssh-pagent.sock"
 
 if ! pgrep -f 'socat.*wsl2-ssh-pagent.*' > /dev/null; then
   rm -f "${SSH_AUTH_SOCK}"
