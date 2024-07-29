@@ -75,8 +75,6 @@ nnoremap <Esc><Esc> :nohlsearch<CR><ESC>
 syntax on
 " すべての数を10進数として扱う
 set nrformats=
-" 行をまたいで移動
-set whichwrap=b,s,h,l,<,>,[,],~
 " バッファスクロール
 set mouse=a
 " カーソルのある行の色を変える
