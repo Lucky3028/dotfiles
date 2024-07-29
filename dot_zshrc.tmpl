@@ -1,8 +1,16 @@
 
 
+typeset -U path PATH
+path=(
+  $path
+  ~/bin(N-/)
+)
 
-
-
+typeset -U fpath FPATH
+fpath=(
+  $fpath
+  ~/.local/share/pure
+)
 
 {{ if eq .chezmoi.os "linux" }}
 {{   if (.chezmoi.kernel.osrelease | lower | contains "microsoft") }}
