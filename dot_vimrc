@@ -63,8 +63,8 @@ set showmatch
 set smartindent
 " スワップファイルを作成しない
 set noswapfile
-" タイトルを表示
-set title
+" タイトルを表示しない
+set notitle
 " 行番号の表示
 set number
 " ヤンクでクリップボードにコピー
