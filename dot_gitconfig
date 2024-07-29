@@ -1,0 +1,136 @@
+# Windows users: "~" はユーザーフォルダを示す。 e.g. C:\Users\<YourName>
+[user]
+  name = Lucky3028
+  email = yubi@clov3r.cc
+  signingkey = 0x68E4D1F185899CCE
+  # user.nameやuser.emailが設定されていないときに、commitを拒否する
+  useConfigOnly = true
+[commit]
+  # 常にGPG鍵による署名をする
+  gpgsign = true
+[color]
+  # 出力に色を付ける
+  ui = auto
+[core]
+  # 改行コードの自動変換をするかどうか
+  # input: commit時にのみCRLFからLFへの変換を行い、それ以外ではもともとの改行コードを用いる
+  # true: checkout時にはLFからCRLF、commit時にはCRLFからLFへの変換を行う
+  autocrlf = input
+  # ページャーを指定する
+  pager = bat
+  # 個別のgitリポジトリ固有ではなく、すべてのgitリポジトリに共通のgitignoreを記載するファイルへのパス
+  excludesfile = ~/.gitignore_global
+  # 個別のgitリポジトリ固有ではなく、すべてのgitリポジトリに共通のgit hooksを記載するファイルへのパス
+  # hooksPath = ~/.githooks
+  # コミットメッセージなどを編集するときのエディタ
+  # VSCode:
+  # editor = code --wait
+  # vim:
+  editor = vim
+  # 空白文字に関する問題を見つけて修正する
+  # <デフォルト有効>
+  # blank-at-eol: 行末の空白文字を見つける
+  # blank-at-eof: ファイル末尾の空白文字を見つける
+  # space-before-tab: 行頭のタブ文字より前にある空白文字を見つける
+  # ※trailing-space: blank-at-eol と blank-at-eof のエイリアス
+  # <デフォルト無効>
+  # indent-with-non-tab: 行頭がタブ文字でなく空白文字になっている行を見つける
+  # tab-in-indent: 行内のインデント部分にあるタブ文字を見つける
+  # cr-at-eol: 行末のキャリッジリターンを許容する（改行コードが CRLF の場合に、CR が改行コードとして解釈されず、^M のような変な文字として表示されることを防ぐ）
+  whitespace = trailing-space,space-before-tab,-indent-with-non-tab,tab-in-indent,cr-at-eol
+  # ファイルの大文字・小文字の変更をファイルの変更として無視するどうか
+  # true: 無視する
+  ignorecase = false
+[diff]
+  # diff を表示する際に、a/b という表記ではなく、c(ommit)/w(ork tree)/i(ndex)などという表記を使用するかどうか
+  mnemonicPrefix = true
+  # ファイルの名前変更や移動を diff の対象とみなすかどうか
+  renames = true
+  # git diff --word-diffを実行時のデフォルト引数
+  # wordRegex = .
+  # submodule の違いの表示形式
+  # log: gitのコミットリストと同じ形式
+  submodule = log
+  # git diff-tool にどのツールを使用するか
+  # tool = vscode
+# [difftool "vscode"]
+#   cmd = code --wait --diff $LOCAL $REMOTE
+[fetch]
+  # submodule の変更を自動的に fetch する（自動更新はしないので注意）かどうか
+  recurseSubmodules = on-demand
+[grep]
+  break = true
+  heading = true
+  lineNumber = true
+  # git grep 実行時に正規表現を使用するかどうか
+  extendedRegexp = true
+[log]
+  # SHA コミットの ID を短縮して表示するかどうか
+  abbrevCommit = true
+  # 単一のファイルについて、ファイルの名前変更や移動を超えてファイルの変更履歴を表示するかどうか
+  follow = true
+  # ログ表示時に色を付けたり、リモート/ローカルのブランチ名を表示したりするかどうか
+  decorate = false
+[merge]
+  # コンフリクト発生時の表示形式
+  conflictStyle = zdiff3
+  # マージする際に Fast-Forward をするかどうか
+  ff = false
+[mergetool]
+  # マージ終了後にバックアップファイルを残すかどうか
+  keepBackup = false
+  # マージ終了後に一時ファイルを残すかどうか
+  keepTemporaries = false
+  # コンフリクトしたファイルの BASE/LOCAL/REMOTE バージョンを一時ディレクトリに書き込むかどうか 
+  # writeToTemp = false
+  # コンフリクト発生時にマージをするかどうかの確認を行うかどうか
+  prompt = true
+# [page]
+  # ページャーを指定する
+  # show = diff-so-fancy | less --tabs=4 -RFX
+[pull]
+  # pull する際に Fast-Forward をするかどうか
+  ff = only
+  # pull する際に merge のかわりに rebase をするかどうか
+  rebase = true
+  # pull する際にその前後で git stash や git stash --pop を自動的に実行するかどうか
+  autoStash = true
+[push]
+  # リモートのブランチ名をどうするか
+  # upstream: upstream が設定されている場合にのみ push
+  # current: upstream が設定されていなくとも、ローカルと同名のブランチに push
+  # simple: upstream が設定されていて、リモートにも同名のブランチがある場合にのみ push
+  default = current
+  # tag も一緒に自動的に push するかどうか
+  followTags = true
+  # リモートブランチが明示的に指定されていない場合に、設定されたものとして自動的にリモートブランチを選択するかどうか
+  autoSetupRemote = true
+[rebase]
+  # rebase する場合に、自動的に squash を実行するかどうか
+  autoSquash = true
+  # rebase する場合に、その前後で git stash や git stash --pop を自動的に実行するかどうか
+  autoStash = true
+# [rerere]
+  # 自動的に実行したコンフリクトの解決を記録するかどうか
+  # autoupdate = true
+  # コンフリクトの解決を記録して再適用するかどうか
+  # enabled = true
+[status]
+  # submodule の変更の要約をgit status の結果に含めるかどうか
+  submoduleSummary = true
+  # 追跡されて居合ディレクトリの中にあるファイルを git status の結果に含めるかどうか
+  showUntrackedFiles = all
+# サブコマンド別の色指定
+[color "branch"]
+  upstream = cyan
+[tag]
+  # git tag の結果をソートする
+  sort = version:refname
+[versionsort]
+  prereleaseSuffix = -pre
+  prereleaseSuffix = .pre
+  prereleaseSuffix = -beta
+  prereleaseSuffix = .beta
+  prereleaseSuffix = -rc
+  prereleaseSuffix = .rc
+
