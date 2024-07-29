@@ -79,6 +79,6 @@ set nrformats=
 set mouse=a
 " カーソルのある行の色を変える
 set cursorline
-"コマンドモードでのコマンド補完を有効化する
+" コマンドモードでのコマンド補完を有効化する
 set wildmenu
 
