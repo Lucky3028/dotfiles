@@ -133,4 +133,10 @@
   prereleaseSuffix = .beta
   prereleaseSuffix = -rc
   prereleaseSuffix = .rc
+[credential "https://github.com"]
+  helper =
+  helper = !/home/lucky/.local/share/gh-rd/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+  helper =
+  helper = !/home/lucky/.local/share/gh-rd/bin/gh auth git-credential
 
