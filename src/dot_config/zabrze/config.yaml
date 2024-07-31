@@ -41,4 +41,14 @@ abbrevs:
     snippet: 'push'
     global: true
     context: '^git\s'
+  # replacements
+  - name: ls -> eza
+    abbr: ls
+    snippet: eza
+  - name: cat -> bat
+    abbr: cat
+    snippet: bat
+  - name: find -> fd
+    abbr: find
+    snippet: fd
 
