@@ -51,4 +51,7 @@ abbrevs:
   - name: find -> fd
     abbr: find
     snippet: fd
+  - name: grep -> rg
+    abbr: grep
+    snippet: rg
 
