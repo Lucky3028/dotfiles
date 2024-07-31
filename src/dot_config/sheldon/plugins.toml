@@ -63,6 +63,13 @@ apply = ["defer"]
 github = "zsh-users/zsh-syntax-highlighting"
 apply = ["defer"]
 
+[plugins.history-search-multi-word]
+github = 'zdharma-continuum/history-search-multi-word'
+apply = ['defer']
+
+[plugins.history-search-multi-word.hooks]
+post = 'bindkey "^R" history-search-multi-word'
+
 [plugins.enhancd]
 github = "b4b4r07/enhancd"
 apply = ["defer"]
