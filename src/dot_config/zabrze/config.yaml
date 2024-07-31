@@ -1,0 +1,26 @@
+abbrevs:
+  # git
+  - name: git
+    abbr: g
+    snippet: git
+  - name: git commit
+    abbr: c
+    snippet: commit
+    global: true
+    context: '^git\s'
+  - name: git commit -m
+    abbr: cm
+    snippet: 'commit -m'
+    global: true
+    context: '^git\s'
+  - name: git add
+    abbr: a
+    snippet: 'add'
+    global: true
+    context: '^git\s'
+  - name: git status
+    abbr: s
+    snippet: 'status'
+    global: true
+    context: '^git\s'
+

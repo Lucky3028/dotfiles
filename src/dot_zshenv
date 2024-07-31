@@ -11,3 +11,10 @@ export SAVEHIST=10000
 # less
 # Disable less history file
 export LESSHISTFILE=-
+
+# proto
+export PROTO_HOME="$HOME/.proto"
+
+# gh-rd
+export GHRD_DATA_HOME=$XDG_DATA_HOME/gh-rd
+

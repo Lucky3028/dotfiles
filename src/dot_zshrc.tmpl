@@ -2,17 +2,24 @@ typeset -U path PATH
 path=(
   $path
   ~/bin
+  $PROTO_HOME/shims
+  $PROTO_HOME/bin
+  $GHRD_DATA_HOME/bin
 )
 
 typeset -U fpath FPATH
 fpath=(
   $fpath
   ~/.zsh-completions
+  $GHRD_DATA_HOME/completions
 )
 
 # Enable completions
 autoload -Uz compinit
 compinit
+
+# Load abbr
+eval "$(zabrze init --bind-keys)"
 
 {{ if eq .chezmoi.os "linux" }}
 {{   if (.chezmoi.kernel.osrelease | lower | contains "microsoft") }}
