@@ -25,3 +25,6 @@ export PROTO_HOME=$XDG_DATA_HOME/proto
 # gh-rd
 export GHRD_DATA_HOME=$XDG_DATA_HOME/gh-rd
 
+# enhancd
+export ENHANCD_FILTER="fzf --height 40%:fzy"
+

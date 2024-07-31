@@ -14,12 +14,8 @@ fpath=(
   $GHRD_DATA_HOME/completions
 )
 
-# Enable completions
-autoload -Uz compinit
-compinit
-
-# Load abbr
-eval "$(zabrze init --bind-keys)"
+# Load sheldon
+eval "$(sheldon source)"
 
 {{ if eq .chezmoi.os "linux" }}
 {{   if (.chezmoi.kernel.osrelease | lower | contains "microsoft") }}

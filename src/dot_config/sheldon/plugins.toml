@@ -1,0 +1,69 @@
+# `sheldon` configuration file
+# ----------------------------
+#
+# You can modify this file directly or you can use one of the following
+# `sheldon` commands which are provided to assist in editing the config file:
+#
+# - `sheldon add` to add a new plugin to the config file
+# - `sheldon edit` to open up the config file in the default editor
+# - `sheldon remove` to remove a plugin from the config file
+#
+# See the documentation for more https://github.com/rossmacarthur/sheldon#readme
+
+[templates]
+defer = "{{ hooks?.pre | nl }}{% for file in files %}zsh-defer source \"{{ file }}\"\n{% endfor %}{{ hooks?.post | nl }}"
+
+[plugins]
+
+[plugins.powerlevel10k]
+github = "romkatv/powerlevel10k"
+
+[plugins.powerlevel10k.hooks]
+pre = '''
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.config/zsh/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+'''
+post = '''
+if [ -e ~/.config/zsh/.p10k.zsh ]; then
+  source ~/.config/zsh/.p10k.zsh
+fi
+'''
+
+[plugins.zsh-tab-completion]
+inline = '''
+setopt auto_list
+setopt auto_menu
+zstyle ':completion:*:default' menu select=1
+export LS_COLORS='di=34:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
+zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+
+autoload -Uz compinit
+compinit
+'''
+
+[plugins.load-zabrze]
+inline = 'eval "$(zabrze init --bind-keys)"'
+
+[plugins.load-direnv]
+inline = 'eval "$(direnv hook zsh)"'
+
+[plugins.zsh-defer]
+github = "romkatv/zsh-defer"
+
+[plugins.zsh-autosuggestions]
+github = "zsh-users/zsh-autosuggestions"
+use = ["{{ name }}.zsh"]
+apply = ["defer"]
+
+[plugins.zsh-syntax-highlighting]
+github = "zsh-users/zsh-syntax-highlighting"
+apply = ["defer"]
+
+[plugins.enhancd]
+github = "b4b4r07/enhancd"
+apply = ["defer"]
+
