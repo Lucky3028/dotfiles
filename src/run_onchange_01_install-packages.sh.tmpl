@@ -69,3 +69,7 @@ rm -r yay-bin
 
 chsh -s $(which zsh) $USER
 
+if [ ! -d $ZSH_COMP ]; then
+  mkdir $ZSH_COMP
+fi
+
