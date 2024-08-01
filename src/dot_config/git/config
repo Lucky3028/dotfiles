@@ -140,3 +140,6 @@
   helper =
   helper = !/home/lucky/.local/share/gh-rd/bin/gh auth git-credential
 
+[init]
+  defaultBranch = main
+
