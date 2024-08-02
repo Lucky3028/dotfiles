@@ -28,3 +28,7 @@ export GHRD_DATA_HOME=$XDG_DATA_HOME/gh-rd
 # enhancd
 export ENHANCD_FILTER="fzf --height 40%:fzy"
 
+# navi
+export NAVI_CONFIG=$XDG_CONFIG_HOME/navi/config.yaml
+export NAVI_PATH=$XDG_CONFIG_HOME/navi/cheats
+
