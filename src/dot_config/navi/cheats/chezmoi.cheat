@@ -2,7 +2,11 @@
 % chezmoi
 
 # Edit a file in chezmoi src dir
-vim <edited_file>
+selected_file=<chezmoi_src>/<edited_file>
+if [ -z <edited_file> ] || [ ! -e $selected_file ]; then
+  exit 0
+fi
+vim $selected_file
 if [ 0 -eq $(chezmoi diff | wc -l) ]; then
   exit 0
 fi
@@ -17,7 +21,8 @@ else
   echo Apply cancelled.
 fi
 
-$ edited_file: fd . $(chezmoi source-path) --type f --full-path
+$ chezmoi_src: chezmoi source-path
+$ edited_file: zsh -c "cd <chezmoi_src> && fd . --type f | fzf --preview='bat --color=always --line-range :80 {}'"
 
 # Prepare for git commits
 cd $(chezmoi source-path)
