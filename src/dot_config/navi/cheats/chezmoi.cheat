@@ -19,3 +19,14 @@ fi
 
 $ edited_file: fd . $(chezmoi source-path) --type f --full-path
 
+# Prepare for git commits
+cd $(chezmoi source-path)
+git status
+echo -n 'Diff?(y/n): '
+if read -q; then
+  git diff
+else
+  echo
+  echo Diff cancelled.
+fi
+
