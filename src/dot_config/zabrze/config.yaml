@@ -21,6 +21,9 @@ abbrevs:
     snippet: 'diff'
     global: true
     context: '^chezmoi\s'
+  - name: chezmoi cd (replace)
+    abbr: cd-c
+    snippet: cd $(chezmoi source-path)
   # git
   - name: git
     abbr: g
