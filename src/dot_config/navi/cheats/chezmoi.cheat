@@ -2,7 +2,7 @@
 % chezmoi
 
 # Edit a file in chezmoi src dir
-vim <file>
+vim <edited_file>
 if [ 0 -eq $(chezmoi diff | wc -l) ]; then
   exit 0
 fi
@@ -17,5 +17,5 @@ else
   echo Apply cancelled.
 fi
 
-$ file: fd . $(chezmoi source-path) --type f --full-path
+$ edited_file: fd . $(chezmoi source-path) --type f --full-path
 
