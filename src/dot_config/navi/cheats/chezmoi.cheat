@@ -1,7 +1,21 @@
+
 % chezmoi
 
 # Edit a file in chezmoi src dir
-vim <file> && chezmoi diff
+vim <file>
+if [ 0 -eq $(chezmoi diff | wc -l) ]; then
+  exit 0
+fi
+chezmoi diff
+echo -n 'Apply?(y/n): '
+if read -q; then
+  chezmoi apply
+  echo
+  echo Applied.
+else
+  echo
+  echo Apply cancelled.
+fi
 
 $ file: fd . $(chezmoi source-path) --type f --full-path
 
