@@ -60,6 +60,11 @@ abbrevs:
     snippet: 'push'
     global: true
     context: '^git\s'
+  - name: git log
+    abbr: l
+    snippet: 'log'
+    global: true
+    context: '^git\s'
   # replacements
   - name: ls -> eza
     abbr: ls
