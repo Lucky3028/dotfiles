@@ -11,3 +11,8 @@ $remote_branch: git rev-parse --abbrev-ref --symbolic-full-name @{u}
 # Uncommit a latest commit
 git reset --soft HEAD^
 
+# Edit old commits
+oldest_commit_sha=$(git log --oneline | fzf | cut -d ' ' -f 1)
+selected_commit_counts=$(expr 1 + $(git log --oneline $oldest_commit_sha..HEAD | wc -l))
+git rebase -i HEAD~$selected_commit_counts
+
