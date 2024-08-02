@@ -1,4 +1,7 @@
 abbrevs:
+  - name: chezmoi
+    abbr: cz
+    snippet: chezmoi
   - name: wget with hsts
     abbr: wget
     snippet: 'wget --hsts-file $XDG_STATE_HOME/wget/.wget-hsts'
