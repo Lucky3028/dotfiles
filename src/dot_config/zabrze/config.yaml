@@ -1,10 +1,26 @@
 abbrevs:
-  - name: chezmoi
-    abbr: cz
-    snippet: chezmoi
   - name: wget with hsts
     abbr: wget
     snippet: 'wget --hsts-file $XDG_STATE_HOME/wget/.wget-hsts'
+  # chezmoi
+  - name: chezmoi
+    abbr: cz
+    snippet: chezmoi
+  - name: chezmoi add
+    abbr: a
+    snippet: 'add'
+    global: true
+    context: '^chezmoi\s'
+  - name: chezmoi edit
+    abbr: e
+    snippet: 'edit'
+    global: true
+    context: '^chezmoi\s'
+  - name: chezmoi diff
+    abbr: d
+    snippet: 'diff'
+    global: true
+    context: '^chezmoi\s'
   # git
   - name: git
     abbr: g
