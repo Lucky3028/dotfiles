@@ -1,5 +1,10 @@
 % git
 
 # Shows unpushed commits log
-git 
+git log <remote_branch>..HEAD
+
+# Shows unpushed commits diff
+git diff <remote_branch>..HEAD
+
+$remote_branch: git rev-parse --abbrev-ref --symbolic-full-name @{u}
 
