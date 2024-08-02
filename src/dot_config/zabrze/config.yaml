@@ -73,6 +73,11 @@ abbrevs:
     snippet: 'log'
     global: true
     context: '^git\s'
+  - name: git branch
+    abbr: b
+    snippet: 'branch'
+    global: true
+    context: '^git\s'
   # replacements
   - name: ls -> eza
     abbr: ls
