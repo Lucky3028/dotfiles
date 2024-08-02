@@ -22,6 +22,9 @@ $ edited_file: fd . $(chezmoi source-path) --type f --full-path
 # Prepare for git commits
 cd $(chezmoi source-path)
 git status
+if [ 0 -eq $(git diff | wc -l) ]; then
+  exit 0
+fi
 echo -n 'Diff?(y/n): '
 if read -q; then
   git diff
