@@ -3,6 +3,9 @@
 # Shows unpushed commits log
 git log <remote_branch>..HEAD
 
+# Shows unpushed commits log oneline
+git log <remote_branch>..HEAD --oneline
+
 # Shows unpushed commits diff
 git diff <remote_branch>..HEAD
 
