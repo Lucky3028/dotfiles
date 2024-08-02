@@ -1,0 +1,7 @@
+% chezmoi
+
+# Edit a file in chezmoi src dir
+vim <file> && chezmoi diff
+
+$ file: fd . $(chezmoi source-path)
+
