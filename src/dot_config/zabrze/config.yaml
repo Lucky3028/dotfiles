@@ -38,6 +38,11 @@ abbrevs:
     snippet: 'commit -m'
     global: true
     context: '^git\s'
+  - name: git commit --amend
+    abbr: ca
+    snippet: 'commit --amend'
+    global: true
+    context: '^git\s'
   - name: git add
     abbr: a
     snippet: 'add'
