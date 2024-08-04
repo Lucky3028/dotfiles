@@ -51,6 +51,9 @@ inline = 'eval "$(zabrze init --bind-keys)"'
 [plugins.load-direnv]
 inline = 'eval "$(direnv hook zsh)"'
 
+[plugins.load-navi-widgets]
+inline = 'eval "$(navi widget zsh)"'
+
 [plugins.zsh-defer]
 github = "romkatv/zsh-defer"
 
