@@ -78,6 +78,11 @@ abbrevs:
     snippet: 'branch'
     global: true
     context: '^git\s'
+  - name: git switch
+    abbr: sw
+    snippet: 'switch'
+    global: true
+    context: '^git\s'
   # replacements
   - name: ls -> eza
     abbr: ls
