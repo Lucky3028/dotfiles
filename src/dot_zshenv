@@ -6,6 +6,7 @@ export XDG_STATE_HOME=$HOME/.local/state
 
 # zsh
 export ZDOTDIR=$XDG_CONFIG_HOME/zsh
+export EDITOR=$(which vim)
 
 # zsh history
 export HISTFILE=$XDG_STATE_HOME/zsh/.zsh_history
