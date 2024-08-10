@@ -141,4 +141,7 @@
   helper = !/home/lucky/.local/share/gh-rd/bin/gh auth git-credential
 [init]
   defaultBranch = main
+[url "git@github.com:"]
+  insteadOf = https://github.com/
+  pushInsteadOf = https://github.com/
 
