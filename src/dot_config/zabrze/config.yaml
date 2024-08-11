@@ -2,6 +2,9 @@ abbrevs:
   - name: wget with hsts
     abbr: wget
     snippet: 'wget --hsts-file $XDG_STATE_HOME/wget/.wget-hsts'
+  - name: terraform
+    abbr: tf
+    snippet: terraform
   # chezmoi
   - name: chezmoi
     abbr: cz
