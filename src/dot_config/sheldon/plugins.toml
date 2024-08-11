@@ -54,6 +54,12 @@ inline = 'eval "$(direnv hook zsh)"'
 [plugins.load-navi-widgets]
 inline = 'eval "$(navi widget zsh)"'
 
+[plugins.enable-terraform-completion]
+inline = '''
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C "$(which terraform)" terraform
+'''
+
 [plugins.zsh-defer]
 github = "romkatv/zsh-defer"
 
