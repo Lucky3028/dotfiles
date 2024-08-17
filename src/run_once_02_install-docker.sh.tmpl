@@ -20,9 +20,10 @@ echo \
 sudo apt-get update
 DEBIAN_FRONTEND=noninteractive sudo apt-get install -y --no-install-recommends \
   containerd.io \
+  docker-buildx-plugin \
   docker-ce \
-  docker-ce-cli \
-  docker-buildx-plugin
+  docker-ce-cli
+
 
 {{ else if eq .chezmoi.osRelease.id "arch" }}
 
