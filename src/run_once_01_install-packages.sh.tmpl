@@ -34,7 +34,7 @@ DEBIAN_FRONTEND=noninteractive sudo apt-get install -y --no-install-recommends \
   zip \
   zsh
 
-{{ else if eq .chezmoi.osRelease.id "arch" }}
+{{ else if or (eq .chezmoi.osRelease.id "arch") (eq .chezmoi.osRelease.id "manjaro") }}
 
 sudo pacman -Sy --needed \
   base-devel \
