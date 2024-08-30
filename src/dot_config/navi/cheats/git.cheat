@@ -25,5 +25,5 @@ git branch --merged | grep -Ev '\*|main|develop' | xargs git branch -d; git fetc
 $current_pr: gh pr view --json number --template '{{ .number }}'
 
 # Merge PR in current branch
-gh pr merge <current_pr> -m -d --auto
+gh pr merge <current_pr> -m -d
 
