@@ -2,7 +2,7 @@
 
 set -euxp pipefail
 
-proto install deno
+$PROTO_HOME/bin/proto install deno
 
 curl -fsSL https://deno.land/x/gh_rd/install.bash | /bin/bash
 
