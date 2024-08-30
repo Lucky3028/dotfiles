@@ -8,6 +8,12 @@ abbrevs:
   - name: cd to ghq repo dir
     abbr: cd-g
     snippet: 'cd $(ghq root)/$(ghq list | fzf)'
+  - name: list $PATH
+    abbr: echo-path
+    snippet: 'echo $PATH | sed "s/:/\n/g"'
+  - name: list $FPATH
+    abbr: echo-fpath
+    snippet: 'echo $FPATH | sed "s/:/\n/g"'
   # chezmoi
   - name: chezmoi
     abbr: cz
