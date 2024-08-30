@@ -46,5 +46,12 @@ if ! pgrep -f 'socat.*wsl2-ssh-pagent.*' > /dev/null; then
     EXEC:"${GO_BIN_DIR}"'/wsl2-ssh-pageant.exe' > /dev/null 2>&1 &
 fi
 
+{{   else }}
+
+  export GPG_TTY="$(tty)"
+  export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
+  gpgconf --launch gpg-agent
+  gpg-connect-agent updatestartuptty /bye > /dev/null
+
 {{   end }}
 {{ end }}
