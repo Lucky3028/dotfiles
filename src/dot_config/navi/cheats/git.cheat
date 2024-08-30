@@ -22,3 +22,8 @@ git rebase -i HEAD~$selected_commit_counts
 # Remove merged branches
 git branch --merged | grep -Ev '\*|main|develop' | xargs git branch -d; git fetch --prune
 
+$current_pr: gh pr view --json number --template '{{ .number }}'
+
+# Merge PR in current branch
+gh pr merge <current_pr> -m -d --auto
+
