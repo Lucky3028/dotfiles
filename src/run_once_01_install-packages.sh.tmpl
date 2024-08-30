@@ -34,7 +34,7 @@ DEBIAN_FRONTEND=noninteractive sudo apt-get install -y --no-install-recommends \
   zip \
   zsh
 
-{{ else if eq .chezmoi.osRelease.id "arch" }}
+{{ else if or (eq .chezmoi.osRelease.id "arch") (eq .chezmoi.osRelease.id "manjaro") }}
 
 sudo pacman -Sy --needed \
   base-devel \
@@ -44,7 +44,6 @@ sudo pacman -Sy --needed \
   fakeroot \
   git \
   gnupg \
-  gpg \
   gzip \
   jq \
   less \
@@ -61,11 +60,14 @@ sudo pacman -Sy --needed \
   zip \
   zsh
 
-git clone https://aur.archlinux.org/yay-bin.git
-cd yay-bin
-makepkg -si
-cd ../
-rm -r yay-bin
+if !(type 'yay' > /dev/null 2>&1); then
+  git clone https://aur.archlinux.org/yay-bin.git
+  cd yay-bin
+  makepkg -si
+  cd ../
+  rm -r yay-bin
+fi
+
 
 {{ end }}
 
