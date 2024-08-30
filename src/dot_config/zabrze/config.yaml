@@ -5,9 +5,6 @@ abbrevs:
   - name: terraform
     abbr: tf
     snippet: terraform
-  - name: cd to ghq repo dir
-    abbr: cd-g
-    snippet: 'cd $(ghq root)/$(ghq list | fzf)'
   - name: list $PATH
     abbr: echo-path
     snippet: 'echo $PATH | sed "s/:/\n/g"'
@@ -95,6 +92,9 @@ abbrevs:
     snippet: 'switch'
     global: true
     context: '^git\s'
+  - name: cd to ghq repo dir
+    abbr: cd-g
+    snippet: 'cd $(ghq root)/$(ghq list | fzf)'
   # replacements
   - name: ls -> eza
     abbr: ls
