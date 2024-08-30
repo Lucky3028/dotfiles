@@ -5,6 +5,9 @@ abbrevs:
   - name: terraform
     abbr: tf
     snippet: terraform
+  - name: cd to ghq repo dir
+    abbr: cd-g
+    snippet: 'cd $(ghq root)/$(ghq list | fzf)'
   # chezmoi
   - name: chezmoi
     abbr: cz

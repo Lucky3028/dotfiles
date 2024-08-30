@@ -19,9 +19,6 @@ oldest_commit_sha=$(git log --oneline | fzf | cut -d ' ' -f 1)
 selected_commit_counts=$(expr 1 + $(git log --oneline $oldest_commit_sha..HEAD | wc -l))
 git rebase -i HEAD~$selected_commit_counts
 
-# Move to git repo dir
-cd $(ghq root)/$(ghq list | fzf)
-
 # Remove merged branches
 git branch --merged | grep -Ev '\*|main|develop' | xargs git branch -d; git fetch --prune
 
