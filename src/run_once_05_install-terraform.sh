@@ -2,5 +2,5 @@
 
 set -euxp pipefail
 
-proto install terraform
+$PROTO_HOME/bin/proto install terraform
 
