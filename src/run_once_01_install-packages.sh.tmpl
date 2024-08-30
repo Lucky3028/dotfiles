@@ -36,20 +36,28 @@ DEBIAN_FRONTEND=noninteractive sudo apt-get install -y --no-install-recommends \
 
 {{ else if or (eq .chezmoi.osRelease.id "arch") (eq .chezmoi.osRelease.id "manjaro") }}
 
-sudo pacman -Sy --needed \
+sudo pacman -Sy --noconfirm --needed \
+  pacman-mirrors
+
+sudo pacman-mirrors -c Japan
+
+sudo pacman -Sy --noconfirm --needed \
   base-devel \
   ca-certificates \
   ccid \
   curl \
   fakeroot \
+  fcitx5-mozc \
   git \
   gnupg \
   gzip \
   jq \
   less \
   lsb-release \
+  manjaro-asian-input-support-fcitx5 \
   openssh \
   opensc \
+  seahorse \
   socat \
   sudo \
   procps \
@@ -68,6 +76,9 @@ if !(type 'yay' > /dev/null 2>&1); then
   rm -r yay-bin
 fi
 
+yay -Sy --noconfirm --needed \
+  ttf-hackgen \
+  visual-studio-code-bin
 
 {{ end }}
 
