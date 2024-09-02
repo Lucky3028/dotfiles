@@ -94,3 +94,8 @@ chezmoi completion zsh > $ZDOTDIR/completions/_chezmoi
 if [ ! -d ~/bin ]; then
   mkdir ~/bin
 fi
+
+if [ ! -d $XDG_STATE_HOME/zsh ]; then
+  mkdir -p $XDG_STATE_HOME/zsh
+fi
+
