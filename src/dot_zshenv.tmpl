@@ -33,3 +33,8 @@ export ENHANCD_FILTER="fzf --height 40%:fzy"
 export NAVI_CONFIG=$XDG_CONFIG_HOME/navi/config.yaml
 export NAVI_PATH=$XDG_CONFIG_HOME/navi/cheats
 
+{{ if eq .chezmoi.os "linux" }}
+{{   if (.chezmoi.kernel.osrelease | lower | contains "microsoft") }}
+export BROWSER='/mnt/c/Users/*/AppData/Local/Vivaldi/Application/vivaldi.exe'
+{{   end }}
+{{ end }}
