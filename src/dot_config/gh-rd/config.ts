@@ -3,6 +3,9 @@ import { defineConfig } from "https://deno.land/x/gh_rd/mod.ts";
 export default defineConfig({
   tools: [
     {
+      name: "suzuki-shunsuke/ghalint",
+    },
+    {
       name: "suzuki-shunsuke/pinact",
     },
     {
