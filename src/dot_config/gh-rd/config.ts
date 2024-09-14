@@ -3,6 +3,9 @@ import { defineConfig } from "https://deno.land/x/gh_rd/mod.ts";
 export default defineConfig({
   tools: [
     {
+      name: "rhysd/actionlint",
+    },
+    {
       name: "suzuki-shunsuke/ghalint",
     },
     {
