@@ -1,15 +1,25 @@
 % git
 
 # Shows unpushed commits log
-git log <remote_branch>..HEAD
+remote_branch=$(git rev-parse --abbrev-ref --symbolic-full-name @{u}) || exit $?
+git log "${remote_branch}..HEAD"
 
 # Shows unpushed commits log oneline
-git log <remote_branch>..HEAD --oneline
+remote_branch=$(git rev-parse --abbrev-ref --symbolic-full-name @{u}) || exit $?
+git log "${remote_branch}..HEAD" --oneline
 
 # Shows unpushed commits diff
-git diff <remote_branch>..HEAD
+remote_branch=$(git rev-parse --abbrev-ref --symbolic-full-name @{u}) || exit $?
+git diff "${remote_branch}..HEAD"
 
-$remote_branch: git rev-parse --abbrev-ref --symbolic-full-name @{u}
+# Move commit to other branch
+remote_branch=$(git rev-parse --abbrev-ref --symbolic-full-name @{u}) || exit $?
+current_branch=$(git branch | grep '*' | awk '{print $2}')
+git switch -c <new_branch_name>
+git switch "${current_branch}"
+git fetch
+git reset --hard "${remote_branch}"
+git switch <new_branch_name>
 
 # Uncommit a latest commit
 git reset --soft HEAD^
