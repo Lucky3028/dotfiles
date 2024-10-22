@@ -39,6 +39,9 @@ export BROWSER='/usr/bin/firefox'
 {{ if eq .chezmoi.os "linux" }}
 {{   if (.chezmoi.kernel.osrelease | lower | contains "microsoft") }}
 
+# Browser Settings
+export BROWSER='/mnt/c/Users/Lucky/AppData/Local/Vivaldi/Application/vivaldi.exe'
+
 # Keyboard Settings for fcitx5
 # https://news.mynavi.jp/article/20231009-2788372/
 export GTK_IM_MODULE=fcitx5
