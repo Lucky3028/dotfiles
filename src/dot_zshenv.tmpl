@@ -19,6 +19,8 @@ export VIMINIT='source $MYVIMRC'
 
 # less
 export LESSHISTFILE=$XDG_STATE_HOME/less/.lesshst
+export LESSOPEN="| /usr/bin/lesspipe %s";
+export LESSCLOSE="/usr/bin/lesspipe %s %s";
 
 # proto
 export PROTO_HOME=$XDG_DATA_HOME/proto
