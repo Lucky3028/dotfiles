@@ -3,6 +3,13 @@ import { defineConfig } from "https://deno.land/x/gh_rd/mod.ts";
 export default defineConfig({
   tools: [
     {
+      name: "bitwarden/clients",
+      tag: "cli-v2025.5.0",
+      executables: [
+        { glob: "bw" },
+      ],
+    },
+    {
       name: "rhysd/actionlint",
     },
     {
