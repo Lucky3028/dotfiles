@@ -16,6 +16,9 @@ fpath=(
   $GHRD_DATA_HOME/completions
 )
 
+# Load mise
+eval "$($MISE_INSTALL_PATH activate zsh)"
+
 # Load sheldon
 eval "$(sheldon source)"
 
