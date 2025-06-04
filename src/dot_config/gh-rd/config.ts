@@ -49,15 +49,6 @@ export default defineConfig({
       },
     },
     {
-      name: "direnv/direnv",
-      rename: [
-        { from: "direnv*", to: "direnv" },
-      ],
-       async onDownload({ bin: { direnv }, $ }) {
-        await $`${direnv} hook zsh > direnv.zsh`;
-      },
-    },
-    {
       name: "sharkdp/bat",
       completions: [
         { glob: "*/autocomplete/bat.zsh", as: "_bat" },
