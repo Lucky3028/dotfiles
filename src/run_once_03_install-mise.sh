@@ -13,5 +13,4 @@ $MISE_INSTALL_PATH completion zsh > $ZDOTDIR/completions/_mise
 ## Deno
 deno completions zsh > $ZDOTDIR/completions/_deno
 ## Terraform
-## Need not to add completions of Terraform b/c Terraform provides them by CLI
-
+## Loaded by using sheldon, so see sheldon config.toml.
