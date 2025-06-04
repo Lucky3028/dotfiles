@@ -95,6 +95,9 @@ abbrevs:
   - name: cd to ghq repo dir
     abbr: cd-g
     snippet: 'cd $(ghq root)/$(ghq list | fzf)'
+  - name: cd to root dir on git repo
+    abbr: cd-gr
+    snippet: 'cd $(git rev-parse --show-toplevel)'
   # replacements
   - name: ls -> eza
     abbr: ls
