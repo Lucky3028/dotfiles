@@ -21,6 +21,10 @@ git fetch
 git reset --hard "${remote_branch}"
 git switch <new_branch_name>
 
+# Rename current branch
+current_branch=$(git branch | grep '*' | awk '{print $2}')
+git branch -m "${current_branch}" <new_branch_name>
+
 # Uncommit a latest commit
 git reset --soft HEAD^
 
