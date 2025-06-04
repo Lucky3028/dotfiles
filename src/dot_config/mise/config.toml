@@ -1,0 +1,4 @@
+[tools]
+deno = "latest"
+terraform = "latest"
+usage = "latest"
