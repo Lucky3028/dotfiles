@@ -2,3 +2,6 @@
 deno = "latest"
 terraform = "latest"
 usage = "latest"
+
+[settings]
+idiomatic_version_file_enable_tools = ["java"]
