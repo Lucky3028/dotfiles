@@ -1,6 +1,5 @@
 [tools]
 deno = "latest"
-pnpm = "latest"
 terraform = "latest"
 usage = "latest"
 
