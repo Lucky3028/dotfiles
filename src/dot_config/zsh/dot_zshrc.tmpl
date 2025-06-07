@@ -1,9 +1,10 @@
 typeset -U path PATH
 path=(
   $path
-  $HOME/bin
-  $GHRD_DATA_HOME/bin
-  $CARGO_HOME/bin
+  $HOME/bin(N-/)
+  $GHRD_DATA_HOME/bin(N-/)
+  $CARGO_HOME/bin(N-/)
+  $XDG_DATA_HOME/mise/shims(N-/)
   # Add code.exe to PATH for WSL
   /mnt/c/Users/*/AppData/Local/Programs/Microsoft\ VS\ Code/bin(N-/)
 )
@@ -11,8 +12,8 @@ path=(
 typeset -U fpath FPATH
 fpath=(
   $fpath
-  $ZDOTDIR/completions
-  $GHRD_DATA_HOME/completions
+  $ZDOTDIR/completions(N-/)
+  $GHRD_DATA_HOME/completions(N-/)
 )
 
 # Load mise
