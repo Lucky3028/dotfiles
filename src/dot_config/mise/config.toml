@@ -1,5 +1,10 @@
 [tools]
 deno = "latest"
+node = "24"
+"npm:@anthropic-ai/claude-code" = "latest"
+"npm:@google/gemini-cli" = "latest"
+"npm:ccusage" = "latest"
+"npm:reviewit" = "latest"
 terraform = "latest"
 usage = "latest"
 
