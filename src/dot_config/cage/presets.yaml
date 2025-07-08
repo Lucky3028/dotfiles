@@ -1,0 +1,9 @@
+presets:
+  claude:
+    allow:
+      - "."
+      - "$HOME/.npm"
+      - "$HOME/.claude"
+      - "$HOME/.claude.json"
+    allow-git: true
+
