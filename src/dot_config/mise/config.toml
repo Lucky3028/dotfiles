@@ -1,5 +1,7 @@
 [tools]
 deno = "latest"
+go = "latest"
+"go:github.com/Warashi/cage" = "latest"
 node = "24"
 "npm:@anthropic-ai/claude-code" = "latest"
 "npm:@google/gemini-cli" = "latest"
@@ -10,3 +12,4 @@ usage = "latest"
 
 [settings]
 idiomatic_version_file_enable_tools = ["java"]
+experimental = true
