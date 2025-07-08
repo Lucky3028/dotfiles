@@ -1,5 +1,17 @@
 #!/bin/bash
 
+# Toast Notification Script for WSL
+# Windows Subsystem for Linux (WSL) 上でWindows トースト通知を表示するスクリプト
+# 
+# 使用方法:
+#   toast <タイトル> [説明1] [説明2] ...
+#
+# 例:
+#   toast "Hello World"
+#   toast "通知タイトル" "説明文"
+#   toast "複数行の説明" "1行目" "2行目" "3行目"
+#   toast "タスク完了" "ビルドが正常に完了しました"
+
 # エラーメッセージ出力関数
 error_message() {
   echo -e "\e[31m$1\e[0m"
