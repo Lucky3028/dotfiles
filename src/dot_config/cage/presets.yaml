@@ -2,6 +2,7 @@ presets:
   claude:
     allow:
       - "."
+      - "/tmp"
       - "$HOME/.npm"
       - "$HOME/.claude"
       - "$HOME/.claude.json"
