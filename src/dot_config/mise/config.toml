@@ -7,6 +7,8 @@ node = "24"
 "npm:@google/gemini-cli" = "latest"
 "npm:ccusage" = "latest"
 "npm:reviewit" = "latest"
+"pipx:httpie" = "latest"
+python = "latest"
 terraform = "latest"
 usage = "latest"
 
