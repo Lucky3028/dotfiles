@@ -4,6 +4,7 @@ presets:
       - "."
       - "/tmp"
       - "$HOME/.npm"
+      - "$HOME/.cache/pnpm/dlx"
       - "$HOME/.claude"
       - "$HOME/.claude.json"
     allow-git: true
