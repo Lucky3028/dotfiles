@@ -1,5 +1,5 @@
 ---
-allow-tools: Bash(git switch main), Bash(git pull)
+allowed-tools: Bash(git switch main), Bash(git pull), Bash(git push)
 description: "Create and auto-merge PR."
 ---
 
