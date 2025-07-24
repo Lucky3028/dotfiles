@@ -4,6 +4,8 @@ presets:
       - "."
       - "/tmp"
       - "$HOME/.npm"
+      # To sign with gnupg to run 'git commit'
+      - "$HOME/.gnupg"
       - "$HOME/.cache/pnpm/dlx"
       - "$HOME/.claude"
       - "$HOME/.claude.json"
