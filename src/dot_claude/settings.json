@@ -1,0 +1,55 @@
+{
+  "env": {
+    "CLAUDE_CODE_ENABLE_TELEMETRY": false,
+    "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": true,
+    "DISABLE_ERROR_REPORTING": true,
+    "DISABLE_TELEMETRY": true,
+    "DISABLE_AUTOUPDATER": true,
+    "DISABLE_MICROCOMPACT": true,
+    "DISABLE_INTERLEAVED_THINKING": true
+  },
+  "permissions": {
+    "allow": [
+      "Bash(mkdir:*)",
+      "Bash(touch:*)",
+      "Bash(ls:*)",
+      "Bash(tree:*)",
+      "Bash(mv:*)",
+      "Bash(cp:*)",
+      "Bash(cat:*)",
+      "Bash(grep:*)",
+      "Bash(find:*)",
+      "Bash(echo:*)",
+      "Bash(do)",
+      "Bash(then)",
+      "Bash(else)",
+      "Bash(fi)",
+      "Bash(done)",
+      "Bash(for:*)",
+      "Bash(true)"
+    ],
+    "deny": [
+      "Bash(sudo:*)",
+      "Bash(rm:*)",
+      "Bash(rm -rf:*)",
+      "Bash(git push:*)",
+      "Bash(git commit:*)",
+      "Bash(git reset:*)",
+      "Bash(git rebase:*)",
+      "Bash(git checkout:*)",
+      "Bash(git switch:*)",
+      "Bash(git restore:*)",
+      "Read(.env)",
+      "Read(.dev.vars)",
+      "Write(.env)",
+      "Write(.dev.vars)",
+      "Bash(curl:*)",
+      "Bash(wget:*)",
+      "Bash(nc:*)",
+      "Bash(npm uninstall:*)",
+      "Bash(npm remove:*)",
+      "Bash(pnpm uninstall:*)",
+      "Bash(pnpm remove:*)"
+    ]
+  }
+}
