@@ -81,5 +81,11 @@ export default defineConfig({
     {
       name: "zellij-org/zellij",
     },
+    {
+      name: "starship/starship",
+      async onDownload({ bin: { starship }, $ }) {
+        await $`${starship} completions zsh >_starship`;
+      },
+    },
   ],
 });

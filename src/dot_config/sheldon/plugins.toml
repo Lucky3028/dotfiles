@@ -17,24 +17,6 @@ defer = "{{ hooks?.pre | nl }}{% for file in files %}zsh-defer source \"{{ file 
 
 [plugins]
 
-[plugins.powerlevel10k]
-github = "romkatv/powerlevel10k"
-
-[plugins.powerlevel10k.hooks]
-pre = '''
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.config/zsh/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-'''
-post = '''
-if [ -e ~/.config/zsh/.p10k.zsh ]; then
-  source ~/.config/zsh/.p10k.zsh
-fi
-'''
-
 [plugins.zsh-tab-completion]
 inline = '''
 setopt auto_list
@@ -52,6 +34,9 @@ inline = 'eval "$(zabrze init --bind-keys)"'
 
 [plugins.load-navi-widgets]
 inline = 'eval "$(navi widget zsh)"'
+
+[plugins.load-starship]
+inline = 'eval "$(starship init zsh)"'
 
 [plugins.enable-terraform-completion]
 inline = '''

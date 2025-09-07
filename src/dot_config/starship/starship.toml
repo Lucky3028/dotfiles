@@ -1,0 +1,8 @@
+add_newline = false
+
+[cmd_duration]
+# shows when 10s exceeded
+min_time = 10_000
+format = "[took $duration]($style) "
+style = "black bold"
+
