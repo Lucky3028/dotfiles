@@ -83,6 +83,9 @@ export default defineConfig({
     },
     {
       name: "starship/starship",
+      async onDownload({ bin: { starship }, $ }) {
+        await $`${starship} completions zsh >_starship`;
+      },
     },
   ],
 });
