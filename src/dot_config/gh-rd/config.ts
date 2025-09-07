@@ -78,5 +78,8 @@ export default defineConfig({
     {
       name: "sharkdp/fd",
     },
+    {
+      name: "zellij-org/zellij",
+    },
   ],
 });
