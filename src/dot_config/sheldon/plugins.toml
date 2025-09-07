@@ -35,6 +35,9 @@ inline = 'eval "$(zabrze init --bind-keys)"'
 [plugins.load-navi-widgets]
 inline = 'eval "$(navi widget zsh)"'
 
+[plugins.load-starship]
+inline = 'eval "$(starship init zsh)"'
+
 [plugins.enable-terraform-completion]
 inline = '''
 autoload -U +X bashcompinit && bashcompinit

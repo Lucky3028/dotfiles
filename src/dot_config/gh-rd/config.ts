@@ -81,5 +81,8 @@ export default defineConfig({
     {
       name: "zellij-org/zellij",
     },
+    {
+      name: "starship/starship",
+    },
   ],
 });
