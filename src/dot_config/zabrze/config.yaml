@@ -111,4 +111,10 @@ abbrevs:
   - name: grep -> rg
     abbr: grep
     snippet: rg
+  - name: tmux -> zellij
+    abbr: tmux
+    snippet: zellij
+  - name: tmux -> zellij
+    abbr: tm
+    snippet: zellij
 
