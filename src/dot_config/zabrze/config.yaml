@@ -1,4 +1,9 @@
 abbrevs:
+  - name: open something with wsl
+    abbr: open
+    snippet: '/mnt/c/Windows/System32/rundll32.exe url.dll,FileProtocolHandler'
+    # WSLの場合のみ有効
+    if: '[[ $(uname -r) == *"microsoft"* ]]'
   - name: wget with hsts
     abbr: wget
     snippet: 'wget --hsts-file $XDG_STATE_HOME/wget/.wget-hsts'
