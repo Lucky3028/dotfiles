@@ -2,7 +2,7 @@
 
 set -euxo pipefail
 
-{{ if eq .chezmoi.osRelease.id "ubuntu" }}
+{{ if or (eq .chezmoi.osRelease.id "ubuntu") (eq .chezmoi.osRelease.id "debian") }}
 
 # gitは、最新版のgitビルドを提供しているPPAが、古いアルゴリズムの証明書を使用しているので使いたくないため、公式にリリースされているバージョンを使用する
 sudo apt-get update
@@ -14,6 +14,7 @@ DEBIAN_FRONTEND=noninteractive sudo apt-get install -y --no-install-recommends \
   firefox \
   fonts-noto-cjk \
   git \
+  gnupg \
   gpg \
   gzip \
   jq \
@@ -50,6 +51,7 @@ sudo pacman -Sy --noconfirm --needed \
   fcitx5-mozc \
   firefox \
   git \
+  gnupg \
   gzip \
   jq \
   less \
