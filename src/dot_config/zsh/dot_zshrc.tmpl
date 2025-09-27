@@ -25,33 +25,40 @@ eval "$($MISE_INSTALL_PATH activate zsh)"
 eval "$(sheldon source)"
 
 {{ if eq .chezmoi.os "linux" }}
+
+# Run a script when it is NOT running in a docker container
+if [ ! -e /.dockerenv ]; then
+
 {{   if (.chezmoi.kernel.osrelease | lower | contains "microsoft") }}
 
-# Use ssh-agent, which is working on Windows, in WSL
+  # Use ssh-agent, which is working on Windows, in WSL
 
-WIN_USERNAME="lucky"
-GO_BIN_DIR="/mnt/c/Users/${WIN_USERNAME}/go/bin"
+  WIN_USERNAME="lucky"
+  GO_BIN_DIR="/mnt/c/Users/${WIN_USERNAME}/go/bin"
 
-export SSH_AUTH_SOCK=$HOME/.ssh/agent.sock
+  export SSH_AUTH_SOCK=$HOME/.ssh/agent.sock
 
-ALREADY_RUNNING=$(ps -auxww | grep -q "[n]piperelay.exe -ei -s //./pipe/openssh-ssh-agent"; echo $?)
-if [[ $ALREADY_RUNNING != "0" ]]; then
-    if [[ -S $SSH_AUTH_SOCK ]]; then
-        echo "removing previous socket..."
-        rm $SSH_AUTH_SOCK
-    fi
-    echo "Starting SSH-Agent relay..."
-    (setsid socat UNIX-LISTEN:$SSH_AUTH_SOCK,fork EXEC:"$GO_BIN_DIR/npiperelay.exe -ei -s //./pipe/openssh-ssh-agent",nofork &) >/dev/null 2>&1
-fi
+  ALREADY_RUNNING=$(ps -auxww | grep -q "[n]piperelay.exe -ei -s //./pipe/openssh-ssh-agent"; echo $?)
+  if [[ $ALREADY_RUNNING != "0" ]]; then
+      if [[ -S $SSH_AUTH_SOCK ]]; then
+          echo "removing previous socket..."
+          rm $SSH_AUTH_SOCK
+      fi
+      echo "Starting SSH-Agent relay..."
+      (setsid socat UNIX-LISTEN:$SSH_AUTH_SOCK,fork EXEC:"$GO_BIN_DIR/npiperelay.exe -ei -s //./pipe/openssh-ssh-agent",nofork &) >/dev/null 2>&1
+  fi
 
 {{   else }}
 
-# TODO: Write here
+  # TODO: Write here
 
-#   export GPG_TTY="$(tty)"
-#   export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
-#   gpgconf --launch gpg-agent
-#   gpg-connect-agent updatestartuptty /bye > /dev/null
+  #   export GPG_TTY="$(tty)"
+  #   export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
+  #   gpgconf --launch gpg-agent
+  #   gpg-connect-agent updatestartuptty /bye > /dev/null
 
 {{   end }}
+
+fi
+
 {{ end }}
