@@ -82,7 +82,7 @@ yay -Sy --noconfirm --needed \
 
 {{ end }}
 
-chsh -s $(which zsh) $USER
+chsh -s $(which zsh) $(whoami)
 
 if [ ! -d $ZDOTDIR/completions ]; then
   mkdir $ZDOTDIR/completions
