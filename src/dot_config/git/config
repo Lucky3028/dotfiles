@@ -2,7 +2,7 @@
 [user]
   name = Lucky3028
   email = yubi@clov3r.cc
-  signingkey = 0x68E4D1F185899CCE
+  signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIyOaU2sCb4k6hAHbge9Nr+KAVTH9d0lv80RcL5av5eu
   # user.nameやuser.emailが設定されていないときに、commitを拒否する
   useConfigOnly = true
 [commit]
@@ -141,3 +141,8 @@
   helper = !/home/lucky/.local/share/gh-rd/bin/gh auth git-credential
 [init]
   defaultBranch = main
+[gpg]
+  format = ssh
+[gpg "ssh"]
+  defaultKeyCommand = ssh-add -L
+  allowedSignersFile = ~/.ssh/allowed_signers

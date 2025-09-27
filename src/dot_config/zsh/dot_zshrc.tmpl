@@ -28,36 +28,31 @@ eval "$(sheldon source)"
 {{ if eq .chezmoi.os "linux" }}
 {{   if (.chezmoi.kernel.osrelease | lower | contains "microsoft") }}
 
-# Use Yubikey in WSL
+# Use ssh-agent, which is working on Windows, in WSL
 
 WIN_USERNAME="lucky"
 GO_BIN_DIR="/mnt/c/Users/${WIN_USERNAME}/go/bin"
-WIN_GPG_DIR="C:/Users/${WIN_USERNAME}/AppData/Local/gnupg"
-WIN_HOME_DIR="/mnt/c/Users/${WIN_USERNAME}"
-WSL_GPG_DIR="$(gpgconf --list-dirs socketdir)"
 
-if ! pgrep -f 'socat.*gpg-agent.*npiperelay' > /dev/null; then
-  rm -f "${WSL_GPG_DIR}/S.gpg-agent"
-  setsid nohup socat \
-    UNIX-LISTEN:"${WSL_GPG_DIR}/S.gpg-agent,fork" \
-    EXEC:"${GO_BIN_DIR}"'/npiperelay.exe -ei -ep -s -a "'"${WIN_GPG_DIR}"'/S.gpg-agent",nofork' >/dev/null 2>&1 &
-fi
+export SSH_AUTH_SOCK=$HOME/.ssh/agent.sock
 
-export SSH_AUTH_SOCK="/tmp/wsl2-ssh-pagent.sock"
-
-if ! pgrep -f 'socat.*wsl2-ssh-pagent.*' > /dev/null; then
-  rm -f "${SSH_AUTH_SOCK}"
-  setsid nohup socat \
-    UNIX-LISTEN:"${SSH_AUTH_SOCK},fork" \
-    EXEC:"${GO_BIN_DIR}"'/wsl2-ssh-pageant.exe' > /dev/null 2>&1 &
+ALREADY_RUNNING=$(ps -auxww | grep -q "[n]piperelay.exe -ei -s //./pipe/openssh-ssh-agent"; echo $?)
+if [[ $ALREADY_RUNNING != "0" ]]; then
+    if [[ -S $SSH_AUTH_SOCK ]]; then
+        echo "removing previous socket..."
+        rm $SSH_AUTH_SOCK
+    fi
+    echo "Starting SSH-Agent relay..."
+    (setsid socat UNIX-LISTEN:$SSH_AUTH_SOCK,fork EXEC:"$GO_BIN_DIR/npiperelay.exe -ei -s //./pipe/openssh-ssh-agent",nofork &) >/dev/null 2>&1
 fi
 
 {{   else }}
 
-  export GPG_TTY="$(tty)"
-  export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
-  gpgconf --launch gpg-agent
-  gpg-connect-agent updatestartuptty /bye > /dev/null
+# TODO: Write here
+
+#   export GPG_TTY="$(tty)"
+#   export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
+#   gpgconf --launch gpg-agent
+#   gpg-connect-agent updatestartuptty /bye > /dev/null
 
 {{   end }}
 {{ end }}
