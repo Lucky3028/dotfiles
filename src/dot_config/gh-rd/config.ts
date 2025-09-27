@@ -14,6 +14,9 @@ export default defineConfig({
       executables: [
         { glob: "bw" },
       ],
+      async onDownload({ bin: { bw }, $ }) {
+        await $`${bw} completion --shell zsh > _bw`;
+      },
     },
     {
       name: "rhysd/actionlint",
