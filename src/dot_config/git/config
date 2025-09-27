@@ -1,8 +1,8 @@
 # Windows users: "~" はユーザーフォルダを示す。 e.g. C:\Users\<YourName>
 [user]
   name = Lucky3028
-  email = yubi@clov3r.cc
-  signingkey = 0x68E4D1F185899CCE
+  email = 24449974+Lucky3028@users.noreply.github.com
+  signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIyOaU2sCb4k6hAHbge9Nr+KAVTH9d0lv80RcL5av5eu
   # user.nameやuser.emailが設定されていないときに、commitを拒否する
   useConfigOnly = true
 [commit]
@@ -135,9 +135,14 @@
   prereleaseSuffix = .rc
 [credential "https://github.com"]
   helper =
-  helper = !/home/lucky/.local/share/gh-rd/bin/gh auth git-credential
+  helper = !~/.local/share/gh-rd/bin/gh auth git-credential
 [credential "https://gist.github.com"]
   helper =
-  helper = !/home/lucky/.local/share/gh-rd/bin/gh auth git-credential
+  helper = !~/.local/share/gh-rd/bin/gh auth git-credential
 [init]
   defaultBranch = main
+[gpg]
+  format = ssh
+[gpg "ssh"]
+  defaultKeyCommand = ssh-add -L
+  allowedSignersFile = ~/.ssh/allowed_signers
