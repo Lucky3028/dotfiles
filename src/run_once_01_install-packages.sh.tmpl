@@ -4,21 +4,21 @@ set -euxo pipefail
 
 {{ if or (eq .chezmoi.osRelease.id "ubuntu") (eq .chezmoi.osRelease.id "debian") }}
 
+export DEBIAN_FRONTEND=noninteractive
+
 # gitは、最新版のgitビルドを提供しているPPAが、古いアルゴリズムの証明書を使用しているので使いたくないため、公式にリリースされているバージョンを使用する
 sudo apt-get update
-DEBIAN_FRONTEND=noninteractive sudo apt-get install -y --no-install-recommends \
+sudo apt-get install -y --no-install-recommends \
   ca-certificates \
   curl \
   dnsutils \
   fcitx5-mozc \
-  firefox \
   fonts-noto-cjk \
   git \
   gnupg \
   gpg \
   gzip \
   jq \
-  language-pack-ja \
   less \
   libfuse-dev \
   libsqlite3-dev \
@@ -34,6 +34,50 @@ DEBIAN_FRONTEND=noninteractive sudo apt-get install -y --no-install-recommends \
   xz-utils \
   zip \
   zsh
+
+{{   if eq .chezmoi.osRelease.id "ubuntu" }}
+
+sudo apt-get install -y --no-install-recommends \
+  firefox \
+  language-pack-ja
+
+{{   else if eq .chezmoi.osRelease.id "debian" }}
+
+# Install firefox
+# https://support.mozilla.org/ja/kb/install-firefox-linux
+
+# Install apt repository key from Mozilla
+sudo install -d -m 0755 /etc/apt/keyrings
+wget -q https://packages.mozilla.org/apt/repo-signing-key.gpg -O- | sudo tee /etc/apt/keyrings/packages.mozilla.org.asc > /dev/null
+
+# Add apt repository
+cat <<EOF | sudo tee /etc/apt/sources.list.d/mozilla.sources
+Types: deb
+URIs: https://packages.mozilla.org/apt
+Suites: mozilla
+Components: main
+Signed-By: /etc/apt/keyrings/packages.mozilla.org.asc
+EOF
+# Prioritize packages from the Mozilla repository
+echo '
+Package: *
+Pin: origin packages.mozilla.org
+Pin-Priority: 1000
+' | sudo tee /etc/apt/preferences.d/mozilla
+
+# Install firefox and locales package
+sudo apt-get update
+sudo apt-get install -y \
+  firefox \
+  locales
+
+# Generate ja_JP.UTF-8 langpack
+# https://qiita.com/valzer0/items/db7639d8231bf5121297
+
+sudo sed -i -E 's/# (ja_JP.UTF-8)/\1/' /etc/locale.gen
+locale-gen
+
+{{   end }}
 
 {{ else if or (eq .chezmoi.osRelease.id "arch") (eq .chezmoi.osRelease.id "manjaro") }}
 
