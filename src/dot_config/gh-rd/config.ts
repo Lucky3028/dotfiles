@@ -10,7 +10,7 @@ export default defineConfig({
     },
     {
       name: "bitwarden/clients",
-      tag: "cli-v2025.5.0",
+      tag: "cli-v2025.9.0",
       executables: [
         { glob: "bw" },
       ],
