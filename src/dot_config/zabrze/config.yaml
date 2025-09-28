@@ -84,7 +84,7 @@ abbrevs:
     context: '^git\s'
   - name: git log
     abbr: l
-    snippet: 'log'
+    snippet: "log --date=format-local:'%Y/%m/%d(%a) %H:%M:%S'"
     global: true
     context: '^git\s'
   - name: git branch
