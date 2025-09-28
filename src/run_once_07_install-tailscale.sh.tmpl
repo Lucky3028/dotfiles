@@ -2,6 +2,11 @@
 
 set -euxo pipefail
 
+# Exit when the script is running in a docker container
+if [ -e /.dockerenv ]; then
+  exit 0
+fi
+
 {{ if or (eq .chezmoi.osRelease.id "ubuntu") (eq .chezmoi.osRelease.id "debian") }}
 
 ID=$(cat /etc/os-release | grep ^ID= | awk -F= '{print $2}')
