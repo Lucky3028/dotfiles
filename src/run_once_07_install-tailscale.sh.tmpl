@@ -1,0 +1,19 @@
+#!/bin/zsh
+
+set -euxo pipefail
+
+{{ if or (eq .chezmoi.osRelease.id "ubuntu") (eq .chezmoi.osRelease.id "debian") }}
+
+ID=$(cat /etc/os-release | grep ^ID= | awk -F= '{print $2}')
+VERSION_CODENAME=$(cat /etc/os-release | grep ^VERSION_CODENAME= | awk -F= '{print $2}')
+curl -fsSL https://pkgs.tailscale.com/stable/$ID/$VERSION_CODENAME.noarmor.gpg | sudo tee /usr/share/keyrings/tailscale-archive-keyring.gpg >/dev/null
+curl -fsSL https://pkgs.tailscale.com/stable/$ID/$VERSION_CODENAME.tailscale-keyring.list | sudo tee /etc/apt/sources.list.d/tailscale.list
+
+sudo apt-get update
+DEBIAN_FRONTEND=noninteractive sudo apt-get install -y --no-install-recommends tailscale
+
+{{ else if or (eq .chezmoi.osRelease.id "arch") (eq .chezmoi.osRelease.id "manjaro") }}
+
+sudo pacman -Sy --noconfirm --needed tailscale
+
+{{ end }}
