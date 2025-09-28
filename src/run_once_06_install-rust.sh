@@ -2,6 +2,8 @@
 
 set -euxo pipefail
 
+source ~/.zshenv
+
 # Add completions
 ## rustup
 $(which rustup) completions zsh > $ZDOTDIR/completions/_rustup

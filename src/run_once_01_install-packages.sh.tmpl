@@ -129,20 +129,3 @@ yay -Sy --noconfirm --needed \
 {{ end }}
 
 sudo usermod -s $(which zsh) $(whoami)
-
-exec $(which zsh) -l
-
-if [ ! -d $ZDOTDIR/completions ]; then
-  mkdir $ZDOTDIR/completions
-fi
-
-chezmoi completion zsh > $ZDOTDIR/completions/_chezmoi
-
-if [ ! -d ~/bin ]; then
-  mkdir ~/bin
-fi
-
-if [ ! -d $XDG_STATE_HOME/zsh ]; then
-  mkdir -p $XDG_STATE_HOME/zsh
-fi
-

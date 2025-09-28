@@ -7,6 +7,8 @@ if [ -e /.dockerenv ]; then
   exit 0
 fi
 
+source ~/.zshenv
+
 {{ if or (eq .chezmoi.osRelease.id "ubuntu") (eq .chezmoi.osRelease.id "debian") }}
 
 ID=$(cat /etc/os-release | grep ^ID= | awk -F= '{print $2}')

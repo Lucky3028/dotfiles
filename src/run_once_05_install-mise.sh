@@ -2,6 +2,8 @@
 
 set -euxo pipefail
 
+source ~/.zshenv
+
 curl https://mise.run | sh
 
 # Install tools

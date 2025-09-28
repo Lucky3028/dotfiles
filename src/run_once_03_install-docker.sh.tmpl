@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 set -euxo pipefail
 
@@ -6,6 +6,8 @@ set -euxo pipefail
 if [ -e /.dockerenv ]; then
   exit 0
 fi
+
+source ~/.zshenv
 
 {{ if eq .chezmoi.osRelease.id "ubuntu" }}
 
