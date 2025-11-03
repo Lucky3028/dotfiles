@@ -2,8 +2,8 @@
 
 set -euxo pipefail
 
-# Exit when the script is running in a docker container
-if [ -e /.dockerenv ]; then
+# Exit when the script is running in a container
+if env | grep -q container; then
   exit 0
 fi
 

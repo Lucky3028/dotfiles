@@ -26,8 +26,8 @@ eval "$(sheldon source)"
 
 {{ if eq .chezmoi.os "linux" }}
 
-# Run a script when it is NOT running in a docker container
-if [ ! -e /.dockerenv ]; then
+# Run a script when it is NOT running in a container
+if ! env | grep -q container; then
 
 {{   if (.chezmoi.kernel.osrelease | lower | contains "microsoft") }}
 
