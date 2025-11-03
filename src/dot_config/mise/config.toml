@@ -1,14 +1,13 @@
 [tools]
+claude = "latest"
 deno = "latest"
 go = "latest"
 "go:github.com/Warashi/cage" = "latest"
 node = "24"
-"npm:@anthropic-ai/claude-code" = "latest"
 "npm:@google/gemini-cli" = "latest"
 "npm:@sasazame/ccresume" = "latest"
 "npm:ccusage" = "latest"
 "npm:difit" = "latest"
-pipx = "latest"
 "pipx:httpie" = "latest"
 python = "latest"
 rust = "latest"
@@ -19,3 +18,7 @@ uv = "latest"
 [settings]
 idiomatic_version_file_enable_tools = ["java"]
 experimental = true
+
+[settings.pipx]
+uvx = true
+
