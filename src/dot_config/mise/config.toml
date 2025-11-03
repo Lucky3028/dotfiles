@@ -1,9 +1,9 @@
 [tools]
+claude = "latest"
 deno = "latest"
 go = "latest"
 "go:github.com/Warashi/cage" = "latest"
 node = "24"
-"npm:@anthropic-ai/claude-code" = "latest"
 "npm:@google/gemini-cli" = "latest"
 "npm:@sasazame/ccresume" = "latest"
 "npm:ccusage" = "latest"
