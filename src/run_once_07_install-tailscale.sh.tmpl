@@ -24,3 +24,5 @@ DEBIAN_FRONTEND=noninteractive sudo apt-get install -y --no-install-recommends t
 sudo pacman -Sy --noconfirm --needed tailscale
 
 {{ end }}
+
+tailscale completion zsh > $ZDOTDIR/completions/_tailscale
