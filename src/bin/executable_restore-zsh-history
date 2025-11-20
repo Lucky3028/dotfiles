@@ -1,0 +1,16 @@
+#!/usr/bin/zsh
+# https://shapeshed.com/zsh-corrupt-history-file/
+
+set -euo pipefail
+
+echo 'Fix error: zsh: corrupt history file'
+
+cd "$XDG_STATE_HOME/zsh"
+
+mv .zsh_history .zsh_history_bad
+strings .zsh_history_bad > .zsh_history
+fc -R .zsh_history
+rm .zsh_history_bad
+
+echo 'Done. Restart the shell.'
+
