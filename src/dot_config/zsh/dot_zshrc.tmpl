@@ -31,31 +31,25 @@ if ! env | grep -q container; then
 
 {{   if (.chezmoi.kernel.osrelease | lower | contains "microsoft") }}
 
-  # Use ssh-agent, which is working on Windows, in WSL
+  SSH_AGENT_FILE=~/.ssh/.ssh-agent
 
-  WIN_USERNAME="lucky"
-  GO_BIN_DIR="/mnt/c/Users/${WIN_USERNAME}/go/bin"
-
-  export SSH_AUTH_SOCK=$HOME/.ssh/agent.sock
-
-  ALREADY_RUNNING=$(ps -auxww | grep -q "[n]piperelay.exe -ei -s //./pipe/openssh-ssh-agent"; echo $?)
-  if [[ $ALREADY_RUNNING != "0" ]]; then
-      if [[ -S $SSH_AUTH_SOCK ]]; then
-          echo "removing previous socket..."
-          rm $SSH_AUTH_SOCK
-      fi
-      echo "Starting SSH-Agent relay..."
-      (setsid socat UNIX-LISTEN:$SSH_AUTH_SOCK,fork EXEC:"$GO_BIN_DIR/npiperelay.exe -ei -s //./pipe/openssh-ssh-agent",nofork &) >/dev/null 2>&1
+  if [ -f "$SSH_AGENT_FILE" ]; then
+    source "$SSH_AGENT_FILE" > /dev/null
   fi
+  if [ -z "$SSH_AGENT_PID" ] || ! kill -0 $SSH_AGENT_PID 2> /dev/null; then
+    ssh-agent > "$SSH_AGENT_FILE"
+    source "$SSH_AGENT_FILE" > /dev/null
 
-{{   else }}
-
-  # TODO: Write here
-
-  #   export GPG_TTY="$(tty)"
-  #   export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
-  #   gpgconf --launch gpg-agent
-  #   gpg-connect-agent updatestartuptty /bye > /dev/null
+    source $XDG_STATE_HOME/bw/.session-id
+    bw list items | jq -c '.[] | select(.type == 5)' | while IFS= read -r item; do
+      name=$(printf '%s' "$item" | jq -r '.name')
+      keyfile=$(mktemp --tmpdir "XXXXXX_${name}")
+      printf '%s' "$item" | jq -r '.sshKey.privateKey' > "$keyfile"
+      chmod 600 "$keyfile"
+      ssh-add "$keyfile" > /dev/null 2>&1
+      rm -f "$keyfile"
+    done
+  fi
 
 {{   end }}
 
