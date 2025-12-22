@@ -1,0 +1,12 @@
+#!/bin/bash
+
+SESSION_FILE="${XDG_STATE_HOME}/bw/.session-id"
+
+if [ -f "${SESSION_FILE}" ]; then
+  source "${SESSION_FILE}"
+else
+  echo "Session file not found: ${SESSION_FILE}"
+  echo "Please run: bw login"
+  echo "Then save 'export BW_SESSION=<session_key>' to: ${SESSION_FILE}"
+  exit 1
+fi
