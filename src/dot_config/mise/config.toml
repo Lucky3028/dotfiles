@@ -8,16 +8,10 @@ node = "24"
 "npm:@sasazame/ccresume" = "latest"
 "npm:ccusage" = "latest"
 "npm:difit" = "latest"
-"pipx:httpie" = "latest"
-python = "latest"
 terraform = "latest"
 usage = "latest"
-uv = "latest"
 
 [settings]
 idiomatic_version_file_enable_tools = ["java"]
 experimental = true
-
-[settings.pipx]
-uvx = true
 
