@@ -1,4 +1,9 @@
 Host *
-  ServerAliveInterval 120
+  ForwardAgent yes
+  UpdateHostKeys yes
+  PreferredAuthentications publickey,keyboard-interactive,password
+  GSSAPIAuthentication no
+  ServerAliveInterval 60
+  ServerAliveCountMax 5
   TCPKeepAlive yes
 
