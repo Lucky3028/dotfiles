@@ -51,6 +51,5 @@
       "Bash(pnpm uninstall:*)",
       "Bash(pnpm remove:*)"
     ]
-  },
-  "alwaysThinkingEnabled": false
+  }
 }
