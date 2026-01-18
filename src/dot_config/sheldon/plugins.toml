@@ -38,6 +38,9 @@ inline = 'eval "$(navi widget zsh)"'
 [plugins.load-starship]
 inline = 'eval "$(starship init zsh)"'
 
+[plugins.load-bitwarden-session-key]
+inline = 'eval "$(cat $HOME/bin/load-bw-session)"'
+
 [plugins.enable-terraform-completion]
 inline = '''
 autoload -U +X bashcompinit && bashcompinit
