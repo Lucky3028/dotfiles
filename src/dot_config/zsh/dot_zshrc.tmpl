@@ -30,8 +30,6 @@ eval "$(sheldon source)"
 # Run a script when it is NOT running in a container
 if ! env | grep -q container; then
 
-{{   if (.chezmoi.kernel.osrelease | lower | contains "microsoft") }}
-
   SSH_AGENT_FILE=~/.ssh/.ssh-agent
 
   if [ -f "$SSH_AGENT_FILE" ]; then
@@ -50,8 +48,6 @@ if ! env | grep -q container; then
       rm -f "$keyfile"
     done
   fi
-
-{{   end }}
 
 fi
 
