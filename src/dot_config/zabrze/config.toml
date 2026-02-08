@@ -1,0 +1,184 @@
+[[snippets]]
+name = "open something with wsl"
+trigger = "open"
+snippet = '/mnt/c/Windows/System32/rundll32.exe url.dll,FileProtocolHandler'
+# WSLの場合のみ有効
+if = '[[ $(uname -r) == *"microsoft"* ]]'
+
+[[snippets]]
+name = "wget with hsts"
+trigger = "wget"
+snippet = 'wget --hsts-file $XDG_STATE_HOME/wget/.wget-hsts'
+
+[[snippets]]
+name = "terraform"
+trigger = "tf"
+snippet = "terraform"
+
+[[snippets]]
+name = "list $PATH"
+trigger = "echo-path"
+snippet = 'echo $PATH | sed "s/:/\n/g"'
+
+[[snippets]]
+name = "list $FPATH"
+trigger = "echo-fpath"
+snippet = 'echo $FPATH | sed "s/:/\n/g"'
+
+# chezmoi
+[[snippets]]
+name = "chezmoi"
+trigger = "cz"
+snippet = "chezmoi"
+
+[[snippets]]
+name = "chezmoi add"
+trigger = "a"
+snippet = "add"
+global = true
+context = '^chezmoi\s'
+
+[[snippets]]
+name = "chezmoi edit"
+trigger = "e"
+snippet = "edit"
+global = true
+context = '^chezmoi\s'
+
+[[snippets]]
+name = "chezmoi diff"
+trigger = "d"
+snippet = "diff"
+global = true
+context = '^chezmoi\s'
+
+[[snippets]]
+name = "chezmoi cd (replace)"
+trigger = "cd-c"
+snippet = "cd $(chezmoi source-path)"
+
+### git ###
+
+[[snippets]]
+name = "git"
+trigger = "g"
+snippet = "git"
+
+[[snippets]]
+name = "git commit"
+trigger = "c"
+snippet = "commit"
+global = true
+context = '^git\s'
+
+[[snippets]]
+name = "git commit -m"
+trigger = "cm"
+snippet = "commit -m"
+global = true
+context = '^git\s'
+
+[[snippets]]
+name = "git commit --amend"
+trigger = "ca"
+snippet = "commit --amend"
+global = true
+context = '^git\s'
+
+[[snippets]]
+name = "git add"
+trigger = "a"
+snippet = "add"
+global = true
+context = '^git\s'
+
+[[snippets]]
+name = "git status"
+trigger = "s"
+snippet = "status"
+global = true
+context = '^git\s'
+
+[[snippets]]
+name = "git diff"
+trigger = "d"
+snippet = "diff"
+global = true
+context = '^git\s'
+
+[[snippets]]
+name = "git pull"
+trigger = "pl"
+snippet = "pull"
+global = true
+context = '^git\s'
+
+[[snippets]]
+name = "git push"
+trigger = "ps"
+snippet = "push"
+global = true
+context = '^git\s'
+
+[[snippets]]
+name = "git log"
+trigger = "l"
+snippet = "log --date=format-local:'%Y/%m/%d(%a) %H:%M:%S'"
+global = true
+context = '^git\s'
+
+[[snippets]]
+name = "git branch"
+trigger = "b"
+snippet = "branch"
+global = true
+context = '^git\s'
+
+[[snippets]]
+name = "git switch"
+trigger = "sw"
+snippet = "switch"
+global = true
+context = '^git\s'
+
+[[snippets]]
+name = "cd to ghq repo dir"
+trigger = "cd-g"
+snippet = "cd $(ghq root)/$(ghq list | fzf)"
+
+[[snippets]]
+name = "cd to root dir on git repo"
+trigger = "cd-gr"
+snippet = "cd $(git rev-parse --show-toplevel)"
+
+### replacements ###
+
+[[snippets]]
+name = "ls -> eza"
+trigger = "ls"
+snippet = "eza"
+
+[[snippets]]
+name = "cat -> bat"
+trigger = "cat"
+snippet = "bat"
+
+[[snippets]]
+name = "find -> fd"
+trigger = "find"
+snippet = "fd"
+
+[[snippets]]
+name = "grep -> rg"
+trigger = "grep"
+snippet = "rg"
+
+[[snippets]]
+name = "tmux -> zellij"
+trigger = "tmux"
+snippet = "zellij"
+
+[[snippets]]
+name = "tmux -> zellij"
+trigger = "tm"
+snippet = "zellij"
