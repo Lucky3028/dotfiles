@@ -7,3 +7,11 @@ Host *
   ServerAliveCountMax 5
   TCPKeepAlive yes
 
+Host __prod-prox-01
+  HostName 192.168.21.2
+  User lucky
+
+Host __prod-tail-01
+  HostName 192.168.21.3
+  User lucky
+
