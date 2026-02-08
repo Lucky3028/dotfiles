@@ -70,3 +70,5 @@ post = 'bindkey "^R" history-search-multi-word'
 github = "b4b4r07/enhancd"
 apply = ["defer"]
 
+[plugins.load-jj-completion]
+inline = 'source <(COMPLETE=zsh jj)'
