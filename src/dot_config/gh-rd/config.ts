@@ -3,6 +3,9 @@ import { defineConfig } from "https://deno.land/x/gh_rd/mod.ts";
 export default defineConfig({
   tools: [
     {
+      name: "jj-vcs/jj"
+    },
+    {
       name: "sagiegurari/cargo-make",
       executables: [
         { glob: "**/makers" },
