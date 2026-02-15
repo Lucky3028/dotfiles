@@ -46,3 +46,9 @@ description = "Only show git_status if we're not in a jj repo"
 when = true
 command = "jj root >/dev/null 2>&1 || starship module git_status"
 
+[custom.jj]
+description = "Shows jj prompt"
+when = "jj-starship detect"
+shell = ["jj-starship"]
+format = "$output "
+
