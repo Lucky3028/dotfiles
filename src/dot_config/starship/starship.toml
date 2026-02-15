@@ -7,3 +7,39 @@ min_time = 10_000
 format = "[took $duration]($style) "
 style = "black bold"
 
+[git_branch]
+disabled = true
+
+# re-enable git_branch as long as we're not in a jj repo
+[custom.git_branch]
+description = "Only show git_branch if we're not in a jj repo"
+when = true
+command = "jj root >/dev/null 2>&1 || starship module git_branch"
+
+[git_commit]
+disabled = true
+
+# re-enable git_commit as long as we're not in a jj repo
+[custom.git_commit]
+description = "Only show git_commit if we're not in a jj repo"
+when = true
+command = "jj root >/dev/null 2>&1 || starship module git_commit"
+
+[git_state]
+disabled = true
+
+# re-enable git_state as long as we're not in a jj repo
+[custom.git_state]
+description = "Only show git_state if we're not in a jj repo"
+when = true
+command = "jj root >/dev/null 2>&1 || starship module git_state"
+
+[git_status]
+disabled = true
+
+# re-enable git_status as long as we're not in a jj repo
+[custom.git_status]
+description = "Only show git_status if we're not in a jj repo"
+when = true
+command = "jj root >/dev/null 2>&1 || starship module git_status"
+
