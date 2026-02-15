@@ -7,6 +7,9 @@ min_time = 10_000
 format = "[took $duration]($style) "
 style = "black bold"
 
+[terraform]
+disabled = true
+
 [git_branch]
 disabled = true
 
