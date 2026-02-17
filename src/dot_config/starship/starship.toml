@@ -10,6 +10,9 @@ style = "black bold"
 [terraform]
 disabled = true
 
+[package]
+disabled = true
+
 [git_branch]
 disabled = true
 
