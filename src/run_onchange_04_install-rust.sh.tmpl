@@ -6,8 +6,12 @@ set -euxo pipefail
 # rustup: {{ output "sh" "-c" "rustup --version 2>/dev/null || true" | trim }}
 # cargo: {{ output "sh" "-c" "cargo --version 2>/dev/null || true" | trim }}
 
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | \
-  sh -s -- --no-modify-path --default-toolchain stable --profile default -y
+if type rustup > /dev/null 2>&1; then
+  rustup upgrade
+else
+  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | \
+    sh -s -- --no-modify-path --default-toolchain stable --profile default -y
+fi
 
 source ~/.zshenv
 

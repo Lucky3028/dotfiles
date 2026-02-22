@@ -7,7 +7,11 @@ set -euxo pipefail
 
 source ~/.zshenv
 
-curl https://mise.run | sh
+if type mise > /dev/null 2>&1; then
+  mise self-update
+else
+  curl https://mise.run | sh
+fi
 
 # Install tools
 $MISE_INSTALL_PATH install

@@ -20,10 +20,15 @@ source ~/.zshenv
 
 {{ if eq .chezmoi.osRelease.id "ubuntu" }}
 
+export DEBIAN_FRONTEND=noninteractive
+packages=(podman podman-compose)
+
 sudo apt-get update
-DEBIAN_FRONTEND=noninteractive sudo apt-get install -y --no-install-recommends \
-  podman \
-  podman-compose
+if type podman > /dev/null 2>&1; then
+  sudo apt-get upgrade -y "${packages[@]}"
+else
+  sudo apt-get install -y --no-install-recommends "${packages[@]}"
+fi
 
 {{ else if or (eq .chezmoi.osRelease.id "arch") (eq .chezmoi.osRelease.id "manjaro") }}
 
