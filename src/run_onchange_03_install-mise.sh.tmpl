@@ -2,6 +2,9 @@
 
 set -euxo pipefail
 
+# Version (auto-updated by chezmoi to trigger re-run on update):
+# mise: {{ output "sh" "-c" "mise --version 2>/dev/null || true" | trim }}
+
 source ~/.zshenv
 
 curl https://mise.run | sh
