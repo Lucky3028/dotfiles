@@ -47,6 +47,9 @@ autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C "$(which terraform)" terraform
 '''
 
+[plugins.load-jj-completion]
+inline = 'source <(COMPLETE=zsh jj)'
+
 [plugins.zsh-defer]
 github = "romkatv/zsh-defer"
 
@@ -70,5 +73,13 @@ post = 'bindkey "^R" history-search-multi-word'
 github = "b4b4r07/enhancd"
 apply = ["defer"]
 
-[plugins.load-jj-completion]
-inline = 'source <(COMPLETE=zsh jj)'
+[plugins.set-git-dir-in-jj]
+inline = '''
+function set-git-dir-in-jj() {
+  unset GIT_DIR
+  if jj root > /dev/null 2>&1; then
+    export GIT_DIR=$(jj git root)
+  fi
+}
+add-zsh-hook chpwd set-git-dir-in-jj
+'''
