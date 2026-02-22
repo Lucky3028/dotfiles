@@ -3,7 +3,7 @@
 set -euxo pipefail
 
 # Exit when the script is running in a container
-if ! env | grep -q container; then
+if env | grep -q container; then
   exit 0
 fi
 
