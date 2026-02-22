@@ -2,6 +2,15 @@
 
 set -euxo pipefail
 
+# Versions (auto-updated by chezmoi to trigger re-run on package update):
+{{- if eq .chezmoi.osRelease.id "ubuntu" }}
+# podman: {{ output "sh" "-c" "dpkg-query --showformat='${Version}' --show podman 2>/dev/null || true" | trim }}
+# podman-compose: {{ output "sh" "-c" "dpkg-query --showformat='${Version}' --show podman-compose 2>/dev/null || true" | trim }}
+{{- else if or (eq .chezmoi.osRelease.id "arch") (eq .chezmoi.osRelease.id "manjaro") }}
+# podman: {{ output "sh" "-c" "pacman -Q podman 2>/dev/null | awk '{print $2}' || true" | trim }}
+# podman-compose: {{ output "sh" "-c" "pacman -Q podman-compose 2>/dev/null | awk '{print $2}' || true" | trim }}
+{{- end }}
+
 # Exit when the script is running in a container
 if env | grep -q container; then
   exit 0
