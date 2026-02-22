@@ -47,6 +47,9 @@ autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C "$(which terraform)" terraform
 '''
 
+[plugins.load-jj-completion]
+inline = 'source <(COMPLETE=zsh jj)'
+
 [plugins.zsh-defer]
 github = "romkatv/zsh-defer"
 
@@ -69,9 +72,6 @@ post = 'bindkey "^R" history-search-multi-word'
 [plugins.enhancd]
 github = "b4b4r07/enhancd"
 apply = ["defer"]
-
-[plugins.load-jj-completion]
-inline = 'source <(COMPLETE=zsh jj)'
 
 [plugins.set-git-dir-in-jj]
 inline = '''
