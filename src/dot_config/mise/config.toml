@@ -27,6 +27,16 @@ cargo-make = "latest"
 jj = "latest"
 uv = "latest"
 
+[hooks]
+postinstall = "$MISE_CONFIG_HOME/hooks/postinstall.sh"
+# Set GIT_DIR in jj repo
+cd = '''
+unset GIT_DIR
+if jj root > /dev/null 2>&1; then
+  export GIT_DIR=$(jj git root)
+fi
+'''
+
 [settings]
 idiomatic_version_file_enable_tools = ["java"]
 experimental = true
