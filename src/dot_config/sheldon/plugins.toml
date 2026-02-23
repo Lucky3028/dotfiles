@@ -17,38 +17,7 @@ defer = "{{ hooks?.pre | nl }}{% for file in files %}zsh-defer source \"{{ file 
 
 [plugins]
 
-[plugins.zsh-tab-completion]
-inline = '''
-setopt auto_list
-setopt auto_menu
-zstyle ':completion:*:default' menu select=1
-export LS_COLORS='di=34:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
-zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
-
-autoload -Uz compinit
-compinit
-'''
-
-[plugins.load-zabrze]
-inline = 'eval "$(zabrze init --bind-keys)"'
-
-[plugins.load-navi-widgets]
-inline = 'eval "$(navi widget zsh)"'
-
-[plugins.load-starship]
-inline = 'eval "$(starship init zsh)"'
-
-[plugins.load-bitwarden-session-key]
-inline = 'eval "$(cat $HOME/bin/load-bw-session)"'
-
-[plugins.enable-terraform-completion]
-inline = '''
-autoload -U +X bashcompinit && bashcompinit
-complete -o nospace -C "$(which terraform)" terraform
-'''
-
-[plugins.load-jj-completion]
-inline = 'source <(COMPLETE=zsh jj)'
+### zsh plugins
 
 [plugins.zsh-defer]
 github = "romkatv/zsh-defer"
@@ -72,6 +41,58 @@ post = 'bindkey "^R" history-search-multi-word'
 [plugins.enhancd]
 github = "b4b4r07/enhancd"
 apply = ["defer"]
+
+[plugins.load-zabrze]
+inline = 'eval "$(zabrze init --bind-keys)"'
+
+[plugins.load-starship]
+inline = 'eval "$(starship init zsh)"'
+
+### Tab Completion
+
+[plugins.enable-zsh-tab-completion]
+inline = '''
+setopt auto_list
+setopt auto_menu
+zstyle ':completion:*:default' menu select=1
+export LS_COLORS='di=34:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
+zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+
+autoload -Uz compinit
+compinit
+'''
+
+[plugins.enable-terraform-completion]
+inline = '''
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C "$(which terraform)" terraform
+'''
+
+[plugins.load-jj-completion]
+inline = 'source <(COMPLETE=zsh jj)'
+
+[plugins.load-starship-completion]
+inline = 'source <(starship completions zsh)'
+
+[plugins.load-gh-completion]
+inline = 'source <(gh completion --shell zsh)'
+
+[plugins.load-yq-completion]
+inline = 'source <(yq shell-completion zsh)'
+
+[plugins.load-sheldon-completion]
+inline = 'source <(sheldon completions --shell zsh)'
+
+[plugins.load-bw-completion]
+inline = 'eval "$(bw completion --shell zsh); compdef _bw bw;"'
+
+[plugins.load-ghq-completion]
+inline = '''
+function _ghq() { source $(mise where ghq)/ghq_*/misc/zsh/_ghq; _ghq "$@" }
+compdef _ghq ghq
+'''
+
+### Misc
 
 [plugins.set-git-dir-in-jj]
 inline = '''
