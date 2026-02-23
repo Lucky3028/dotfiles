@@ -1,0 +1,22 @@
+#!/bin/zsh
+
+set -euxo pipefail
+
+# Versions (auto-updated by chezmoi to trigger re-run on update):
+# rustup: {{ output "sh" "-c" "rustup --version 2>/dev/null || true" | trim }}
+# cargo: {{ output "sh" "-c" "cargo --version 2>/dev/null || true" | trim }}
+
+if type rustup > /dev/null 2>&1; then
+  rustup upgrade
+else
+  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | \
+    sh -s -- --no-modify-path --default-toolchain stable --profile default -y
+fi
+
+source ~/.zshenv
+
+# Add completions
+## rustup
+$(which rustup) completions zsh > $ZDOTDIR/completions/_rustup
+## cargo
+$(which rustup) completions zsh cargo > $ZDOTDIR/completions/_cargo

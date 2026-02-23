@@ -1,6 +1,5 @@
 [tools]
 claude = "latest"
-deno = "latest"
 go = "latest"
 "go:github.com/Warashi/cage" = "latest"
 node = "24"
@@ -10,8 +9,24 @@ node = "24"
 "npm:difit" = "latest"
 terraform = "latest"
 usage = "latest"
+"cargo:zabrze" = "latest"
+fd = "latest"
+ghq = "latest"
+starship = "latest"
+"cargo:jj-starship" = "latest"
+zellij = "latest"
+gh = "latest"
+bat = "latest"
+yq = "latest"
+eza = "latest"
+ripgrep = "latest"
+fzf = "latest"
+"aqua:rossmacarthur/sheldon" = "latest"
+bitwarden = "latest"
+cargo-make = "latest"
+jj = "latest"
+uv = "latest"
 
 [settings]
 idiomatic_version_file_enable_tools = ["java"]
 experimental = true
-

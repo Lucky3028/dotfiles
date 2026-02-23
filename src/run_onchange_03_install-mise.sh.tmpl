@@ -1,0 +1,20 @@
+#!/bin/zsh
+
+set -euxo pipefail
+
+# Version (auto-updated by chezmoi to trigger re-run on update):
+# mise: {{ output "sh" "-c" "mise --version 2>/dev/null || true" | trim }}
+
+source ~/.zshenv
+
+if type mise > /dev/null 2>&1; then
+  mise self-update
+else
+  curl https://mise.run | sh
+fi
+
+# Install tools
+$MISE_INSTALL_PATH install
+
+# Add completions
+$MISE_INSTALL_PATH completion zsh > $ZDOTDIR/completions/_mise
