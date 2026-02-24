@@ -14,7 +14,7 @@ fd = "10.3.0"
 # renovate: datasource=github-releases packageName=junegunn/fzf
 fzf = "0.68.0"
 # renovate: datasource=github-releases packageName=cli/cli
-gh = "2.87.2"
+gh = "2.87.3"
 # renovate: datasource=github-releases packageName=x-motemen/ghq
 ghq = "1.9.4"
 go = "1.26.0"
