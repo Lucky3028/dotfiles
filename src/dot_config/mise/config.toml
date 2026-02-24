@@ -1,5 +1,6 @@
 [tools]
 "aqua:rossmacarthur/sheldon" = "0.8.5"
+"aqua:cli/cli" = "2.87.3"
 # renovate: datasource=github-releases packageName=sharkdp/bat
 bat = "0.26.1"
 # renovate: datasource=github-releases packageName=bitwarden/clients
@@ -13,8 +14,6 @@ eza = "0.23.4"
 fd = "10.3.0"
 # renovate: datasource=github-releases packageName=junegunn/fzf
 fzf = "0.68.0"
-# renovate: datasource=github-releases packageName=cli/cli
-gh = "2.87.3"
 # renovate: datasource=github-releases packageName=x-motemen/ghq
 ghq = "1.9.4"
 go = "1.26.0"
