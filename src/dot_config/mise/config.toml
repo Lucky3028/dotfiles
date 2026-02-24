@@ -1,29 +1,40 @@
 [tools]
 "aqua:rossmacarthur/sheldon" = "0.8.5"
+# renovate: datasource=github-releases packageName=sharkdp/bat
 bat = "0.26.1"
+# renovate: datasource=github-releases packageName=bitwarden/clients
 bitwarden = "2026.1.0"
 cargo-make = "0.37.24"
 "cargo:jj-starship" = "0.7.0"
 "cargo:zabrze" = "0.7.2"
+# renovate: datasource=github-releases packageName=eza-community/eza
 eza = "0.23.4"
+# renovate: datasource=github-releases packageName=sharkdp/fd
 fd = "10.3.0"
+# renovate: datasource=github-releases packageName=junegunn/fzf
 fzf = "0.68.0"
+# renovate: datasource=github-releases packageName=cli/cli
 gh = "2.87.2"
+# renovate: datasource=github-releases packageName=x-motemen/ghq
 ghq = "1.9.4"
 go = "1.26.0"
 "go:github.com/Warashi/cage" = "0.1.13"
+# renovate: datasource=github-releases packageName=jj-vcs/jj
 jj = "0.38.0"
 node = "24.13.1"
 "npm:@google/gemini-cli" = "0.29.5"
 "npm:@sasazame/ccresume" = "1.0.0"
 "npm:ccusage" = "18.0.5"
 "npm:difit" = "3.1.10"
+# renovate: datasource=github-releases packageName=BurntSushi/ripgrep
 ripgrep = "15.1.0"
+# renovate: datasource=github-releases packageName=starship-rs/starship
 starship = "1.24.2"
 terraform = "1.14.5"
 usage = "2.18.0"
 uv = "0.10.4"
 yq = "4.52.4"
+# renovate: datasource=github-releases packageName=zellij-org/zellij
 zellij = "0.43.1"
 
 [hooks]

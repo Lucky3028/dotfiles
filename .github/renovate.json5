@@ -1,4 +1,21 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["github>Lucky3028/renovate"]
+  "extends": ["github>Lucky3028/renovate"],
+  "customManagers": [
+    {
+      "customType": "regex",
+      "description": "Update mise tools via Renovate annotation comments",
+      "managerFilePatterns": ["(^|/)mise/config\\.toml$"],
+      "matchStrings": [
+        "# renovate: datasource=(?<datasource>[a-z-]+?) packageName=(?<packageName>[^\\s]+?)\\n(?<depName>[a-z-]+) = \"(?<currentValue>[^\"]+)\""
+      ],
+      "versioningTemplate": "semver"
+    }
+  ],
+  "packageRules": [
+    {
+      "matchPackageNames": ["bitwarden/clients"],
+      "extractVersion": "^cli-v(?<version>.+)$"
+    }
+  ]
 }
