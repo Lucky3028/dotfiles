@@ -1,9 +1,0 @@
-% claude
-
-# Install Serena in current directory
-claude mcp add serena -- uv run --from git+https://github.com/oraios/serena \
-  serena start-mcp-server --context ide-assistant --project $(pwd)
-
-# Install Chrome DevTools MCP in current directory
-claude mcp add chrome-devtools npx chrome-devtools-mcp@latest
-

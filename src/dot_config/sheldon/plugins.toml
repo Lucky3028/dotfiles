@@ -50,6 +50,8 @@ inline = 'eval "$(starship init zsh)"'
 
 ### Tab Completion
 
+# NOTE: Basically, tab completion file generation should be documented in `hooks/generate-tab-completion.sh`.
+
 [plugins.enable-zsh-tab-completion]
 inline = '''
 setopt auto_list
@@ -66,41 +68,4 @@ compinit
 inline = '''
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C "$(which terraform)" terraform
-'''
-
-[plugins.load-jj-completion]
-inline = 'source <(COMPLETE=zsh jj)'
-
-[plugins.load-starship-completion]
-inline = 'source <(starship completions zsh)'
-
-[plugins.load-gh-completion]
-inline = 'source <(gh completion --shell zsh)'
-
-[plugins.load-yq-completion]
-inline = 'source <(yq shell-completion zsh)'
-
-[plugins.load-sheldon-completion]
-inline = 'source <(sheldon completions --shell zsh)'
-
-[plugins.load-bw-completion]
-inline = 'eval "$(bw completion --shell zsh); compdef _bw bw;"'
-
-[plugins.load-ghq-completion]
-inline = '''
-function _ghq() { source $(mise where ghq)/ghq_*/misc/zsh/_ghq; _ghq "$@" }
-compdef _ghq ghq
-'''
-
-### Misc
-
-[plugins.set-git-dir-in-jj]
-inline = '''
-function set-git-dir-in-jj() {
-  unset GIT_DIR
-  if jj root > /dev/null 2>&1; then
-    export GIT_DIR=$(jj git root)
-  fi
-}
-add-zsh-hook chpwd set-git-dir-in-jj
 '''
