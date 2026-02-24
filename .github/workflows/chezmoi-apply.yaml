@@ -1,0 +1,28 @@
+name: chezmoi apply
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - src/**
+      - .chezmoiroot
+      - .chezmoiignore
+      - .github/workflows/chezmoi-apply.yaml
+  push:
+    branches:
+      - main
+    paths:
+      - src/**
+      - .chezmoiroot
+      - .chezmoiignore
+      - .github/workflows/chezmoi-apply.yaml
+jobs:
+  apply:
+    name: chezmoi apply --dry-run
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v6
+      - name: Install chezmoi
+        run: sh -c "$(curl -fsLS get.chezmoi.io)" -- -b "$HOME/bin"
+      - name: Dry-run
+        run: "$HOME/bin/chezmoi apply --dry-run --verbose --source=$GITHUB_WORKSPACE/src"
