@@ -21,7 +21,7 @@ go = "1.26.0"
 "go:github.com/Warashi/cage" = "0.1.13"
 # renovate: datasource=github-releases packageName=jj-vcs/jj
 jj = "0.38.0"
-node = "24.13.1"
+node = "24.14.0"
 "npm:@google/gemini-cli" = "0.29.7"
 "npm:@sasazame/ccresume" = "1.0.0"
 "npm:ccusage" = "18.0.8"
