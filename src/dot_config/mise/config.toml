@@ -30,7 +30,7 @@ ripgrep = "15.1.0"
 # renovate: datasource=github-releases packageName=starship/starship
 starship = "1.24.2"
 terraform = "1.14.5"
-usage = "2.18.0"
+usage = "2.18.1"
 uv = "0.10.6"
 yq = "4.52.4"
 # renovate: datasource=github-releases packageName=zellij-org/zellij
