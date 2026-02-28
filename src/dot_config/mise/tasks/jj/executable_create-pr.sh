@@ -1,5 +1,5 @@
 #!/bin/bash
-#MISE description="Create a pull request for the previous commit"
+#MISE description="Create or update a pull request for the previous commit"
 #MISE dir="{{cwd}}"
 
 set -euo pipefail
@@ -13,4 +13,9 @@ json=$(echo "$diff" | claude -p 'Based on this diff, respond with ONLY a JSON ob
 title=$(echo "$json" | jq -r '.title')
 body=$(echo "$json" | jq -r '.body')
 
-gh pr create --base main --head "$bookmark" --title "$title" --body "$body"
+# PR が既に存在する場合は更新、なければ新規作成
+if gh pr view --head "$bookmark" > /dev/null 2>&1; then
+  gh pr edit --head "$bookmark" --title "$title" --body "$body"
+else
+  gh pr create --base main --head "$bookmark" --title "$title" --body "$body"
+fi
