@@ -35,14 +35,15 @@ if ! env | grep -q container; then
   if [ -f "$SSH_AGENT_FILE" ]; then
     source "$SSH_AGENT_FILE" > /dev/null
   fi
+
+  # BW_SESSION が未設定なら保存済みトークンをロード（ssh-agent の状態に関わらず実行）
+  if [ -z "$BW_SESSION" ] && [ -f "$BW_SESSION_FILE" ]; then
+    export BW_SESSION=$(< "$BW_SESSION_FILE")
+  fi
+
   if [ -z "$SSH_AGENT_PID" ] || ! kill -0 $SSH_AGENT_PID 2> /dev/null; then
     ssh-agent > "$SSH_AGENT_FILE"
     source "$SSH_AGENT_FILE" > /dev/null
-
-    # BW_SESSION が未設定なら保存済みトークンをロード
-    if [ -z "$BW_SESSION" ] && [ -f "$BW_SESSION_FILE" ]; then
-      export BW_SESSION=$(< "$BW_SESSION_FILE")
-    fi
 
     # vault が locked なら unlock してトークンを保存
     bw_status=$(bw status 2>/dev/null | jq -r '.status' 2>/dev/null)
