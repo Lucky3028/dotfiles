@@ -10,8 +10,13 @@ bookmark=$(jj bookmark list -r 'main..@-' 2>/dev/null | awk -F: '{print $1}' | h
 # bookmark があれば @- に move して push
 if [ -n "$bookmark" ]; then
   jj bookmark move "$bookmark" --to @-
-  jj git push -b "$bookmark"
+  push_output=$(jj git push -b "$bookmark" 2>&1)
 # bookmark がなければ新規作成して push
 else
-  jj git push -c @-
+  push_output=$(jj git push -c @- 2>&1)
+fi
+
+echo "$push_output"
+if echo "$push_output" | grep -q 'Nothing changed'; then
+  exit 1
 fi
