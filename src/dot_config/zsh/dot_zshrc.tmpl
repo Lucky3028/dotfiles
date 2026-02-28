@@ -30,6 +30,7 @@ eval "$(sheldon source)"
 if ! env | grep -q container; then
 
   SSH_AGENT_FILE=~/.ssh/.ssh-agent
+  BW_SESSION_FILE=~/.ssh/.bw-session
 
   if [ -f "$SSH_AGENT_FILE" ]; then
     source "$SSH_AGENT_FILE" > /dev/null
@@ -38,14 +39,33 @@ if ! env | grep -q container; then
     ssh-agent > "$SSH_AGENT_FILE"
     source "$SSH_AGENT_FILE" > /dev/null
 
-    bw list items | jq -c '.[] | select(.type == 5)' | while IFS= read -r item; do
-      name=$(printf '%s' "$item" | jq -r '.name')
-      keyfile=$(mktemp --tmpdir "XXXXXX_${name}")
-      printf '%s' "$item" | jq -r '.sshKey.privateKey' > "$keyfile"
-      chmod 600 "$keyfile"
-      ssh-add "$keyfile" > /dev/null 2>&1
-      rm -f "$keyfile"
-    done
+    # BW_SESSION が未設定なら保存済みトークンをロード
+    if [ -z "$BW_SESSION" ] && [ -f "$BW_SESSION_FILE" ]; then
+      export BW_SESSION=$(< "$BW_SESSION_FILE")
+    fi
+
+    # vault が locked なら unlock してトークンを保存
+    bw_status=$(bw status 2>/dev/null | jq -r '.status' 2>/dev/null)
+    if [ "$bw_status" != "unlocked" ]; then
+      echo "Bitwarden: vault is ${bw_status:-unknown}. Please unlock:"
+      export BW_SESSION=$(bw unlock --raw)
+      if [ -n "$BW_SESSION" ]; then
+        install -m 600 /dev/null "$BW_SESSION_FILE"
+        printf '%s' "$BW_SESSION" > "$BW_SESSION_FILE"
+      fi
+    fi
+
+    # BW_SESSION が有効なら SSH 鍵を追加
+    if [ -n "$BW_SESSION" ]; then
+      bw list items 2>/dev/null | jq -c '.[] | select(.type == 5)' | while IFS= read -r item; do
+        name=$(printf '%s' "$item" | jq -r '.name')
+        keyfile=$(mktemp --tmpdir "XXXXXX_${name}")
+        printf '%s' "$item" | jq -r '.sshKey.privateKey' > "$keyfile"
+        chmod 600 "$keyfile"
+        ssh-add "$keyfile" > /dev/null 2>&1
+        rm -f "$keyfile"
+      done
+    fi
   fi
 
 fi
