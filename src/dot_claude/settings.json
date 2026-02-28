@@ -28,7 +28,9 @@
       "Bash(for:*)",
       "Bash(true)",
       "WebFetch",
-      "WebSearch"
+      "WebSearch",
+      "Glob",
+      "Grep"
     ],
     "deny": [
       "Bash(sudo:*)",
