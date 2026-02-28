@@ -10,6 +10,9 @@
   "permissions": {
     "allow": [
       "Bash(git commit:*)",
+      "Bash(jj commit:*)",
+      "Bash(jj describe:*)",
+      "Bash(jj new:*)",
       "Bash(mkdir:*)",
       "Bash(touch:*)",
       "Bash(ls:*)",
@@ -42,6 +45,13 @@
       "Bash(git checkout:*)",
       "Bash(git switch:*)",
       "Bash(git restore:*)",
+      "Bash(jj git push:*)",
+      "Bash(jj abandon:*)",
+      "Bash(jj undo:*)",
+      "Bash(jj op restore:*)",
+      "Bash(jj rebase:*)",
+      "Bash(jj edit:*)",
+      "Bash(jj restore:*)",
       "Read(.env)",
       "Read(.dev.vars)",
       "Write(.env)",
