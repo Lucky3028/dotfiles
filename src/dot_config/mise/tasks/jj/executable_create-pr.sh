@@ -4,7 +4,12 @@
 
 set -euo pipefail
 
-bookmark=$(jj bookmark list -r @- | awk -F: '{print $1}')
+bookmark=$(jj bookmark list -r @- | awk -F: '{print $1}' | grep -v '^main$')
+if [ -z "$bookmark" ]; then
+  echo '最新のコミットに bookmark がありません。先に jj:push を実行してください。'
+  exit 1
+fi
+
 diff=$(jj diff --from main --to @-)
 
 json=$(echo "$diff" | claude -p 'Based on this diff, respond with ONLY a JSON object (no markdown, no extra text):
@@ -14,8 +19,8 @@ title=$(echo "$json" | jq -r '.title')
 body=$(echo "$json" | jq -r '.body')
 
 # PR が既に存在する場合は更新、なければ新規作成
-if gh pr view --head "$bookmark" > /dev/null 2>&1; then
-  gh pr edit --head "$bookmark" --title "$title" --body "$body"
+if gh pr view "$bookmark" > /dev/null 2>&1; then
+  gh pr edit "$bookmark" --title "$title" --body "$body"
 else
   gh pr create --base main --head "$bookmark" --title "$title" --body "$body"
 fi
