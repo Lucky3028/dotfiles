@@ -9,6 +9,7 @@
   },
   "permissions": {
     "allow": [
+      "Bash(curl:*)", // GET以外はhooksで拒否
       "Bash(git commit:*)",
       "Bash(jj commit:*)",
       "Bash(jj describe:*)",
