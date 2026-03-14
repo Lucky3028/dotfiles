@@ -56,13 +56,26 @@
       "Read(.dev.vars)",
       "Write(.env)",
       "Write(.dev.vars)",
-      "Bash(curl:*)",
       "Bash(wget:*)",
       "Bash(nc:*)",
       "Bash(npm uninstall:*)",
       "Bash(npm remove:*)",
       "Bash(pnpm uninstall:*)",
       "Bash(pnpm remove:*)"
+    ]
+  },
+  "effortLevel": "medium",
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"$HOME/.claude/hooks/curl-get-only.py\""
+          }
+        ]
+      }
     ]
   }
 }
