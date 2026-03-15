@@ -35,6 +35,7 @@ uv = "0.10.12"
 yq = "4.52.4"
 # renovate: datasource=github-releases packageName=zellij-org/zellij
 zellij = "0.43.1"
+doppler = { version = "3.75.3", exe = "doppler" }
 
 [hooks]
 postinstall = "$MISE_CONFIG_HOME/hooks/postinstall.sh"
