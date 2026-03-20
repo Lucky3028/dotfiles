@@ -31,8 +31,8 @@
       source = ./config/mise/tasks/git/use-ssh-remote.sh;
       executable = true;
     };
-    ".config/mise/tasks/hm/switch.sh" = {
-      source = ./config/mise/tasks/hm/switch.sh;
+    ".config/mise/tasks/dot/apply-changes.sh" = {
+      source = ./config/mise/tasks/dot/apply-changes.sh;
       executable = true;
     };
     ".config/mise/tasks/jj/commit.sh" = {
