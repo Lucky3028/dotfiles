@@ -47,6 +47,7 @@ if ! env | grep -q container; then
           keyfile=$(mktemp --tmpdir "XXXXXX_${name}")
           printf '%s' "$item" | jq -r '.value' > "$keyfile"
           chmod 600 "$keyfile"
+          ssh-keygen -c -C "${name#KEY__}" -f "$keyfile" <<< "" >/dev/null 2>&1
           ssh-add "$keyfile" > /dev/null 2>&1
           rm -f "$keyfile"
         done
