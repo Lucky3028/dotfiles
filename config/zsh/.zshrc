@@ -18,6 +18,11 @@ fpath=(
   $MISE_TAB_COMP_PATH(N-/)
 )
 
+# Nix
+if [ -e "$HOME/.nix-profile/etc/profile.d/nix.sh" ]; then
+  . "$HOME/.nix-profile/etc/profile.d/nix.sh"
+fi
+
 # Load mise
 eval "$(mise activate zsh)"
 
