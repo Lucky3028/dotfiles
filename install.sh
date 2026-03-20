@@ -15,7 +15,19 @@ fi
 NIX_CONFIG="experimental-features = nix-command flakes" nix run home-manager -- switch --flake "${script_dir}" -b backup
 find ~ -maxdepth 5 -name "*.backup" -delete 2>/dev/null || true
 
-# 3. Claude CLI インストール / 更新
+# 3. デフォルトシェルを zsh に変更
+zsh_path="$(which zsh)"
+if [ "$(getent passwd "$USER" | cut -d: -f7)" != "$zsh_path" ]; then
+  sudo chsh -s "$zsh_path" "$USER"
+fi
+
+# 4. Rust stable ツールチェーンのインストール
+rustup default stable
+
+# 5. mise でツールインストール
+mise install
+
+# 6. Claude CLI インストール / 更新
 if command -v claude > /dev/null 2>&1; then
   claude update
 else
