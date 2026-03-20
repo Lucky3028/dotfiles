@@ -105,6 +105,10 @@
     ".ssh/allowed_signers".source = ./ssh/allowed_signers;
 
     # bin
+    "bin/github-mcp-server" = {
+      source = ./bin/github-mcp-server;
+      executable = true;
+    };
     "bin/restore-zsh-history" = {
       source = ./bin/restore-zsh-history;
       executable = true;

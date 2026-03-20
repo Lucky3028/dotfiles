@@ -65,6 +65,11 @@
       "Bash(pnpm remove:*)"
     ]
   },
+  "mcpServers": {
+    "github": {
+      "command": "github-mcp-server"
+    }
+  },
   "hooks": {
     "PreToolUse": [
       {
