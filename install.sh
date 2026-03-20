@@ -4,6 +4,9 @@ set -euo pipefail
 
 script_dir="$(cd -P -- "$(dirname -- "$(command -v -- "$0")")" && pwd -P)"
 
+# 0. システムパッケージ更新
+sudo apt update && sudo apt upgrade -y && sudo apt autoremove -y
+
 # 1. Nix インストール
 if ! command -v nix > /dev/null 2>&1; then
   curl -L https://nixos.org/nix/install | sh -s -- --no-daemon
@@ -33,3 +36,13 @@ if command -v claude > /dev/null 2>&1; then
 else
   curl -fsSL https://claude.ai/install.sh | bash
 fi
+
+# 7. Doppler / GitHub CLI 認証
+doppler login
+gh auth login
+
+# 8. git remote を SSH に変更
+git -C "${script_dir}" remote set-url origin git@github.com:Lucky3028/dotfiles.git
+
+# 9. jj 初期化
+jj git init --colocate -R "${script_dir}"
