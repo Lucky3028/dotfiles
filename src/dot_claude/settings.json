@@ -65,7 +65,6 @@
       "Bash(pnpm remove:*)"
     ]
   },
-  "effortLevel": "medium",
   "hooks": {
     "PreToolUse": [
       {
