@@ -5,7 +5,7 @@ set -euo pipefail
 script_dir="$(cd -P -- "$(dirname -- "$(command -v -- "$0")")" && pwd -P)"
 
 # 0. システムパッケージ更新
-sudo apt update && sudo apt upgrade -y && sudo apt autoremove -y
+sudo apt-get update && sudo apt-get upgrade -y && sudo apt-get autoremove -y
 
 # 1. Nix インストール
 if ! command -v nix > /dev/null 2>&1; then
