@@ -25,38 +25,6 @@ name = "list $FPATH"
 trigger = "echo-fpath"
 snippet = 'echo $FPATH | sed "s/:/\n/g"'
 
-# chezmoi
-[[snippets]]
-name = "chezmoi"
-trigger = "cz"
-snippet = "chezmoi"
-
-[[snippets]]
-name = "chezmoi add"
-trigger = "a"
-snippet = "add"
-global = true
-context = '^chezmoi\s'
-
-[[snippets]]
-name = "chezmoi edit"
-trigger = "e"
-snippet = "edit"
-global = true
-context = '^chezmoi\s'
-
-[[snippets]]
-name = "chezmoi diff"
-trigger = "d"
-snippet = "diff"
-global = true
-context = '^chezmoi\s'
-
-[[snippets]]
-name = "chezmoi cd (replace)"
-trigger = "cd-c"
-snippet = "cd $(chezmoi source-path)"
-
 ### git ###
 
 [[snippets]]

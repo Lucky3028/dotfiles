@@ -19,6 +19,7 @@
     pkgs.dnsutils
     pkgs.procps
     # 開発ライブラリ
+    pkgs.gcc
     pkgs.fuse
     pkgs.sqlite
     pkgs.openssl
