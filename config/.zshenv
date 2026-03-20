@@ -26,7 +26,6 @@ export LESSOPEN="| /usr/bin/lesspipe %s";
 export LESSCLOSE="/usr/bin/lesspipe %s %s";
 
 # mise
-export MISE_INSTALL_PATH=$HOME/bin/mise
 export MISE_CONFIG_HOME=$XDG_CONFIG_HOME/mise
 export MISE_TAB_COMP_PATH=$XDG_DATA_HOME/mise/completions
 
@@ -43,8 +42,8 @@ export NAVI_PATH=$XDG_CONFIG_HOME/navi/cheats
 # Browser Settings
 export BROWSER='/usr/bin/firefox'
 
-{{ if eq .chezmoi.os "linux" }}
-{{   if (.chezmoi.kernel.osrelease | lower | contains "microsoft") }}
+if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+  if grep -qi microsoft /proc/version 2>/dev/null; then
 
 # Browser Settings
 export BROWSER='/mnt/c/Windows/System32/rundll32.exe url.dll,FileProtocolHandler'
@@ -60,6 +59,5 @@ if [ $SHLVL = 1 ] ; then
   (fcitx5 --disable=wayland -d --verbose '*'=0 &)
 fi
 
-{{   end }}
-{{ end }}
-
+  fi
+fi

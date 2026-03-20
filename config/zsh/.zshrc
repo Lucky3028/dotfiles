@@ -19,12 +19,12 @@ fpath=(
 )
 
 # Load mise
-eval "$($MISE_INSTALL_PATH activate zsh)"
+eval "$(mise activate zsh)"
 
 # Load sheldon
 eval "$(sheldon source)"
 
-{{ if eq .chezmoi.os "linux" }}
+if [[ "$OSTYPE" == "linux-gnu"* ]]; then
 
 # Run a script when it is NOT running in a container
 if ! env | grep -q container; then
@@ -55,4 +55,4 @@ if ! env | grep -q container; then
 
 fi
 
-{{ end }}
+fi
