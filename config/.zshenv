@@ -35,29 +35,11 @@ export STARSHIP_CONFIG=$XDG_CONFIG_HOME/starship/starship.toml
 # enhancd
 export ENHANCD_FILTER="fzf --height 40%:fzy"
 
-# navi
-export NAVI_CONFIG=$XDG_CONFIG_HOME/navi/config.yaml
-export NAVI_PATH=$XDG_CONFIG_HOME/navi/cheats
-
-# Browser Settings
-export BROWSER='/usr/bin/firefox'
-
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
   if grep -qi microsoft /proc/version 2>/dev/null; then
 
     # Browser Settings
     export BROWSER='/mnt/c/Windows/System32/rundll32.exe url.dll,FileProtocolHandler'
-
-    # Keyboard Settings for fcitx5
-    # https://news.mynavi.jp/article/20231009-2788372/
-    export GTK_IM_MODULE=fcitx5
-    export QT_IM_MODULE=fcitx5
-    export XMODIFIERS=@im=fcitx5
-    export INPUT_METHOD=fcitx5
-    export DefaultIMModule=fcitx5
-    if [ $SHLVL = 1 ] ; then
-      (fcitx5 --disable=wayland -d --verbose '*'=0 &)
-    fi
 
   fi
 fi
