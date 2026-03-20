@@ -7,7 +7,7 @@ bat = "0.26.1"
 bitwarden = "2026.2.0"
 cargo-make = "0.37.24"
 "cargo:jj-starship" = "0.7.0"
-"cargo:zabrze" = "0.7.2"
+"cargo:zabrze" = "0.7.3"
 # renovate: datasource=github-releases packageName=eza-community/eza
 eza = "0.23.4"
 # renovate: datasource=github-releases packageName=sharkdp/fd
