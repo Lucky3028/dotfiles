@@ -119,6 +119,11 @@ name = "cd to root dir on git repo"
 trigger = "cd-gr"
 snippet = "cd $(git rev-parse --show-toplevel)"
 
+[[snippets]]
+name = "cd to dotfiles dir"
+trigger = "cd-d"
+snippet = "cd ~/dotfiles"
+
 ### replacements ###
 
 [[snippets]]
