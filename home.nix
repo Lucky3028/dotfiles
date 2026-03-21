@@ -104,6 +104,12 @@
     # serena
     ".serena/serena_config.yml".source = ./home/serena/serena_config.yml;
 
+    # githooks
+    ".githooks/pre-push" = {
+      source = ./home/githooks/pre-push;
+      executable = true;
+    };
+
     # ssh
     ".ssh/config".source = ./home/ssh/config;
     ".ssh/allowed_signers".source = ./home/ssh/allowed_signers;
