@@ -36,6 +36,8 @@ yq = "4.52.4"
 # renovate: datasource=github-releases packageName=zellij-org/zellij
 zellij = "0.43.1"
 doppler = { version = "3.75.3", exe = "doppler" }
+# renovate: datasource=github-releases packageName=gitleaks/gitleaks
+"aqua:gitleaks/gitleaks" = "8.30.1"
 
 [hooks]
 postinstall = "$MISE_CONFIG_HOME/hooks/postinstall.sh"
