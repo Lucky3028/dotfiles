@@ -11,7 +11,7 @@ jobs:
       pull-requests: write
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
-      - uses: reviewdog/action-shellcheck@ccaafec0e6d1da9d10f6a97b8ab4a4e8568f7375 # v1.31.0
+      - uses: reviewdog/action-shellcheck@1bb9751763fdfbee4b5043772c37374f103bff9e # v1.31.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           reporter: github-pr-review
