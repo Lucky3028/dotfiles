@@ -5,7 +5,8 @@
     "DISABLE_ERROR_REPORTING": "true",
     "DISABLE_TELEMETRY": "true",
     "DISABLE_MICROCOMPACT": "true",
-    "DISABLE_INTERLEAVED_THINKING": "true"
+    "DISABLE_INTERLEAVED_THINKING": "true",
+    "ENABLE_TOOL_SEARCH": "true"
   },
   "permissions": {
     "allow": [
@@ -64,15 +65,6 @@
       "Bash(pnpm uninstall:*)",
       "Bash(pnpm remove:*)"
     ]
-  },
-  "mcpServers": {
-    "github": {
-      "command": "github-mcp-server"
-    },
-    "context7": {
-      "type": "http",
-      "url": "https://mcp.context7.com/mcp"
-    }
   },
   "hooks": {
     "PreToolUse": [
