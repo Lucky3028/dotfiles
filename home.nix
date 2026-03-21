@@ -94,15 +94,11 @@
     ".claude/commands/jj-commit.md".source = ./home/claude/commands/jj-commit.md;
     ".claude/commands/jj-split-commit.md".source = ./home/claude/commands/jj-split-commit.md;
     ".claude/commands/search.md".source = ./home/claude/commands/search.md;
-    ".claude/commands/serena.md".source = ./home/claude/commands/serena.md;
     ".claude/hooks/curl-get-only.py" = {
       source = ./home/claude/hooks/curl-get-only.py;
       executable = true;
     };
     ".claude/settings.json".source = ./home/claude/settings.json;
-
-    # serena
-    ".serena/serena_config.yml".source = ./home/serena/serena_config.yml;
 
     # githooks
     ".githooks/pre-push" = {
@@ -115,10 +111,6 @@
     ".ssh/allowed_signers".source = ./home/ssh/allowed_signers;
 
     # bin
-    "bin/github-mcp-server" = {
-      source = ./home/bin/github-mcp-server;
-      executable = true;
-    };
     "bin/restore-zsh-history" = {
       source = ./home/bin/restore-zsh-history;
       executable = true;
