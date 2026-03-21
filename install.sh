@@ -42,7 +42,7 @@ doppler login
 gh auth login
 
 # 8. git remote を SSH に変更
-git -C "${script_dir}" remote set-url origin git@github.com:Lucky3028/dotfiles.git
+(cd "${script_dir}" && mise run git:use-ssh-remote)
 
 # 9. jj 初期化
 jj git init --colocate -R "${script_dir}"
