@@ -10,15 +10,6 @@
         "# renovate: datasource=(?<datasource>[a-z-]+?) packageName=(?<packageName>[^\\s]+?)\\n(?<depName>[a-z-]+) = \"(?<currentValue>[^\"]+)\""
       ],
       "versioningTemplate": "semver"
-    },
-    {
-      "customType": "regex",
-      "description": "Update pinact version in pinact workflow",
-      "managerFilePatterns": ["/(^|/)pinact\\.ya?ml$/"],
-      "matchStrings": [
-        "# renovate: datasource=(?<datasource>[a-z-]+?) packageName=(?<packageName>[^\\s]+?)\\n\\s+aqua_version: (?<currentValue>[^\\s]+)"
-      ],
-      "versioningTemplate": "semver"
     }
   ],
   "packageRules": [
