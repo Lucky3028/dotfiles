@@ -9,7 +9,7 @@
 
   home.file = {
     # .zshenv
-    ".zshenv".source = ./config/.zshenv;
+    ".zshenv".source = ./config/zsh/.zshenv;
 
     # zsh
     ".config/zsh/.zshrc".source = ./config/zsh/.zshrc;
