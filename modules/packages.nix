@@ -23,7 +23,7 @@
     pkgs.fuse
     pkgs.sqlite
     pkgs.openssl
-    # ツール（run_onchange_03〜05 の代替）
+    # ツール
     pkgs.mise
     pkgs.rustup
     pkgs.podman
