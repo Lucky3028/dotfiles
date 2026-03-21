@@ -1,0 +1,86 @@
+{
+  "env": {
+    "CLAUDE_CODE_ENABLE_TELEMETRY": "false",
+    "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": "true",
+    "DISABLE_ERROR_REPORTING": "true",
+    "DISABLE_TELEMETRY": "true",
+    "DISABLE_MICROCOMPACT": "true",
+    "DISABLE_INTERLEAVED_THINKING": "true"
+  },
+  "permissions": {
+    "allow": [
+      "Bash(curl:*)",
+      "Bash(git commit:*)",
+      "Bash(jj commit:*)",
+      "Bash(jj describe:*)",
+      "Bash(jj new:*)",
+      "Bash(mkdir:*)",
+      "Bash(touch:*)",
+      "Bash(ls:*)",
+      "Bash(tree:*)",
+      "Bash(mv:*)",
+      "Bash(cp:*)",
+      "Bash(cat:*)",
+      "Bash(grep:*)",
+      "Bash(find:*)",
+      "Bash(echo:*)",
+      "Bash(do)",
+      "Bash(then)",
+      "Bash(else)",
+      "Bash(fi)",
+      "Bash(done)",
+      "Bash(for:*)",
+      "Bash(true)",
+      "WebFetch",
+      "WebSearch",
+      "Glob",
+      "Grep"
+    ],
+    "deny": [
+      "Bash(sudo:*)",
+      "Bash(rm:*)",
+      "Bash(rm -rf:*)",
+      "Bash(git push:*)",
+      "Bash(git reset:*)",
+      "Bash(git rebase:*)",
+      "Bash(git checkout:*)",
+      "Bash(git switch:*)",
+      "Bash(git restore:*)",
+      "Bash(jj git push:*)",
+      "Bash(jj abandon:*)",
+      "Bash(jj undo:*)",
+      "Bash(jj op restore:*)",
+      "Bash(jj rebase:*)",
+      "Bash(jj edit:*)",
+      "Bash(jj restore:*)",
+      "Read(.env)",
+      "Read(.dev.vars)",
+      "Write(.env)",
+      "Write(.dev.vars)",
+      "Bash(wget:*)",
+      "Bash(nc:*)",
+      "Bash(npm uninstall:*)",
+      "Bash(npm remove:*)",
+      "Bash(pnpm uninstall:*)",
+      "Bash(pnpm remove:*)"
+    ]
+  },
+  "mcpServers": {
+    "github": {
+      "command": "github-mcp-server"
+    }
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"$HOME/.claude/hooks/curl-get-only.py\""
+          }
+        ]
+      }
+    ]
+  }
+}
