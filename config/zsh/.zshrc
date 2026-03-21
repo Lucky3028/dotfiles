@@ -54,7 +54,7 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
             chmod 600 "$keyfile"
             ssh-keygen -c -C "${name#KEY__}" -f "$keyfile" <<< "" >/dev/null 2>&1
             ssh-add "$keyfile" > /dev/null 2>&1
-            rm -f "$keyfile"
+            rm -f "$keyfile" "${keyfile}.pub"
           done
     fi
 
