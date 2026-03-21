@@ -21,7 +21,7 @@
   # 個別のgitリポジトリ固有ではなく、すべてのgitリポジトリに共通のgitignoreを記載するファイルへのパス
   excludesfile = ~/.gitignore_global
   # 個別のgitリポジトリ固有ではなく、すべてのgitリポジトリに共通のgit hooksを記載するファイルへのパス
-  # hooksPath = ~/.githooks
+  hooksPath = ~/.githooks
   # コミットメッセージなどを編集するときのエディタ
   # VSCode:
   # editor = code --wait

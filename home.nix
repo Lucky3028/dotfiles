@@ -9,116 +9,122 @@
 
   home.file = {
     # .zshenv
-    ".zshenv".source = ./config/zsh/.zshenv;
+    ".zshenv".source = ./home/config/zsh/.zshenv;
 
     # zsh
-    ".config/zsh/.zshrc".source = ./config/zsh/.zshrc;
+    ".config/zsh/.zshrc".source = ./home/config/zsh/.zshrc;
 
     # git
-    ".config/git/config".source = ./config/git/config;
+    ".config/git/config".source = ./home/config/git/config;
 
     # mise
-    ".config/mise/config.toml".source = ./config/mise/config.toml;
+    ".config/mise/config.toml".source = ./home/config/mise/config.toml;
     ".config/mise/hooks/generate-tab-completion.sh" = {
-      source = ./config/mise/hooks/generate-tab-completion.sh;
+      source = ./home/config/mise/hooks/generate-tab-completion.sh;
       executable = true;
     };
     ".config/mise/hooks/postinstall.sh" = {
-      source = ./config/mise/hooks/postinstall.sh;
+      source = ./home/config/mise/hooks/postinstall.sh;
       executable = true;
     };
     ".config/mise/tasks/git/use-ssh-remote.sh" = {
-      source = ./config/mise/tasks/git/use-ssh-remote.sh;
+      source = ./home/config/mise/tasks/git/use-ssh-remote.sh;
       executable = true;
     };
     ".config/mise/tasks/dot/apply-changes.sh" = {
-      source = ./config/mise/tasks/dot/apply-changes.sh;
+      source = ./home/config/mise/tasks/dot/apply-changes.sh;
       executable = true;
     };
     ".config/mise/tasks/jj/commit.sh" = {
-      source = ./config/mise/tasks/jj/commit.sh;
+      source = ./home/config/mise/tasks/jj/commit.sh;
       executable = true;
     };
     ".config/mise/tasks/jj/create-pr.sh" = {
-      source = ./config/mise/tasks/jj/create-pr.sh;
+      source = ./home/config/mise/tasks/jj/create-pr.sh;
       executable = true;
     };
     ".config/mise/tasks/jj/merge-pr-and-rebase.sh" = {
-      source = ./config/mise/tasks/jj/merge-pr-and-rebase.sh;
+      source = ./home/config/mise/tasks/jj/merge-pr-and-rebase.sh;
       executable = true;
     };
     ".config/mise/tasks/jj/merge-pr.sh" = {
-      source = ./config/mise/tasks/jj/merge-pr.sh;
+      source = ./home/config/mise/tasks/jj/merge-pr.sh;
       executable = true;
     };
     ".config/mise/tasks/jj/push-and-create-pr.sh" = {
-      source = ./config/mise/tasks/jj/push-and-create-pr.sh;
+      source = ./home/config/mise/tasks/jj/push-and-create-pr.sh;
       executable = true;
     };
     ".config/mise/tasks/jj/push.sh" = {
-      source = ./config/mise/tasks/jj/push.sh;
+      source = ./home/config/mise/tasks/jj/push.sh;
       executable = true;
     };
     ".config/mise/tasks/jj/rebase.sh" = {
-      source = ./config/mise/tasks/jj/rebase.sh;
+      source = ./home/config/mise/tasks/jj/rebase.sh;
       executable = true;
     };
     ".config/mise/tasks/jj/split-commit.sh" = {
-      source = ./config/mise/tasks/jj/split-commit.sh;
+      source = ./home/config/mise/tasks/jj/split-commit.sh;
       executable = true;
     };
 
     # jj
-    ".config/jj/config.toml".source = ./config/jj/config.toml;
+    ".config/jj/config.toml".source = ./home/config/jj/config.toml;
 
     # gh
-    ".config/gh/config.yml".source = ./config/gh/config.yml;
+    ".config/gh/config.yml".source = ./home/config/gh/config.yml;
 
     # sheldon
-    ".config/sheldon/plugins.toml".source = ./config/sheldon/plugins.toml;
+    ".config/sheldon/plugins.toml".source = ./home/config/sheldon/plugins.toml;
 
     # starship
-    ".config/starship/starship.toml".source = ./config/starship/starship.toml;
+    ".config/starship/starship.toml".source = ./home/config/starship/starship.toml;
 
     # vim
-    ".config/vim/vimrc".source = ./config/vim/vimrc;
+    ".config/vim/vimrc".source = ./home/config/vim/vimrc;
 
     # zabrze
-    ".config/zabrze/config.toml".source = ./config/zabrze/config.toml;
+    ".config/zabrze/config.toml".source = ./home/config/zabrze/config.toml;
 
     # cage
-    ".config/cage/presets.yaml".source = ./config/cage/presets.yaml;
+    ".config/cage/presets.yaml".source = ./home/config/cage/presets.yaml;
 
     # claude
-    ".claude/CLAUDE.md".source = ./claude/CLAUDE.md;
-    ".claude/commands/jj-commit.md".source = ./claude/commands/jj-commit.md;
-    ".claude/commands/jj-split-commit.md".source = ./claude/commands/jj-split-commit.md;
-    ".claude/commands/search.md".source = ./claude/commands/search.md;
-    ".claude/commands/serena.md".source = ./claude/commands/serena.md;
+    ".claude/CLAUDE.md".source = ./home/claude/CLAUDE.md;
+    ".claude/commands/jj-commit.md".source = ./home/claude/commands/jj-commit.md;
+    ".claude/commands/jj-split-commit.md".source = ./home/claude/commands/jj-split-commit.md;
+    ".claude/commands/search.md".source = ./home/claude/commands/search.md;
+    ".claude/commands/serena.md".source = ./home/claude/commands/serena.md;
     ".claude/hooks/curl-get-only.py" = {
-      source = ./claude/hooks/curl-get-only.py;
+      source = ./home/claude/hooks/curl-get-only.py;
       executable = true;
     };
-    ".claude/settings.json".source = ./claude/settings.json;
+    ".claude/settings.json".source = ./home/claude/settings.json;
 
     # serena
-    ".serena/serena_config.yml".source = ./serena/serena_config.yml;
+    ".serena/serena_config.yml".source = ./home/serena/serena_config.yml;
+
+    # githooks
+    ".githooks/pre-push" = {
+      source = ./home/githooks/pre-push;
+      executable = true;
+    };
 
     # ssh
-    ".ssh/config".source = ./ssh/config;
-    ".ssh/allowed_signers".source = ./ssh/allowed_signers;
+    ".ssh/config".source = ./home/ssh/config;
+    ".ssh/allowed_signers".source = ./home/ssh/allowed_signers;
 
     # bin
     "bin/github-mcp-server" = {
-      source = ./bin/github-mcp-server;
+      source = ./home/bin/github-mcp-server;
       executable = true;
     };
     "bin/restore-zsh-history" = {
-      source = ./bin/restore-zsh-history;
+      source = ./home/bin/restore-zsh-history;
       executable = true;
     };
     "bin/toast" = {
-      source = ./bin/toast;
+      source = ./home/bin/toast;
       executable = true;
     };
   };

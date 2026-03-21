@@ -1,0 +1,18 @@
+#!/bin/bash
+
+set -euo pipefail
+
+while read -r local_ref local_sha remote_ref remote_sha; do
+  # ブランチ削除時はスキップ
+  if [ "$local_sha" = "0000000000000000000000000000000000000000" ]; then
+    continue
+  fi
+
+  if [ "$remote_sha" = "0000000000000000000000000000000000000000" ]; then
+    # 新規ブランチ: ローカルの全コミットをスキャン
+    gitleaks git --no-banner --redact --log-opts="$local_sha"
+  else
+    # 既存ブランチ: pushされる差分のみスキャン
+    gitleaks git --no-banner --redact --log-opts="$remote_sha..$local_sha"
+  fi
+done
