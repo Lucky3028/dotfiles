@@ -9,8 +9,8 @@ while read -r local_ref local_sha remote_ref remote_sha; do
   fi
 
   if [ "$remote_sha" = "0000000000000000000000000000000000000000" ]; then
-    # 新規ブランチ: ローカルの全コミットをスキャン
-    gitleaks git --no-banner --redact --log-opts="$local_sha"
+    # 新規ブランチ: リモートにまだ存在しないコミットのみスキャン
+    gitleaks git --no-banner --redact --log-opts="$local_sha --not --remotes"
   else
     # 既存ブランチ: pushされる差分のみスキャン
     gitleaks git --no-banner --redact --log-opts="$remote_sha..$local_sha"
