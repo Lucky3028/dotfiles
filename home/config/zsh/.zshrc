@@ -58,6 +58,27 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
           done
     fi
 
+    # Doppler から BW_SESSION を読み込む
+    _bw_session=$(doppler secrets get BW_SESSION --plain --project personal-secrets --config prd 2>/dev/null)
+    if [[ -n "$_bw_session" ]]; then
+      export BW_SESSION="$_bw_session"
+    fi
+    unset _bw_session
+
   fi
+
+  # Bitwarden のセッションを更新して Doppler に保存する
+  bw-refresh() {
+    local session
+    session=$(bw unlock --raw)
+    if [[ -n "$session" ]]; then
+      export BW_SESSION="$session"
+      if doppler secrets set "BW_SESSION=$session" --project personal-secrets --config prd > /dev/null 2>&1; then
+        echo "BW_SESSION saved to Doppler"
+      else
+        echo "Failed to save BW_SESSION to Doppler. Run 'doppler login' and try again." >&2
+      fi
+    fi
+  }
 
 fi
