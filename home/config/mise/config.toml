@@ -4,7 +4,7 @@
 # renovate: datasource=github-releases packageName=sharkdp/bat
 bat = "0.26.1"
 # renovate: datasource=github-releases packageName=bitwarden/clients
-bitwarden = "2026.2.0"
+bitwarden = "2026.3.0"
 cargo-make = "0.37.24"
 "cargo:jj-starship" = "0.7.0"
 "cargo:zabrze" = "0.7.3"
