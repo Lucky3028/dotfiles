@@ -6,7 +6,41 @@ Host *
   ServerAliveCountMax 5
   TCPKeepAlive yes
 
-Host __prod-prox-01
-  HostName 192.168.20.2
+Host __prd-pve-01
+  HostName prd-pve-01.labo.clov3r.cc
   User lucky
+
+Host __prd-vyo-01
+  HostName prd-vyo-01.labo.clov3r.cc
+
+Host __prd-vyo-02
+  HostName prd-vyo-02.labo.clov3r.cc
+
+Host __prd-vyo*
+  User vyos
+
+Host __prd-tal-01
+  HostName prd-tal-01.labo.clov3r.cc
+
+Host __prd-tal-02
+  HostName prd-tal-02.labo.clov3r.cc
+
+Host __prd-dsq-01
+  HostName prd-dsq-01.labo.clov3r.cc
+
+Host __prd-dsq-02
+  HostName prd-dsq-02.labo.clov3r.cc
+
+Host __prd-zbx-01
+  HostName prd-zbx-01.labo.clov3r.cc
+
+Host __prd-acc-02
+  HostName prd-acc-02.labo.clov3r.cc
+  User lucky
+  KexAlgorithms +diffie-hellman-group14-sha1
+  HostKeyAlgorithms +ssh-rsa
+  PubkeyAcceptedAlgorithms +ssh-rsa
+
+Host __prd*
+  User machine-user
 
