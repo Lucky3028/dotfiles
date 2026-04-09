@@ -15,7 +15,7 @@ fd = "10.4.2"
 # renovate: datasource=github-releases packageName=junegunn/fzf
 fzf = "0.71.0"
 # renovate: datasource=github-releases packageName=x-motemen/ghq
-ghq = "1.9.4"
+ghq = "1.10.0"
 go = "1.26.2"
 "go:github.com/Warashi/cage" = "0.1.13"
 # renovate: datasource=github-releases packageName=jj-vcs/jj
