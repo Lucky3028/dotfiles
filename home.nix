@@ -98,6 +98,11 @@
       source = ./home/claude/hooks/curl-get-only.py;
       executable = true;
     };
+    ".claude/hooks/rtk-rewrite.sh" = {
+      source = ./home/claude/hooks/rtk-rewrite.sh;
+      executable = true;
+    };
+    ".claude/hooks/.rtk-hook.sha256".source = ./home/claude/hooks/.rtk-hook.sha256;
     ".claude/settings.json".source = ./home/claude/settings.json;
 
     # githooks

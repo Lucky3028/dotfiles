@@ -13,3 +13,6 @@ This document defines the project's rules, objectives, and progress management m
 - Do not use `any` or `unknown` types in TypeScript.
 - You must not use a TypeScript `class` unless it is absolutely necessary (e.g., extending the `Error` class for custom error handling that requires `instanceof` checks).
 
+# RTK
+<!-- RTK (rtk-ai/rtk) hook instructions. See ~/.claude/RTK.md for details. -->
+@RTK.md
