@@ -25,6 +25,7 @@
       "Bash(grep:*)",
       "Bash(find:*)",
       "Bash(echo:*)",
+      "Bash(sort:*)",
       "Bash(do)",
       "Bash(then)",
       "Bash(else)",
@@ -35,7 +36,8 @@
       "WebFetch",
       "WebSearch",
       "Glob",
-      "Grep"
+      "Grep",
+      "Read"
     ],
     "deny": [
       "Bash(sudo:*)",
