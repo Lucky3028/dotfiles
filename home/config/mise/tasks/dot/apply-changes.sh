@@ -3,17 +3,19 @@
 
 set -euo pipefail
 
-dotfiles_dir="${DOTFILES_DIR:-${HOME}/dotfiles}"
 function info () {
   # Output messages with green color
   # ref. https://qiita.com/ko1nksm/items/095bdb8f0eca6d327233
   printf '\033[38;5;154m%s\033[m\n' "$@"
 }
 
+dotfiles_dir="${DOTFILES_DIR:-${HOME}/dotfiles}"
+cd "${dotfiles_dir}"
+
 info 'Update dotfiles...'
 # Update repository
-jj git fetch --remote origin -R "${dotfiles_dir}"
-jj rebase -d main@origin -R "${dotfiles_dir}"
+jj git fetch --remote origin
+jj rebase -d main@origin
 info 'Updated dotfiles.'
 echo ''
 
