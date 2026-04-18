@@ -24,6 +24,7 @@ info 'Apply dotfiles...'
 export NIX_CONFIG="experimental-features = nix-command flakes"
 nix flake update
 nix run home-manager -- switch --flake .
+PAGER=true nix run home-manager -- news --flake .
 # Apply mise
 mise install
 mise prune -y
