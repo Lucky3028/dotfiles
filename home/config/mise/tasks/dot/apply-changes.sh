@@ -5,6 +5,7 @@ set -euo pipefail
 
 dotfiles_dir="${DOTFILES_DIR:-${HOME}/dotfiles}"
 function info () {
+  # Output messages with green color
   printf '\033[38;5;154m%s\033[m\n' "$@"
 }
 
