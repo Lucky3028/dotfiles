@@ -25,7 +25,7 @@ node = "24.15.0"
 "npm:@github/copilot" = "1.0.36"
 "npm:@sasazame/ccresume" = "1.0.0"
 "npm:ccusage" = "18.0.11"
-"npm:difit" = "4.0.3"
+"npm:difit" = "4.0.4"
 # renovate: datasource=github-releases packageName=BurntSushi/ripgrep
 ripgrep = "15.1.0"
 # renovate: datasource=github-releases packageName=starship/starship
