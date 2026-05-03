@@ -8,5 +8,3 @@ function cd-ghq() {
     cd "$full_path"
   fi
 }
-
-
