@@ -13,6 +13,7 @@ COMPLETIONS=(
   sheldon "sheldon completions --shell zsh"
   bw "bw completion --shell zsh"
   rg "rg --generate complete-zsh"
+  zellij "zellij setup --generate-completion zsh"
 )
 
 for cmd in ${(k)COMPLETIONS}; do
