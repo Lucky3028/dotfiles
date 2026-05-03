@@ -48,6 +48,13 @@ inline = 'eval "$(zabrze init --bind-keys)"'
 [plugins.load-starship]
 inline = 'eval "$(starship init zsh)"'
 
+[plugins.load-functions]
+inline = '''
+while read -d $'\0' file; do
+  source "$file"
+done < <(find "$HOME/bin/functions" -mindepth 1 -maxdepth 1 -print0)
+'''
+
 ### Tab Completion
 
 # NOTE: Basically, tab completion file generation should be documented in `hooks/generate-tab-completion.sh`.

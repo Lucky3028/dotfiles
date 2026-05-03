@@ -28,4 +28,6 @@ PAGER=true nix run home-manager -- news --flake .
 # Apply mise
 mise install
 mise prune -y
+# Apply sheldon
+sheldon lock --update
 info 'Applied dotfiles.'

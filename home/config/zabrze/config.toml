@@ -112,7 +112,7 @@ context = '^git\s'
 [[snippets]]
 name = "cd to ghq repo dir"
 trigger = "cd-g"
-snippet = "cd $(ghq root)/$(ghq list | fzf)"
+snippet = "cd-ghq"
 
 [[snippets]]
 name = "cd to root dir on git repo"
