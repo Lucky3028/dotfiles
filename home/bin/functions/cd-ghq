@@ -1,0 +1,12 @@
+#!/bin/zsh
+
+function cd-ghq() {
+  local repo="$(ghq list | fzf)"
+  local full_path="$(ghq root)/${repo}"
+
+  if [ -n "$repo" ] && [ -d "$full_path" ]; then
+    cd "$full_path"
+  fi
+}
+
+

@@ -124,6 +124,7 @@
       source = ./home/bin/toast;
       executable = true;
     };
+    "bin/functions/cd-ghq".source = ./home/bin/functions/cd-ghq;
   };
 
   home.stateVersion = "24.11";
