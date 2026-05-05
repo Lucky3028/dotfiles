@@ -16,6 +16,11 @@
     {
       "matchPackageNames": ["bitwarden/clients"],
       "extractVersion": "^cli-v(?<version>.+)$"
+    },
+    {
+      "description": "uv 0.11.9 のリリースが GitHub Artifact Attestations を欠いているため一時的に無効化 (https://github.com/astral-sh/uv/issues/19278)",
+      "matchPackageNames": ["astral-sh/uv"],
+      "enabled": false
     }
   ]
 }
