@@ -21,8 +21,6 @@ go = "1.26.2"
 # renovate: datasource=github-releases packageName=jj-vcs/jj
 jj = "0.40.0"
 node = "24.15.0"
-"npm:@google/gemini-cli" = "0.40.1"
-"npm:@github/copilot" = "1.0.40"
 "npm:@sasazame/ccresume" = "1.0.0"
 "npm:ccusage" = "18.0.11"
 "npm:difit" = "4.0.5"
@@ -42,7 +40,7 @@ doppler = { version = "3.76.0", exe = "doppler" }
 # renovate: datasource=github-releases packageName=suzuki-shunsuke/pinact
 "aqua:suzuki-shunsuke/pinact" = "3.9.2"
 "jjui" = "0.10.4"
-"npm:@openai/codex" = "0.128.0"
+"npm:opencode-ai" = "1.14.39"
 
 [hooks]
 postinstall = "$MISE_CONFIG_HOME/hooks/postinstall.sh"
