@@ -19,7 +19,7 @@ ghq = "1.10.1"
 go = "1.26.2"
 "go:github.com/Warashi/cage" = "0.1.13"
 # renovate: datasource=github-releases packageName=jj-vcs/jj
-jj = "0.40.0"
+jj = "0.41.0"
 node = "24.15.0"
 "npm:@sasazame/ccresume" = "1.0.0"
 "npm:ccusage" = "18.0.11"
