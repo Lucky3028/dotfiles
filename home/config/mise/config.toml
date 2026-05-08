@@ -21,7 +21,7 @@ go = "1.26.3"
 # renovate: datasource=github-releases packageName=jj-vcs/jj
 jj = "0.41.0"
 node = "24.15.0"
-"npm:@sasazame/ccresume" = "1.0.0"
+"npm:@sasazame/ccresume" = "2.0.0"
 "npm:ccusage" = "18.0.11"
 "npm:difit" = "4.0.5"
 # renovate: datasource=github-releases packageName=BurntSushi/ripgrep
