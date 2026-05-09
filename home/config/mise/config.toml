@@ -23,7 +23,7 @@ jj = "0.41.0"
 node = "24.15.0"
 "npm:@sasazame/ccresume" = "2.0.0"
 "npm:ccusage" = "18.0.11"
-"npm:difit" = "4.0.5"
+"npm:difit" = "4.0.6"
 # renovate: datasource=github-releases packageName=BurntSushi/ripgrep
 ripgrep = "15.1.0"
 # renovate: datasource=github-releases packageName=starship/starship
