@@ -38,7 +38,7 @@ doppler = { version = "3.76.0", exe = "doppler" }
 # renovate: datasource=github-releases packageName=gitleaks/gitleaks
 "aqua:gitleaks/gitleaks" = "8.30.1"
 # renovate: datasource=github-releases packageName=suzuki-shunsuke/pinact
-"aqua:suzuki-shunsuke/pinact" = "3.9.2"
+"aqua:suzuki-shunsuke/pinact" = "3.10.0"
 "jjui" = "0.10.5"
 "npm:opencode-ai" = "1.14.48"
 
