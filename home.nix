@@ -89,6 +89,9 @@
     # cage
     ".config/cage/presets.yaml".source = ./home/config/cage/presets.yaml;
 
+    # opencode
+    ".config/opencode/opencode.jsonc".source = ./home/config/opencode/opencode.jsonc;
+
     # claude
     ".claude/CLAUDE.md".source = ./home/claude/CLAUDE.md;
     ".claude/commands/jj-commit.md".source = ./home/claude/commands/jj-commit.md;
