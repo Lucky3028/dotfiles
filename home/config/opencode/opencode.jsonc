@@ -3,6 +3,7 @@
   "autoupdate": false,
   "permission": {
     "*": "ask",
+    // read: 基本許可、秘密鍵・デバイス・バイナリは拒否
     "read": {
       "*": "allow",
       // 秘密鍵を含むディレクトリ全体を拒否する。
@@ -24,8 +25,9 @@
       "/usr/lib/**": "deny",
       // スワップファイル・ソケットも同様。
       "/swap*": "deny",
-      "**/*.sock": "deny",
+      "**/*.sock": "deny"
     },
+    // edit: 基本許可、秘密鍵・デバイス・バイナリは拒否
     "edit": {
       "*": "allow",
       // 秘密鍵を含むディレクトリ全体を拒否する。
@@ -46,7 +48,7 @@
       "/usr/sbin/**": "deny",
       "/usr/lib/**": "deny",
       "/swap*": "deny",
-      "**/*.sock": "deny",
+      "**/*.sock": "deny"
     },
     "glob": "allow",
     "grep": "allow",
@@ -61,9 +63,10 @@
     "skill": "allow",
     "task": "allow",
     "doom_loop": "allow",
+    // bash: 基本確認、安全なものだけ許可、危険なものは拒否
     "bash": {
       "*": "ask",
-      // allow
+      // 安全なファイル操作・ネットワーク取得
       "curl*": "allow",
       "mkdir*": "allow",
       "touch*": "allow",
@@ -79,6 +82,7 @@
       "for*": "allow",
       "rm*": "allow",
       "wget*": "allow",
+      // jj: 読み取り・undo可能な操作
       "jj status*": "allow",
       "jj log*": "allow",
       "jj diff*": "allow",
@@ -105,7 +109,7 @@
       "jj git fetch*": "allow",
       "jj config get*": "allow",
       "jj config list*": "allow",
-      // deny
+      // 危険・不可逆な操作
       "git*": "deny",
       "dd*": "deny",
       "sudo dd*": "deny",
@@ -129,7 +133,7 @@
       "jj split*": "deny",
       "jj resolve*": "deny",
       "jj diffedit*": "deny",
-      "jj arrange*": "deny",
-    },
-  },
+      "jj arrange*": "deny"
+    }
+  }
 }
