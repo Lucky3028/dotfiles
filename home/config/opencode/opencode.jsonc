@@ -3,8 +3,51 @@
   "autoupdate": false,
   "permission": {
     "*": "ask",
-    "read": { "*": "ask", ".env": "deny", ".dev.vars": "deny", ".ssh/**": "deny" },
-    "edit": { "*": "ask", ".env": "deny", ".dev.vars": "deny", ".ssh/**": "deny" },
+    "read": {
+      "*": "allow",
+      // 環境変数・トークン・秘密鍵（SSH鍵など）が含まれている可能性があるため拒否する。
+      "**/.env*": "deny",
+      "**/.dev.vars": "deny",
+      "**/.kube/**": "deny",
+      "**/.npmrc": "deny",
+      ".ssh/**": "deny",
+      "/home/**/.ssh/**": "deny",
+      "~/.ssh/**": "deny",
+      // デバイスファイルや擬似ファイルを読むとハングするため拒否する。
+      "/dev/**": "deny",
+      "/proc/**": "deny",
+      "/sys/**": "deny",
+      // ELFバイナリ・スワップ・ソケットは読んでも意味がないため拒否する。
+      "/bin/**": "deny",
+      "/sbin/**": "deny",
+      "/usr/bin/**": "deny",
+      "/usr/sbin/**": "deny",
+      "/usr/lib/**": "deny",
+      "/swap*": "deny",
+      "**/*.sock": "deny",
+    },
+    "edit": {
+      "*": "allow",
+      // 環境変数・トークン・秘密鍵（SSH鍵など）が含まれている可能性があるため拒否する。
+      "**/.env*": "deny",
+      "**/.dev.vars": "deny",
+      "**/.kube/**": "deny",
+      "**/.npmrc": "deny",
+      "/home/**/.ssh/**": "deny",
+      "~/.ssh/**": "deny",
+      // デバイスファイル・擬似ファイルに書き込むとハードウェア操作になるため拒否する。
+      "/dev/**": "deny",
+      "/proc/**": "deny",
+      "/sys/**": "deny",
+      // ELFバイナリ・スワップは編集不能。ソケットも編集できないためすべて拒否する。
+      "/bin/**": "deny",
+      "/sbin/**": "deny",
+      "/usr/bin/**": "deny",
+      "/usr/sbin/**": "deny",
+      "/usr/lib/**": "deny",
+      "/swap*": "deny",
+      "**/*.sock": "deny",
+    },
     "glob": "allow",
     "grep": "allow",
     "list": "allow",
