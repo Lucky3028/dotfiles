@@ -92,21 +92,7 @@
     # opencode
     ".config/opencode/opencode.jsonc".source = ./home/config/opencode/opencode.jsonc;
 
-    # claude
-    ".claude/CLAUDE.md".source = ./home/claude/CLAUDE.md;
-    ".claude/commands/jj-commit.md".source = ./home/claude/commands/jj-commit.md;
-    ".claude/commands/jj-split-commit.md".source = ./home/claude/commands/jj-split-commit.md;
-    ".claude/commands/search.md".source = ./home/claude/commands/search.md;
-    ".claude/hooks/curl-get-only.py" = {
-      source = ./home/claude/hooks/curl-get-only.py;
-      executable = true;
-    };
-    ".claude/hooks/rtk-rewrite.sh" = {
-      source = ./home/claude/hooks/rtk-rewrite.sh;
-      executable = true;
-    };
-    ".claude/hooks/.rtk-hook.sha256".source = ./home/claude/hooks/.rtk-hook.sha256;
-    ".claude/settings.json".source = ./home/claude/settings.json;
+
 
     # githooks
     ".githooks/pre-push" = {
