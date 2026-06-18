@@ -20,7 +20,7 @@ go = "1.26.4"
 "go:github.com/Warashi/cage" = "0.1.13"
 # renovate: datasource=github-releases packageName=jj-vcs/jj
 jj = "0.42.0"
-node = "24.16.0"
+node = "24.17.0"
 "npm:difit" = "5.0.2"
 # renovate: datasource=github-releases packageName=BurntSushi/ripgrep
 ripgrep = "15.1.0"
