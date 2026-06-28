@@ -21,7 +21,7 @@ go = "1.26.4"
 # renovate: datasource=github-releases packageName=jj-vcs/jj
 jj = "0.42.0"
 node = "24.18.0"
-"npm:difit" = "5.0.2"
+"npm:difit" = "5.0.3"
 # renovate: datasource=github-releases packageName=BurntSushi/ripgrep
 ripgrep = "15.1.0"
 # renovate: datasource=github-releases packageName=starship/starship
