@@ -26,7 +26,7 @@ node = "24.18.0"
 ripgrep = "15.1.0"
 # renovate: datasource=github-releases packageName=starship/starship
 starship = "1.26.0"
-terraform = "1.15.7"
+terraform = "1.15.8"
 usage = "3.5.4"
 uv = "0.11.8"
 yq = "4.53.3"
