@@ -9,7 +9,7 @@ cargo-make = "0.37.24"
 "cargo:jj-starship" = "0.7.0"
 "cargo:zabrze" = "0.7.3"
 # renovate: datasource=github-releases packageName=eza-community/eza
-eza = "0.23.4"
+eza = "0.23.5"
 # renovate: datasource=github-releases packageName=sharkdp/fd
 fd = "10.4.2"
 # renovate: datasource=github-releases packageName=junegunn/fzf
