@@ -23,7 +23,7 @@ jj = "0.43.0"
 node = "24.18.0"
 "npm:difit" = "5.0.8"
 # renovate: datasource=github-releases packageName=BurntSushi/ripgrep
-ripgrep = "15.1.0"
+ripgrep = "15.2.0"
 # renovate: datasource=github-releases packageName=starship/starship
 starship = "1.26.0"
 terraform = "1.15.8"
