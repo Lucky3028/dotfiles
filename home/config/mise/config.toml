@@ -38,7 +38,7 @@ doppler = { version = "3.76.1", exe = "doppler" }
 # renovate: datasource=github-releases packageName=suzuki-shunsuke/pinact
 "aqua:suzuki-shunsuke/pinact" = "4.1.0"
 "jjui" = "0.10.9"
-"npm:opencode-ai" = { version = "1.18.6", allow_builds = "opencode-ai" }
+"npm:opencode-ai" = { version = "1.18.7", allow_builds = "opencode-ai" }
 
 [hooks]
 postinstall = "$MISE_CONFIG_HOME/hooks/postinstall.sh"
