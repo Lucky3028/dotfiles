@@ -6,7 +6,7 @@ bat = "0.26.1"
 # renovate: datasource=github-releases packageName=bitwarden/clients
 bitwarden = "2026.7.0"
 cargo-make = "0.37.24"
-"cargo:jj-starship" = "0.7.0"
+"cargo:jj-starship" = "0.7.1"
 "cargo:zabrze" = "0.7.3"
 # renovate: datasource=github-releases packageName=eza-community/eza
 eza = "0.23.5"
