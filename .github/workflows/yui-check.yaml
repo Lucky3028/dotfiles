@@ -15,6 +15,9 @@ jobs:
       - name: Install Rust
         run: rustup toolchain install stable --profile minimal
       - name: Install yui
-        run: cargo install yui-cli --locked --version 0.10.0
+        uses: taiki-e/install-action@6c6fd71fe4fb72c3697d269963d0e15df8adedad # v2.85.10
+        with:
+          tool: yui-cli@0.10.0
+          fallback: cargo-binstall
       - name: List managed files
         run: yui list --no-color
