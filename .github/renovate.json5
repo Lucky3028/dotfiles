@@ -10,6 +10,15 @@
         "# renovate: datasource=(?<datasource>[a-z-]+?) packageName=(?<packageName>[^\\s]+?)\\n(?<depName>[a-z-]+) = \"(?<currentValue>[^\"]+)\""
       ],
       "versioningTemplate": "semver"
+    },
+    {
+      "customType": "regex",
+      "description": "Update yui-cli in GitHub Actions workflow",
+      "managerFilePatterns": ["/(^|/)\\.github/workflows/yui-check\\.yaml$/"],
+      "matchStrings": [
+        "\\s+# renovate: datasource=(?<datasource>[a-z-]+?) depName=(?<depName>[^\\s]+?)\\n\\s+tool: yui-cli@(?<currentValue>[^\\s]+)"
+      ],
+      "versioningTemplate": "cargo"
     }
   ],
   "packageRules": [

@@ -17,6 +17,7 @@ jobs:
       - name: Install yui
         uses: taiki-e/install-action@6c6fd71fe4fb72c3697d269963d0e15df8adedad # v2.85.10
         with:
+          # renovate: datasource=crate depName=yui-cli
           tool: yui-cli@0.10.0
           fallback: cargo-binstall
       - name: List managed files
