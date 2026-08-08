@@ -6,9 +6,9 @@ completion_dir="${MISE_TAB_COMP_PATH:-${XDG_DATA_HOME:-$HOME/.local/share}/mise/
 mkdir -p "$completion_dir"
 
 write_completion() {
-	name="$1"
-	shift
-	"$@" >"${completion_dir}/_${name}"
+  name="$1"
+  shift
+  "$@" >"${completion_dir}/_${name}"
 }
 
 write_completion jj env COMPLETE=zsh jj
@@ -25,8 +25,8 @@ write_completion yui yui completion zsh
 
 ghq_root=$(mise where ghq)
 for ghq_completion in "${ghq_root}"/ghq_*/misc/zsh/_ghq; do
-	if [ -f "$ghq_completion" ]; then
-		ln -sf "$ghq_completion" "${completion_dir}/_ghq"
-		break
-	fi
+  if [ -f "$ghq_completion" ]; then
+    ln -sf "$ghq_completion" "${completion_dir}/_ghq"
+    break
+  fi
 done

@@ -17,7 +17,7 @@ sudo apt-get upgrade -y
 sudo apt-get autoremove -y
 
 mapfile -t apt_packages < <(
-	awk '!/^[[:space:]]*#/ && NF { print $1 }' "${script_dir}/packages/apt.txt"
+  awk '!/^[[:space:]]*#/ && NF { print $1 }' "${script_dir}/packages/apt.txt"
 )
 sudo apt-get install -y "${apt_packages[@]}"
 

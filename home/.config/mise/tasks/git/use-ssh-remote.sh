@@ -3,7 +3,7 @@
 
 set -euo pipefail
 
-if ! git rev-parse > /dev/null 2>&1; then
+if ! git rev-parse >/dev/null 2>&1; then
   echo 'Current dir is not managed with git.'
   exit 0
 fi
