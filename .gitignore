@@ -1,2 +1,7 @@
-# nix build artifact
-result
+# yui machine-local state
+.yui/state.json
+.yui/backup/
+config.local.toml
+
+# >>> yui rendered (auto-managed, do not edit) >>>
+# <<< yui rendered (auto-managed) <<<

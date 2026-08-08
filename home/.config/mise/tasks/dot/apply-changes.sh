@@ -1,9 +1,9 @@
 #!/bin/bash
-#MISE description="Apply home-manager configuration"
+#MISE description="Apply dotfiles configuration"
 
 set -euo pipefail
 
-function info () {
+function info() {
   # Output messages with green color
   # ref. https://qiita.com/ko1nksm/items/095bdb8f0eca6d327233
   printf '\033[38;5;154m%s\033[m\n' "$@"
@@ -20,14 +20,12 @@ info 'Updated dotfiles.'
 echo ''
 
 info 'Apply dotfiles...'
-# Apply nix
-export NIX_CONFIG="experimental-features = nix-command flakes"
-nix flake update
-nix run home-manager -- switch --flake .
-PAGER=true nix run home-manager -- news --flake .
-# Apply mise
+yui apply
+
+# Apply mise tools
 mise install
 mise prune -y
+
 # Apply sheldon
 sheldon lock --update
 info 'Applied dotfiles.'
