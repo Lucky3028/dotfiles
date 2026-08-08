@@ -1,5 +1,5 @@
 #!/bin/bash
-#MISE description="Apply home-manager configuration"
+#MISE description="Apply dotfiles configuration"
 
 set -euo pipefail
 
@@ -20,14 +20,12 @@ info 'Updated dotfiles.'
 echo ''
 
 info 'Apply dotfiles...'
-# Apply nix
-export NIX_CONFIG="experimental-features = nix-command flakes"
-nix flake update
-nix run home-manager -- switch --flake .
-PAGER=true nix run home-manager -- news --flake .
-# Apply mise
+yui apply
+
+# Apply mise tools
 mise install
 mise prune -y
+
 # Apply sheldon
 sheldon lock --update
 info 'Applied dotfiles.'

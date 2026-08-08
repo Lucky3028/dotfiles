@@ -1,0 +1,23 @@
+[[mount.entry]]
+src = "home/.config"
+dst = "~/.config"
+
+[[mount.entry]]
+src = "home/.ssh"
+dst = "~/.ssh"
+
+[[mount.entry]]
+src = "home/.githooks"
+dst = "~/.githooks"
+
+[[mount.entry]]
+src = "home/bin"
+dst = "~/bin"
+
+[absorb]
+auto = true
+require_clean_git = true
+on_anomaly = "ask"
+
+[ui]
+auto_update = "notify"
