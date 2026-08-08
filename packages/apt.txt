@@ -1,0 +1,28 @@
+# Basic tools
+ca-certificates
+curl
+wget
+git
+gnupg
+gzip
+zip
+unzip
+xz-utils
+htop
+jq
+less
+openssh-client
+socat
+vim
+zsh
+dnsutils
+procps
+
+# Development libraries and tools
+gcc
+fuse3
+sqlite3
+libssl-dev
+rustup
+podman
+podman-compose
