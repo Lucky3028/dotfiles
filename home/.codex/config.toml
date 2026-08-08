@@ -1,0 +1,35 @@
+model = "gpt-5.6-luna"
+model_reasoning_effort = "high"
+plan_mode_reasoning_effort = "high"
+
+check_for_update_on_startup = false
+approval_policy = "on-request"
+approvals_reviewer = "auto_review"
+default_permissions = "safe-workspace"
+web_search = "cached"
+
+[permissions.safe-workspace]
+description = "Workspace editing with VCS metadata access and sensitive files protected"
+extends = ":workspace"
+
+[permissions.safe-workspace.filesystem]
+glob_scan_max_depth = 3
+# These SSH metadata files are readable so yui-managed links can be verified.
+"~/.ssh/config" = "read"
+"~/.ssh/allowed_signers" = "read"
+
+[permissions.safe-workspace.filesystem.":workspace_roots"]
+".git/**" = "write"
+"**/.kube/**" = "deny"
+# Keep common SSH private-key names protected while allowing non-secret SSH metadata.
+"**/.ssh/id_*" = "deny"
+"**/.ssh/*_key" = "deny"
+"**/.ssh/*.pem" = "deny"
+"**/.ssh/*.key" = "deny"
+"**/.env*" = "deny"
+"**/.dev.vars" = "deny"
+"**/.npmrc" = "deny"
+"**/*.sock" = "deny"
+
+[projects."/home/lucky/dotfiles"]
+trust_level = "trusted"
