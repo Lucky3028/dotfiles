@@ -40,6 +40,7 @@ doppler = { version = "3.76.1", exe = "doppler" }
 "jjui" = "0.10.9"
 "npm:opencode-ai" = { version = "1.18.15", allow_builds = "opencode-ai" }
 "npm:@openai/codex" = "0.147.0"
+kustomize = "5.8.1"
 
 [hooks]
 postinstall = "$MISE_CONFIG_HOME/hooks/postinstall.sh"
