@@ -17,7 +17,7 @@ sudo apt-get upgrade -y
 sudo apt-get autoremove -y
 
 mapfile -t apt_packages < <(
-  awk '!/^[[:space:]]*#/ && NF { print $1 }' "${script_dir}/packages/apt.txt"
+	awk '!/^[[:space:]]*#/ && NF { print $1 }' "${script_dir}/packages/apt.txt"
 )
 sudo apt-get install -y "${apt_packages[@]}"
 
@@ -25,13 +25,13 @@ sudo apt-get install -y "${apt_packages[@]}"
 rustup default stable
 
 # 2. mise
-if ! command -v mise > /dev/null 2>&1; then
+if ! command -v mise >/dev/null 2>&1; then
   curl -fsSL https://mise.run | sh
 fi
 export PATH="$HOME/.local/bin:$PATH"
 
 # 3. yui
-if ! command -v yui > /dev/null 2>&1; then
+if ! command -v yui >/dev/null 2>&1; then
   yui_version="${YUI_VERSION:-0.10.0}"
   cargo install yui-cli --locked --version "${yui_version}"
 fi
@@ -64,10 +64,10 @@ eval "$(mise activate bash)"
 mise install
 
 # 7. Doppler / GitHub CLI authentication
-if ! doppler me --no-check-version > /dev/null 2>&1; then
+if ! doppler me --no-check-version >/dev/null 2>&1; then
   doppler login
 fi
-if ! gh auth status > /dev/null 2>&1; then
+if ! gh auth status >/dev/null 2>&1; then
   gh auth login
 fi
 
@@ -75,6 +75,6 @@ fi
 (cd "${script_dir}" && mise run git:use-ssh-remote)
 
 # 9. Initialize jj
-if ! jj root -R "${script_dir}" > /dev/null 2>&1; then
+if ! jj root -R "${script_dir}" >/dev/null 2>&1; then
   jj git init --colocate -R "${script_dir}"
 fi
