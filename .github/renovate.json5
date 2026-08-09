@@ -19,6 +19,27 @@
         "\\s+# renovate: datasource=(?<datasource>[a-z-]+?) depName=(?<depName>[^\\s]+?)\\n\\s+tool: yui-cli@(?<currentValue>[^\\s]+)"
       ],
       "versioningTemplate": "cargo"
+    },
+    {
+      "customType": "regex",
+      "description": "Update ghasec in GitHub Actions workflow",
+      "managerFilePatterns": ["/(^|/)\\.github/workflows/ghasec\\.yaml$/"],
+      "matchStrings": [
+        "\\s+version: (?<currentValue>v[^\\s]+)"
+      ],
+      "depNameTemplate": "koki-develop/ghasec",
+      "datasourceTemplate": "github-releases",
+      "versioningTemplate": "semver"
+    },
+    {
+      "customType": "regex",
+      "description": "Update Codex CLI in GitHub Actions workflow",
+      "managerFilePatterns": ["/(^|/)\\.github/workflows/validate-codex-rules\\.yaml$/"],
+      "matchStrings": [
+        "@openai/codex@(?<currentValue>[^\\s]+)"
+      ],
+      "depNameTemplate": "@openai/codex",
+      "datasourceTemplate": "npm"
     }
   ],
   "packageRules": [
