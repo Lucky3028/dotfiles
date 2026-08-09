@@ -83,3 +83,8 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
   }
 
 fi
+
+# Always use the dotfiles wrapper, even if a later shell integration changes PATH.
+codex() {
+  "$HOME/bin/codex" "$@"
+}

@@ -14,6 +14,10 @@ configuration files, `apt` for system packages, and `mise` for development
 tools. Configuration files can be edited directly under `$HOME`; yui keeps
 the repository and the live files linked.
 
+Codex's writable `~/.codex/config.toml` is kept local. The shared Codex
+defaults are stored in `~/.codex/dotfiles.config.toml`, and the `codex`
+wrapper applies that profile automatically.
+
 To update an existing installation:
 
 ```sh

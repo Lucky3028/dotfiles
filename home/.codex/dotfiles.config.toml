@@ -50,6 +50,3 @@ enabled = true
 
 [permissions.safe-workspace.network.domains]
 "*" = "allow"
-
-[projects."/home/lucky/dotfiles"]
-trust_level = "trusted"
