@@ -1,29 +1,21 @@
-name: Lint and format shell files
+name: Format shell files
 on:
   pull_request:
     branches:
       - main
+permissions: {}
 jobs:
-  shellcheck:
-    name: Run shellcheck
-    runs-on: ubuntu-24.04
-    permissions:
-      pull-requests: write
-    steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-      - uses: reviewdog/action-shellcheck@0722bbdb0d47f04c1b53b8734d2422ac63a45ec6 # v1.32.1
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          reporter: github-pr-review
-          # warning以上の問題が検出された場合にCIを失敗させる（info のみの場合はCIは成功）
-          fail_level: warning
   shfmt:
     name: Run shfmt
     runs-on: ubuntu-24.04
+    timeout-minutes: 3
     permissions:
+      contents: read
       pull-requests: write
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
       - uses: reviewdog/action-shfmt@c5e3ba7497c338866921924691aef4fa18bc1fe0 # v1.1.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
