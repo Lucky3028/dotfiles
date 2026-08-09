@@ -1,0 +1,11 @@
+# Prohibit Git commands; use jj for version control instead.
+prefix_rule(
+    pattern = ["git"],
+    decision = "forbidden",
+    justification = "Use `jj` instead of `git`.",
+    match = [
+        "git status",
+        "git add -A",
+        "git commit -m \"feat: add rule\"",
+    ],
+)
