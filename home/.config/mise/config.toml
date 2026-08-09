@@ -35,7 +35,6 @@ doppler = { version = "3.76.1", exe = "doppler" }
 # renovate: datasource=github-releases packageName=gitleaks/gitleaks
 "aqua:gitleaks/gitleaks" = "8.30.1"
 "jjui" = "0.10.9"
-"npm:opencode-ai" = { version = "1.18.15", allow_builds = "opencode-ai" }
 "npm:@openai/codex" = "0.147.0"
 kustomize = "5.8.1"
 "go:github.com/koki-develop/ghasec" = "0.17.0"
