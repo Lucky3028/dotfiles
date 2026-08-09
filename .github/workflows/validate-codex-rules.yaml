@@ -1,0 +1,53 @@
+name: Validate Codex configuration
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - home/.codex/config.toml
+      - home/.codex/rules/**
+      - .github/workflows/validate-codex-rules.yaml
+  push:
+    branches:
+      - main
+    paths:
+      - home/.codex/config.toml
+      - home/.codex/rules/**
+      - .github/workflows/validate-codex-rules.yaml
+permissions: {}
+jobs:
+  validate:
+    name: Validate Codex configuration
+    runs-on: ubuntu-24.04
+    timeout-minutes: 3
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Install Codex CLI
+        run: npm install --global --no-fund --no-audit @openai/codex@0.147.0
+      - name: Check Codex config
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          codex_config_dir=$(mktemp -d)
+          cp home/.codex/config.toml "$codex_config_dir/config.toml"
+          env CODEX_HOME="$codex_config_dir" \
+            codex --strict-config exec --help >/dev/null
+      - name: Check command decisions
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          git_decision=$(codex execpolicy check \
+            --rules home/.codex/rules/default.rules \
+            -- git status | jq -r '.decision')
+          test "$git_decision" = "forbidden"
+
+          jj_decision=$(codex execpolicy check \
+            --rules home/.codex/rules/default.rules \
+            -- jj status | jq -r '.decision // "allow"')
+          test "$jj_decision" != "forbidden"
