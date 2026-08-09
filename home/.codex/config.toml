@@ -17,6 +17,11 @@ glob_scan_max_depth = 3
 # These SSH metadata files are readable so yui-managed links can be verified.
 "~/.ssh/config" = "read"
 "~/.ssh/allowed_signers" = "read"
+# Allow npm to use its package cache for CLI-based validation commands.
+"~/.npm/**" = "write"
+# Allow pnpm to use its cache and package store.
+"~/.cache/pnpm/**" = "write"
+"~/.local/share/pnpm/**" = "write"
 
 [permissions.safe-workspace.filesystem.":workspace_roots"]
 ".git/**" = "write"
