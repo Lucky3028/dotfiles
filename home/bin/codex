@@ -6,7 +6,7 @@ codex_bin=$(mise which codex)
 
 for arg in "$@"; do
   case "$arg" in
-    --profile|-p|--profile=*|-p?*)
+    --profile | -p | --profile=* | -p?*)
       exec "$codex_bin" "$@"
       ;;
   esac
