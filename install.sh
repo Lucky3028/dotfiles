@@ -47,6 +47,7 @@ install -d -m 700 "$HOME/.ssh"
 # Preserve the executable files that Home Manager used to mark explicitly.
 find "${script_dir}/home" -type f -name '*.sh' -exec chmod +x {} +
 chmod +x "${script_dir}/home/.githooks/pre-push" \
+  "${script_dir}/home/bin/codex" \
   "${script_dir}/home/bin/restore-zsh-history" \
   "${script_dir}/home/bin/toast"
 

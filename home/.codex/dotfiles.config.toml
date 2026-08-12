@@ -19,6 +19,15 @@ glob_scan_max_depth = 3
 "~/.ssh/allowed_signers" = "read"
 # Allow npm to use its package cache for CLI-based validation commands.
 "~/.npm/**" = "write"
+# Allow Go to use its build cache.
+"~/.cache/go-build/**" = "write"
+# Allow Go to use its module download cache.
+"~/go/pkg/mod/**" = "write"
+# Allow mise to use its tool-path cache.
+"~/.cache/mise/**" = "write"
+# Allow Cargo to use its package and git caches.
+"~/.cargo/registry/**" = "write"
+"~/.cargo/git/**" = "write"
 # Allow pnpm to use its cache and package store.
 "~/.cache/pnpm/**" = "write"
 "~/.local/share/pnpm/**" = "write"
@@ -41,6 +50,3 @@ enabled = true
 
 [permissions.safe-workspace.network.domains]
 "*" = "allow"
-
-[projects."/home/lucky/dotfiles"]
-trust_level = "trusted"
