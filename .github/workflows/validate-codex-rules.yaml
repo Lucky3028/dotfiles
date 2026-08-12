@@ -4,14 +4,14 @@ on:
     branches:
       - main
     paths:
-      - home/.codex/config.toml
+      - home/.codex/dotfiles.config.toml
       - home/.codex/rules/**
       - .github/workflows/validate-codex-rules.yaml
   push:
     branches:
       - main
     paths:
-      - home/.codex/config.toml
+      - home/.codex/dotfiles.config.toml
       - home/.codex/rules/**
       - .github/workflows/validate-codex-rules.yaml
 permissions: {}
@@ -34,9 +34,9 @@ jobs:
           set -euo pipefail
 
           codex_config_dir=$(mktemp -d)
-          cp home/.codex/config.toml "$codex_config_dir/config.toml"
+          cp home/.codex/dotfiles.config.toml "$codex_config_dir/dotfiles.config.toml"
           env CODEX_HOME="$codex_config_dir" \
-            codex --strict-config exec --help >/dev/null
+            codex --strict-config --profile dotfiles exec --help >/dev/null
       - name: Check command decisions
         shell: bash
         run: |
