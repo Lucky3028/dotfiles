@@ -33,7 +33,8 @@ jobs:
         run: |
           set -euo pipefail
 
-          codex_config_dir=$(mktemp -d)
+          codex_config_dir=$(mktemp -d "$GITHUB_WORKSPACE/codex-home.XXXXXX")
+          trap 'rm -rf -- "$codex_config_dir"' EXIT
           cp home/.codex/dotfiles.config.toml "$codex_config_dir/dotfiles.config.toml"
           env CODEX_HOME="$codex_config_dir" \
             codex --strict-config --profile dotfiles exec --help >/dev/null
