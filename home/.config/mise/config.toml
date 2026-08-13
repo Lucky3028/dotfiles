@@ -27,7 +27,7 @@ ripgrep = "15.2.0"
 starship = "1.26.0"
 terraform = "1.15.8"
 usage = "5.1.0"
-uv = "0.12.3"
+uv = "0.12.4"
 yq = "4.53.3"
 # renovate: datasource=github-releases packageName=zellij-org/zellij
 zellij = "0.44.3"
