@@ -31,7 +31,7 @@ uv = "0.12.4"
 yq = "4.53.3"
 # renovate: datasource=github-releases packageName=zellij-org/zellij
 zellij = "0.44.3"
-doppler = { version = "3.76.4", exe = "doppler" }
+doppler = { version = "3.76.5", exe = "doppler" }
 # renovate: datasource=github-releases packageName=gitleaks/gitleaks
 gitleaks = "8.30.1"
 "jjui" = "0.10.9"
