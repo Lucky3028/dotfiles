@@ -4,15 +4,6 @@
   "customManagers": [
     {
       "customType": "regex",
-      "description": "Update mise tools via Renovate annotation comments",
-      "managerFilePatterns": ["/(^|/)mise/config\\.toml$/"],
-      "matchStrings": [
-        "# renovate: datasource=(?<datasource>[a-z-]+?) packageName=(?<packageName>[^\\s]+?)\\n(?<depName>[a-z-]+) = \"(?<currentValue>[^\"]+)\""
-      ],
-      "versioningTemplate": "semver"
-    },
-    {
-      "customType": "regex",
       "description": "Update yui-cli in GitHub Actions workflow",
       "managerFilePatterns": ["/(^|/)\\.github/workflows/yui-check\\.yaml$/"],
       "matchStrings": [

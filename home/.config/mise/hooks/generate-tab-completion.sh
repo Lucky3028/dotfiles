@@ -23,10 +23,22 @@ write_completion yui yui completion zsh
 
 ### Make sym link to already created file
 
-ghq_root=$(mise where ghq)
-for ghq_completion in "${ghq_root}"/ghq_*/misc/zsh/_ghq; do
-  if [ -f "$ghq_completion" ]; then
-    ln -sf "$ghq_completion" "${completion_dir}/_ghq"
-    break
-  fi
-done
+ghq_root=$(mise where github:x-motemen/ghq 2>/dev/null || true)
+ghq_completion=
+if [ -n "$ghq_root" ]; then
+  for candidate in \
+    "${ghq_root}/misc/zsh/_ghq" \
+    "${ghq_root}"/ghq_*/misc/zsh/_ghq
+  do
+    if [ -f "$candidate" ]; then
+      ghq_completion="$candidate"
+      break
+    fi
+  done
+fi
+
+if [ -n "$ghq_completion" ]; then
+  ln -sfn "$ghq_completion" "${completion_dir}/_ghq"
+elif [ -L "${completion_dir}/_ghq" ]; then
+  rm "${completion_dir}/_ghq"
+fi
