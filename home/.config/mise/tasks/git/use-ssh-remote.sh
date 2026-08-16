@@ -1,5 +1,6 @@
 #!/bin/bash
 #MISE description="Use ssh for remote url"
+#MISE dir="{{cwd}}"
 
 set -euo pipefail
 
