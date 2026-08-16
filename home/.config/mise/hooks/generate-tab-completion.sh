@@ -28,8 +28,7 @@ ghq_completion=
 if [ -n "$ghq_root" ]; then
   for candidate in \
     "${ghq_root}/misc/zsh/_ghq" \
-    "${ghq_root}"/ghq_*/misc/zsh/_ghq
-  do
+    "${ghq_root}"/ghq_*/misc/zsh/_ghq; do
     if [ -f "$candidate" ]; then
       ghq_completion="$candidate"
       break
