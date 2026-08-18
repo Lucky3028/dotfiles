@@ -21,7 +21,7 @@ jobs:
       - name: Install Rust
         run: rustup toolchain install stable --profile minimal
       - name: Install yui
-        uses: taiki-e/install-action@b6b84cf49ebfe0176417bdce007c624f0db37f20 # v2.86.2
+        uses: taiki-e/install-action@5b4d68e2e660441203ab128a23676f1e4faf1532 # v2.86.3
         with:
           # renovate: datasource=crate depName=yui-cli
           tool: yui-cli@0.13.0
