@@ -20,6 +20,8 @@ info 'Updated dotfiles.'
 echo ''
 
 info 'Apply dotfiles...'
+yui self-update -y
+mise self-update -y
 yui apply
 
 # Apply mise tools

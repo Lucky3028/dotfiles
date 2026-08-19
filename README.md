@@ -107,7 +107,7 @@ cd ~/dotfiles
 mise run dot:apply-changes
 ```
 
-このタスクは、origin の fetch と `main@origin` への rebase、yui による設定反映、mise ツールの導入・不要版削除、sheldon のプラグインロック更新を行います。
+このタスクは、origin の fetch と `main@origin` への rebase、yui と mise 自体の更新、yui による設定反映、mise ツールの導入・不要版削除、sheldon のプラグインロック更新を行います。
 
 設定だけを反映したい場合は、次のコマンドも使えます。
 
