@@ -27,7 +27,7 @@ doppler = { version = "3.76.5", exe = "doppler" }
 kustomize = "5.8.1"
 "go:github.com/koki-develop/ghasec" = "0.17.0"
 shellcheck = "0.11.0"
-"github:Lucky3028/cos" = "1.0.1"
+"github:Lucky3028/cos" = "1.0.4"
 
 [hooks]
 postinstall = "$MISE_CONFIG_HOME/hooks/postinstall.sh"
