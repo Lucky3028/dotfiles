@@ -2,6 +2,9 @@
 
 set -eu
 
+export GIT_SSH_COMMAND='ssh -F /dev/null'
+export PATH="$HOME/.codex/bin:$PATH"
+
 codex_bin=$(mise which codex)
 
 for arg in "$@"; do
