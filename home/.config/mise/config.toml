@@ -2,7 +2,7 @@
 "github:rossmacarthur/sheldon" = "0.8.5"
 gh = "2.97.0"
 "github:sharkdp/bat" = "0.26.1"
-"github:bitwarden/clients" = { version = "2026.7.0", version_prefix = "cli-v", matching_regex = "^bw-(linux|macos|windows)(-arm64)?-" }
+"github:bitwarden/clients" = { version = "2026.8.0", version_prefix = "cli-v", matching_regex = "^bw-(linux|macos|windows)(-arm64)?-" }
 cargo-make = "0.37.24"
 "cargo:jj-starship" = "0.7.1"
 "cargo:zabrze" = "0.7.3"
