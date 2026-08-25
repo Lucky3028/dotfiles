@@ -1,0 +1,6 @@
+#!/bin/zsh
+
+# ssh-agent を止める
+function kill-ssh-agent() {
+  pkill -f "socat.*TCP-LISTEN:${SSH_AGENT_LISTENING_PORT}"
+}
