@@ -1,0 +1,28 @@
+#!/bin/zsh
+
+# Bitwarden が未ログインの場合のみ、Doppler の API 認証情報でログイン
+function login-bitwarden() {
+  local bw_status client_id client_secret
+  bw_status=$(bw status 2>/dev/null | jq -r '.status' 2>/dev/null)
+  if [[ "$bw_status" != "unauthenticated" ]]; then
+    return 0
+  fi
+
+  client_id=$(doppler secrets get BW_CLIENTID --plain --project personal-secrets --config prd 2>/dev/null)
+  client_secret=$(doppler secrets get BW_CLIENTSECRET --plain --project personal-secrets --config prd 2>/dev/null)
+  if [[ -z "$client_id" || -z "$client_secret" ]]; then
+    echo "Failed to get Bitwarden API credentials from Doppler." >&2
+    return 1
+  fi
+
+  BW_CLIENTID="$client_id" BW_CLIENTSECRET="$client_secret" bw login --apikey
+}
+
+# 端末ごとの Bitwarden ログインセッションを作成
+function unlock-bitwarden() {
+  local session
+  session=$(bw unlock --raw)
+  if [[ -n "$session" ]]; then
+    export BW_SESSION="$session"
+  fi
+}

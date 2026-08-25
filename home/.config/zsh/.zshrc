@@ -56,31 +56,8 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
         rm -f "$keyfile" "${keyfile}.pub"
       done
 
-  # Doppler から BW_SESSION を読み込む
-  _bw_session=$(doppler secrets get BW_SESSION --plain --project personal-secrets --config prd 2>/dev/null)
-  if [[ -n "$_bw_session" ]]; then
-    export BW_SESSION="$_bw_session"
-  fi
-  unset _bw_session
-
-  # ssh-agent を止める
-  kill-ssh-agent() {
-    pkill -f "socat.*TCP-LISTEN:${SSH_AGENT_LISTENING_PORT}"
-  }
-
-  # Bitwarden のログインセッションを更新して Doppler に SSH 鍵を保存し直す
-  refresh-doppler-ssh-key() {
-    local session
-    session=$(bw unlock --raw)
-    if [[ -n "$session" ]]; then
-      export BW_SESSION="$session"
-      if doppler secrets set "BW_SESSION=$session" --project personal-secrets --config prd > /dev/null 2>&1; then
-        echo "BW_SESSION saved to Doppler"
-      else
-        echo "Failed to save BW_SESSION to Doppler. Run 'doppler login' and try again." >&2
-      fi
-    fi
-  }
+  # Bitwarden が未ログインの場合のみ、Doppler の API 認証情報でログイン
+  login-bitwarden
 
 fi
 

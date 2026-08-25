@@ -127,12 +127,16 @@ mise install
 
 WSL では、Linux 側の ssh-agent を TCP 経由で Windows 側から利用できるようにし、`SSH_AUTH_SOCK` を Windows のユーザー環境変数へ設定します。`pwsh.exe` が PATH にない環境ではこの処理は利用できません。
 
-### `~/bin` の補助コマンド
+### `~/bin` の補助コマンドと zsh 関数
+
+`home/bin/functions` には sheldon が現在の zsh に読み込む関数を置きます。`cd` や `export` の結果を呼び出し元のシェルへ反映する必要がある処理はここに置き、独立して実行するコマンドは `home/bin` 直下に置きます。
 
 | コマンド | 役割 |
 | --- | --- |
 | `codex` | `--profile` が指定されていない場合に `dotfiles` プロファイルを使う Codex wrapper |
 | `cd-ghq` | `ghq list` の結果を fzf で選んで移動する zsh 関数 |
+| `login-bitwarden` / `unlock-bitwarden` | Bitwarden CLI のログインと、端末ごとの unlock |
+| `kill-ssh-agent` | WSL 用の ssh-agent 中継を停止する zsh 関数 |
 | `restore-zsh-history` | 壊れた zsh 履歴を `strings` で復旧する |
 | `toast` | WSL から BurntToast を使って Windows 通知を表示する |
 
@@ -183,4 +187,3 @@ push 前にも [`home/.githooks/pre-push`](home/.githooks/pre-push) が gitleaks
 ## ライセンス
 
 このリポジトリの設定・スクリプトは [`MIT License`](LICENSE) の下で公開しています。
-
