@@ -17,7 +17,7 @@ node = "24.20.0"
 "github:starship/starship" = "1.26.0"
 terraform = "1.16.0"
 usage = "6.4.1"
-uv = "0.12.6"
+uv = "0.12.7"
 yq = "4.53.6"
 "github:zellij-org/zellij" = "0.45.0"
 doppler = { version = "3.76.5", exe = "doppler" }
