@@ -31,6 +31,8 @@ glob_scan_max_depth = 3
 # Allow pnpm to use its cache and package store.
 "~/.cache/pnpm/**" = "write"
 "~/.local/share/pnpm/**" = "write"
+# Allow gradle to use its build cache.
+"~/.gradle/**" = "write"
 
 [permissions.safe-workspace.filesystem.":workspace_roots"]
 ".git/**" = "write"
