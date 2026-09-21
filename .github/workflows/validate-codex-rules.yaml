@@ -6,6 +6,8 @@ on:
     paths:
       - home/.codex/dotfiles.config.toml
       - home/.codex/rules/**
+      - home/bin/codex
+      - home/bin/codex-config-args.py
       - .github/workflows/validate-codex-rules.yaml
   push:
     branches:
@@ -13,6 +15,8 @@ on:
     paths:
       - home/.codex/dotfiles.config.toml
       - home/.codex/rules/**
+      - home/bin/codex
+      - home/bin/codex-config-args.py
       - .github/workflows/validate-codex-rules.yaml
 permissions: {}
 jobs:
@@ -35,9 +39,9 @@ jobs:
 
           codex_config_dir=$(mktemp -d "$GITHUB_WORKSPACE/codex-home.XXXXXX")
           trap 'rm -rf -- "$codex_config_dir"' EXIT
-          cp home/.codex/dotfiles.config.toml "$codex_config_dir/dotfiles.config.toml"
           env CODEX_HOME="$codex_config_dir" \
-            codex --strict-config --profile dotfiles exec --help >/dev/null
+            python3 home/bin/codex-config-args.py "$(command -v codex)" \
+              home/.codex/dotfiles.config.toml --strict-config exec --help >/dev/null
       - name: Check command decisions
         shell: bash
         run: |

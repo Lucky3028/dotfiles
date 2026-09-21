@@ -89,8 +89,3 @@ enabled = true
 [permissions.safe-workspace.network.domains]
 "*" = "allow"
 
-[tui.model_availability_nux]
-gpt-6-astra = 1
-
-[projects."/home/lucky/ghq/github.com/GiganticMinecraft/EatEgg"]
-trust_level = "trusted"
