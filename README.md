@@ -24,6 +24,8 @@ Linux / WSL 向けの個人用 dotfiles です。シェル、開発ツール、G
 ├── install.sh                        # 初回セットアップスクリプト
 ├── packages/
 │   └── apt.txt                       # apt で導入するパッケージ一覧
+├── scripts/
+│   └── install-jetbrains-toolbox.sh  # JetBrains Toolbox 導入スクリプト
 ├── home/                             # ホームディレクトリへ反映する設定
 │   ├── .codex/
 │   │   ├── AGENTS.md                 # Codex の共有指示
@@ -90,13 +92,14 @@ cd dotfiles
 スクリプトは次の順序でセットアップします。
 
 1. `packages/apt.txt` の OS パッケージを導入
-2. Rust stable と mise を準備
-3. `yui-cli` を導入し、設定をホームへ反映
-4. zsh を既定のログインシェルに設定
-5. mise 管理のツールをインストールし、補完を生成
-6. Doppler と GitHub CLI の認証を確認
-7. リモート URL を SSH 形式に変更
-8. jj の colocated repository を初期化（未初期化の場合）
+2. JetBrains 公式配布から最新版の Toolbox App を導入
+3. Rust stable と mise を準備
+4. `yui-cli` を導入し、設定をホームへ反映
+5. zsh を既定のログインシェルに設定
+6. mise 管理のツールをインストールし、補完を生成
+7. Doppler と GitHub CLI の認証を確認
+8. リモート URL を SSH 形式に変更
+9. jj の colocated repository を初期化（未初期化の場合）
 
 シェル変更は次回ログイン時に反映されます。インストール後は `exec $SHELL -l` ではなく、いったん `exit` して再ログインしてください。
 
@@ -135,6 +138,7 @@ WSL では、Linux 側の ssh-agent を TCP 経由で Windows 側から利用で
 | --- | --- |
 | `codex` | `--profile` が指定されていない場合に `dotfiles` プロファイルを使う Codex wrapper |
 | `cd-ghq` | `ghq list` の結果を fzf で選んで移動する zsh 関数 |
+| `jetbrains-toolbox` | JetBrains Toolbox をバックグラウンドで静かに起動する zsh 関数 |
 | `login-bitwarden` / `unlock-bitwarden` | Bitwarden CLI のログインと、端末ごとの unlock |
 | `kill-ssh-agent` | WSL 用の ssh-agent 中継を停止する zsh 関数 |
 | `restore-zsh-history` | 壊れた zsh 履歴を `strings` で復旧する |

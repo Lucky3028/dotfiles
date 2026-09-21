@@ -21,22 +21,25 @@ mapfile -t apt_packages < <(
 )
 sudo apt-get install -y "${apt_packages[@]}"
 
-# 1. Rust toolchain
+# 1. JetBrains Toolbox
+bash "${script_dir}/scripts/install-jetbrains-toolbox.sh"
+
+# 2. Rust toolchain
 rustup default stable
 
-# 2. mise
+# 3. mise
 if ! command -v mise >/dev/null 2>&1; then
   curl -fsSL https://mise.run | sh
 fi
 export PATH="$HOME/.local/bin:$PATH"
 
-# 3. yui
+# 4. yui
 if ! command -v yui >/dev/null 2>&1; then
   yui_version="${YUI_VERSION:-0.10.0}"
   cargo install yui-cli --locked --version "${yui_version}"
 fi
 
-# 4. Apply dotfiles
+# 5. Apply dotfiles
 export DOTFILES="${script_dir}"
 cd "${script_dir}"
 mkdir -p "$HOME/.config/zsh/completions" \
@@ -55,17 +58,17 @@ chmod +x "${script_dir}/home/.githooks/pre-push" \
 yui apply
 chmod 700 "$HOME/.ssh"
 
-# 5. Default shell
+# 6. Default shell
 zsh_path="$(command -v zsh)"
 if [ "$(getent passwd "$USER" | cut -d: -f7)" != "$zsh_path" ]; then
   sudo chsh -s "$zsh_path" "$USER"
 fi
 
-# 6. mise tools
+# 7. mise tools
 eval "$(mise activate bash)"
 mise install
 
-# 7. Doppler / GitHub CLI authentication
+# 8. Doppler / GitHub CLI authentication
 if ! doppler me --no-check-version >/dev/null 2>&1; then
   doppler login
 fi
@@ -73,10 +76,10 @@ if ! gh auth status >/dev/null 2>&1; then
   gh auth login
 fi
 
-# 8. Use an SSH remote
+# 9. Use an SSH remote
 (cd "${script_dir}" && mise run git:use-ssh-remote)
 
-# 9. Initialize jj
+# 10. Initialize jj
 if ! jj root -R "${script_dir}" >/dev/null 2>&1; then
   jj git init --colocate -R "${script_dir}"
 fi

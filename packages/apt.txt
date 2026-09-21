@@ -19,8 +19,17 @@ dnsutils
 procps
 
 # Development libraries and tools
+dbus-user-session
 gcc
 fuse3
+libfontconfig1
+libgtk-3-bin
+libxcb-keysyms1
+libxi6
+libxrender1
+libxtst6
+mesa-utils
+tar
 sqlite3
 libssl-dev
 rustup

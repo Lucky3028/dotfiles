@@ -22,7 +22,7 @@ glob_scan_max_depth = 3
 # Allow Go to use its build cache.
 "~/.cache/go-build/**" = "write"
 # Allow Go to use its module download cache.
-"~/go/pkg/mod/**" = "write"
+"~/go/pkg/**" = "write"
 # Allow mise to use its tool-path cache.
 "~/.cache/mise/**" = "write"
 # Allow Cargo to use its package and git caches.
@@ -54,3 +54,9 @@ enabled = true
 
 [permissions.safe-workspace.network.domains]
 "*" = "allow"
+
+[tui.model_availability_nux]
+gpt-6-astra = 1
+
+[projects."/home/lucky/ghq/github.com/GiganticMinecraft/EatEgg"]
+trust_level = "trusted"
