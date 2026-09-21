@@ -25,9 +25,11 @@ glob_scan_max_depth = 3
 "~/go/pkg/**" = "write"
 # Allow mise to use its tool-path cache.
 "~/.cache/mise/**" = "write"
+"~/.local/state/mise/**" = "write"
 # Allow Cargo to use its package and git caches.
 "~/.cargo/registry/**" = "write"
 "~/.cargo/git/**" = "write"
+"~/.rustup/tmp/**" = "write"
 # Allow pnpm to use its cache and package store.
 "~/.cache/pnpm/**" = "write"
 "~/.local/share/pnpm/**" = "write"
