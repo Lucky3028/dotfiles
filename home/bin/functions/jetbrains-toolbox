@@ -1,0 +1,5 @@
+#!/bin/zsh
+
+function jetbrains-toolbox() {
+  "$HOME/bin/jetbrains-toolbox-app/jetbrains-toolbox" > /dev/null 2>&1 &
+}
