@@ -20,7 +20,7 @@ usage = "6.11.0"
 uv = "0.12.17"
 yq = "4.53.6"
 "github:zellij-org/zellij" = "0.45.1"
-doppler = { version = "3.76.5", exe = "doppler" }
+doppler = { version = "3.76.6", exe = "doppler" }
 "github:gitleaks/gitleaks" = "8.30.1"
 "jjui" = "0.10.11"
 "npm:@openai/codex" = "0.155.1"
