@@ -36,7 +36,17 @@ def get_profile_option(args: list[str]) -> tuple[str | None, set[int]]:
     return None, set()
 
 
+def is_bare_toml_key(key: str) -> bool:
+    return bool(key) and all(
+        character.isascii()
+        and (character.isalnum() or character in "_-")
+        for character in key
+    )
+
+
 def toml_key(key: str) -> str:
+    if is_bare_toml_key(key):
+        return key
     return json.dumps(key, ensure_ascii=False)
 
 
@@ -74,6 +84,8 @@ def flatten_config(
     if path and is_runtime_setting(path):
         return []
     if isinstance(value, dict):
+        if path and any(not is_bare_toml_key(key) for key in value):
+            return [(path, value)]
         leaves: list[tuple[tuple[str, ...], object]] = []
         for key, child in value.items():
             leaves.extend(flatten_config(child, (*path, key)))

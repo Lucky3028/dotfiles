@@ -32,16 +32,32 @@ jobs:
           persist-credentials: false
       - name: Install Codex CLI
         run: npm install --global --no-fund --no-audit @openai/codex@0.157.1
-      - name: Check Codex config
+      - name: Check effective Codex config
         shell: bash
         run: |
           set -euo pipefail
 
           codex_config_dir=$(mktemp -d "$GITHUB_WORKSPACE/codex-home.XXXXXX")
           trap 'rm -rf -- "$codex_config_dir"' EXIT
+          doctor_report="$codex_config_dir/doctor.json"
+
+          expected_model=$(python3 -c 'import sys, tomllib; print(tomllib.load(open(sys.argv[1], "rb"))["model"])' \
+            home/.codex/dotfiles.config.toml)
+          expected_glob_scan_max_depth=$(python3 -c 'import sys, tomllib; print(tomllib.load(open(sys.argv[1], "rb"))["permissions"]["safe-workspace"]["filesystem"]["glob_scan_max_depth"])' \
+            home/.codex/dotfiles.config.toml)
+
+          # doctor reports config even when CI has no login credentials.
+          set +e
           env CODEX_HOME="$codex_config_dir" \
             python3 home/bin/codex-config-args.py "$(command -v codex)" \
-              home/.codex/dotfiles.config.toml --strict-config exec --help >/dev/null
+              home/.codex/dotfiles.config.toml doctor --json >"$doctor_report"
+          set -e
+
+          jq -e --arg model "$expected_model" \
+            --arg glob_scan_max_depth "$expected_glob_scan_max_depth" \
+            '.checks["config.load"].details.model == $model and
+             .checks["sandbox.helpers"].details["glob scan max depth"] == $glob_scan_max_depth' \
+            "$doctor_report" >/dev/null
       - name: Check command decisions
         shell: bash
         run: |
