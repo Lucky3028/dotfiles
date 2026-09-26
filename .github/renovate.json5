@@ -31,6 +31,16 @@
       ],
       "depNameTemplate": "@openai/codex",
       "datasourceTemplate": "npm"
+    },
+    {
+      "customType": "regex",
+      "description": "Update Ruff in GitHub Actions workflow",
+      "managerFilePatterns": ["/(^|/)\\.github/workflows/python-style\\.yaml$/"],
+      "matchStrings": [
+        "\\s+# renovate: datasource=pypi depName=ruff\\n\\s+RUFF_VERSION: (?<currentValue>[^\\s]+)"
+      ],
+      "depNameTemplate": "ruff",
+      "datasourceTemplate": "pypi"
     }
   ],
   "packageRules": [

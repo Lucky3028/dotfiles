@@ -1,0 +1,39 @@
+name: Python style
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - '**.py'
+      - .github/workflows/python-style.yaml
+  push:
+    branches:
+      - main
+    paths:
+      - '**.py'
+      - .github/workflows/python-style.yaml
+permissions: {}
+jobs:
+  ruff:
+    name: Lint and format Python
+    runs-on: ubuntu-26.04
+    timeout-minutes: 3
+    permissions:
+      contents: read
+    env:
+      # renovate: datasource=pypi depName=ruff
+      RUFF_VERSION: 0.16.9
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Install Ruff
+        run: |
+          python3 -m venv "$RUNNER_TEMP/ruff-venv"
+          "$RUNNER_TEMP/ruff-venv/bin/python" -m pip install --disable-pip-version-check "ruff==$RUFF_VERSION"
+      - name: Lint Python
+        run: |
+          "$RUNNER_TEMP/ruff-venv/bin/ruff" check .
+      - name: Check Python formatting
+        run: |
+          "$RUNNER_TEMP/ruff-venv/bin/ruff" format --check .

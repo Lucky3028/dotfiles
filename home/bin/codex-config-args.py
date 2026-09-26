@@ -21,25 +21,9 @@ except ModuleNotFoundError:
         ) from error
 
 
-def get_profile_option(args: list[str]) -> tuple[str | None, set[int]]:
-    for index, arg in enumerate(args):
-        if arg == "--":
-            break
-        if arg in ("--profile", "-p"):
-            if index + 1 < len(args):
-                return args[index + 1], {index, index + 1}
-            return None, set()
-        if arg.startswith("--profile="):
-            return arg.partition("=")[2], {index}
-        if arg.startswith("-p") and len(arg) > 2:
-            return arg[2:], {index}
-    return None, set()
-
-
 def is_bare_toml_key(key: str) -> bool:
     return bool(key) and all(
-        character.isascii()
-        and (character.isalnum() or character in "_-")
+        character.isascii() and (character.isalnum() or character in "_-")
         for character in key
     )
 
@@ -61,8 +45,7 @@ def toml_value(value: object) -> str:
         return "[" + ", ".join(toml_value(item) for item in value) + "]"
     if isinstance(value, dict):
         entries = ", ".join(
-            f"{toml_key(key)} = {toml_value(item)}"
-            for key, item in value.items()
+            f"{toml_key(key)} = {toml_value(item)}" for key, item in value.items()
         )
         return "{" + entries + "}"
     if isinstance(value, (datetime.date, datetime.datetime, datetime.time)):
@@ -102,14 +85,6 @@ def main() -> None:
     codex_bin = sys.argv[1]
     config_path = Path(sys.argv[2])
     codex_args = sys.argv[3:]
-
-    profile, profile_indexes = get_profile_option(codex_args)
-    if profile == "dotfiles":
-        codex_args = [
-            arg
-            for index, arg in enumerate(codex_args)
-            if index not in profile_indexes
-        ]
 
     with config_path.open("rb") as shared_config:
         config = tomllib.load(shared_config)

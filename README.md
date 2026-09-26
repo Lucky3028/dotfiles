@@ -69,7 +69,7 @@ Linux / WSL 向けの個人用 dotfiles です。シェル、開発ツール、G
 | `home/bin` | `~/bin` | 補助コマンド |
 | `home/.codex` | `~/.codex` | `per-file` 方式で共有ファイルだけを管理 |
 
-さらに `home/.config/zsh/.yuilink` により、`home/.config/zsh/zshenv` を `~/.zshenv` として反映します。Codex の `~/.codex/config.toml` はローカルの書き込み先として管理対象から外します。dotfiles 側の `dotfiles.config.toml` は共有設定の SoT として yui で管理し、Codex wrapper が各項目を `--config` で渡します。ネイティブの `--profile dotfiles` は選ばないため、Codex の永続状態はローカルの `config.toml` に保存されます。
+さらに `home/.config/zsh/.yuilink` により、`home/.config/zsh/zshenv` を `~/.zshenv` として反映します。
 
 ## 初回セットアップ
 
@@ -148,12 +148,7 @@ WSL では、Linux 側の ssh-agent を TCP 経由で Windows 側から利用で
 
 ### Codex
 
-```sh
-codex                             # 共有設定を優先して起動
-codex --profile dotfiles          # 旧指定も通常起動として扱う
-```
-
-Codex が書き込む `~/.codex/config.toml` はローカル設定として管理対象から外します。`home/.codex/dotfiles.config.toml` は共有設定の SoT です。wrapper はリポジトリ内のこのファイルを直接読み、`--config` に変換します。通常の `codex` 起動では `~/.codex/dotfiles.config.toml` をネイティブ profile として読み込まないため、Codex の書き込み先になりません。共有設定はプロジェクト設定とユーザー設定より優先されます。`projects` と Codex の TUI 初回表示状態は共有設定として渡さず、ローカル側に残します。`--profile dotfiles` は旧指定との互換用に取り除きます。別の profile を明示しても共有設定を同時に適用します。
+Codex が書き込む `~/.codex/config.toml` はローカル設定として管理対象から外します。dotfiles 側の `dotfiles.config.toml` は共有設定として本リポジトリで管理し、Codex wrapper が各項目を `--config` で渡します。
 
 wrapper は Python 3.11 以降を使います。Python 3.10 では `tomli` が必要です。
 
