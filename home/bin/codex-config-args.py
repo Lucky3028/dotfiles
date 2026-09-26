@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-
 """Apply shared Codex defaults as command-line overrides."""
 
 from __future__ import annotations
