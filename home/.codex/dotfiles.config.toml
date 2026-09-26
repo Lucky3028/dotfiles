@@ -1,4 +1,4 @@
-model = "gpt-5.6-luna"
+model = "gpt-6-luna"
 model_reasoning_effort = "max"
 plan_mode_reasoning_effort = "max"
 
@@ -25,9 +25,11 @@ glob_scan_max_depth = 3
 "~/go/pkg/**" = "write"
 # Allow mise to use its tool-path cache.
 "~/.cache/mise/**" = "write"
+"~/.local/state/mise/**" = "write"
 # Allow Cargo to use its package and git caches.
 "~/.cargo/registry/**" = "write"
 "~/.cargo/git/**" = "write"
+"~/.rustup/tmp/**" = "write"
 # Allow pnpm to use its cache and package store.
 "~/.cache/pnpm/**" = "write"
 "~/.local/share/pnpm/**" = "write"
@@ -38,16 +40,48 @@ glob_scan_max_depth = 3
 
 [permissions.safe-workspace.filesystem.":workspace_roots"]
 ".git/**" = "write"
+"**/*.sock" = "deny"
 "**/.kube/**" = "deny"
 # Keep common SSH private-key names protected while allowing non-secret SSH metadata.
 "**/.ssh/id_*" = "deny"
 "**/.ssh/*_key" = "deny"
 "**/.ssh/*.pem" = "deny"
 "**/.ssh/*.key" = "deny"
-"**/.env*" = "deny"
-"**/.dev.vars" = "deny"
+# Deny common secret-bearing environment files.
 "**/.npmrc" = "deny"
-"**/*.sock" = "deny"
+"**/.env" = "deny"
+"**/.env.local" = "deny"
+"**/.env.dev" = "deny"
+"**/.env.development" = "deny"
+"**/.env.development.local" = "deny"
+"**/.env.test" = "deny"
+"**/.env.test.local" = "deny"
+"**/.env.staging" = "deny"
+"**/.env.staging.local" = "deny"
+"**/.env.prd" = "deny"
+"**/.env.prod" = "deny"
+"**/.env.production" = "deny"
+"**/.env.production.local" = "deny"
+"**/.env.secret" = "deny"
+"**/*.env" = "deny"
+"**/*.env.local" = "deny"
+"**/*.env.dev" = "deny"
+"**/*.env.development" = "deny"
+"**/*.env.test" = "deny"
+"**/*.env.staging" = "deny"
+"**/*.env.prd" = "deny"
+"**/*.env.prod" = "deny"
+"**/*.env.production" = "deny"
+"**/.envrc*" = "deny"
+"**/.dev.vars" = "deny"
+"**/.dev.vars.local" = "deny"
+"**/.dev.vars.dev" = "deny"
+"**/.dev.vars.development" = "deny"
+"**/.dev.vars.test" = "deny"
+"**/.dev.vars.staging" = "deny"
+"**/.dev.vars.prd" = "deny"
+"**/.dev.vars.prod" = "deny"
+"**/.dev.vars.production" = "deny"
 
 [permissions.safe-workspace.network]
 enabled = true
@@ -55,8 +89,3 @@ enabled = true
 [permissions.safe-workspace.network.domains]
 "*" = "allow"
 
-[tui.model_availability_nux]
-gpt-6-astra = 1
-
-[projects."/home/lucky/ghq/github.com/GiganticMinecraft/EatEgg"]
-trust_level = "trusted"

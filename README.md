@@ -9,7 +9,7 @@ Linux / WSL 向けの個人用 dotfiles です。シェル、開発ツール、G
 - Git、jj、GitHub CLI、SSH の設定
 - mise で導入する開発ツールと mise タスク
 - `~/bin` に置く補助スクリプト
-- Codex の共有プロファイルとルール
+- Codex の共有設定とルール
 - apt で導入する OS パッケージ
 
 秘密鍵、Doppler の値、Bitwarden のセッションなどの秘密情報はリポジトリに保存しません。SSH 鍵は起動時に Doppler から取得して ssh-agent に登録します。
@@ -29,7 +29,7 @@ Linux / WSL 向けの個人用 dotfiles です。シェル、開発ツール、G
 ├── home/                             # ホームディレクトリへ反映する設定
 │   ├── .codex/
 │   │   ├── AGENTS.md                 # Codex の共有指示
-│   │   ├── dotfiles.config.toml      # dotfiles 用 Codex プロファイル
+│   │   ├── dotfiles.config.toml      # Codex CLI に渡す共有設定
 │   │   └── rules/default.rules       # Codex の既定ルール
 │   ├── .config/
 │   │   ├── gh/                       # GitHub CLI
@@ -69,7 +69,7 @@ Linux / WSL 向けの個人用 dotfiles です。シェル、開発ツール、G
 | `home/bin` | `~/bin` | 補助コマンド |
 | `home/.codex` | `~/.codex` | `per-file` 方式で共有ファイルだけを管理 |
 
-さらに `home/.config/zsh/.yuilink` により、`home/.config/zsh/zshenv` を `~/.zshenv` として反映します。Codex の通常の `~/.codex/config.toml` はローカル設定として残し、dotfiles 側の `dotfiles.config.toml` を共有プロファイルとして使います。
+さらに `home/.config/zsh/.yuilink` により、`home/.config/zsh/zshenv` を `~/.zshenv` として反映します。Codex の `~/.codex/config.toml` はローカルの書き込み先として管理対象から外します。dotfiles 側の `dotfiles.config.toml` は共有設定の SoT として yui で管理し、Codex wrapper が各項目を `--config` で渡します。ネイティブの `--profile dotfiles` は選ばないため、Codex の永続状態はローカルの `config.toml` に保存されます。
 
 ## 初回セットアップ
 
@@ -136,7 +136,7 @@ WSL では、Linux 側の ssh-agent を TCP 経由で Windows 側から利用で
 
 | コマンド | 役割 |
 | --- | --- |
-| `codex` | `--profile` が指定されていない場合に `dotfiles` プロファイルを使う Codex wrapper |
+| `codex` | 共有 Codex 設定を `--config` で渡す wrapper |
 | `cd-ghq` | `ghq list` の結果を fzf で選んで移動する zsh 関数 |
 | `jetbrains-toolbox` | JetBrains Toolbox をバックグラウンドで静かに起動する zsh 関数 |
 | `login-bitwarden` / `unlock-bitwarden` | Bitwarden CLI のログインと、端末ごとの unlock |
@@ -149,11 +149,13 @@ WSL では、Linux 側の ssh-agent を TCP 経由で Windows 側から利用で
 ### Codex
 
 ```sh
-codex                             # dotfiles プロファイルで起動
-codex --profile default           # 明示したプロファイルをそのまま使用
+codex                             # 共有設定を優先して起動
+codex --profile dotfiles          # 旧指定も通常起動として扱う
 ```
 
-通常の `~/.codex/config.toml` はユーザー固有の設定として管理対象から外し、共有したい既定値だけを `~/.codex/dotfiles.config.toml` で管理します。
+Codex が書き込む `~/.codex/config.toml` はローカル設定として管理対象から外します。`home/.codex/dotfiles.config.toml` は共有設定の SoT です。wrapper はリポジトリ内のこのファイルを直接読み、`--config` に変換します。通常の `codex` 起動では `~/.codex/dotfiles.config.toml` をネイティブ profile として読み込まないため、Codex の書き込み先になりません。共有設定はプロジェクト設定とユーザー設定より優先されます。`projects` と Codex の TUI 初回表示状態は共有設定として渡さず、ローカル側に残します。`--profile dotfiles` は旧指定との互換用に取り除きます。別の profile を明示しても共有設定を同時に適用します。
+
+wrapper は Python 3.11 以降を使います。Python 3.10 では `tomli` が必要です。
 
 ### jj とリモート
 

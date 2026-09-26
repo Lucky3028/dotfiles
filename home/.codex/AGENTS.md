@@ -24,6 +24,10 @@
 - Do not commit credentials, tokens, session data, or other machine-local secrets.
 - Follow the repository's existing tooling and conventions.
 
+## Codex Shared Settings
+
+- Treat `home/.codex/dotfiles.config.toml` as user-maintained shared configuration. Do not modify it unless the user explicitly asks to change the shared Codex settings.
+
 ## Validation
 
 - Run the most relevant tests, linters, or checks after making changes.

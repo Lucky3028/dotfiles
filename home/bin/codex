@@ -6,13 +6,10 @@ export GIT_SSH_COMMAND='ssh -F /dev/null'
 export PATH="$HOME/.codex/bin:$PATH"
 
 codex_bin=$(mise which codex)
+script_path=$(readlink -f -- "$0")
+script_dir=$(CDPATH='' cd -- "$(dirname -- "$script_path")" && pwd -P)
 
-for arg in "$@"; do
-  case "$arg" in
-  --profile | -p | --profile=* | -p?*)
-    exec "$codex_bin" "$@"
-    ;;
-  esac
-done
-
-exec "$codex_bin" --profile dotfiles "$@"
+exec python3 "$script_dir/codex-config-args.py" \
+  "$codex_bin" \
+  "$script_dir/../.codex/dotfiles.config.toml" \
+  "$@"
