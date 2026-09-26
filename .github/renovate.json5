@@ -37,6 +37,11 @@
     {
       "matchPackageNames": ["bitwarden/clients"],
       "extractVersion": "^cli-v(?<version>.+)$"
+    },
+    {
+      "description": "Group OpenAI Codex CLI updates",
+      "matchPackageNames": ["@openai/codex", "npm:@openai/codex"],
+      "groupName": "OpenAI Codex CLI"
     }
   ]
 }
