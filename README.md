@@ -138,6 +138,7 @@ WSL では、Linux 側の ssh-agent を TCP 経由で Windows 側から利用で
 | --- | --- |
 | `codex` | 共有 Codex 設定を `--config` で渡す wrapper |
 | `cd-ghq` | `ghq list` の結果を fzf で選んで移動する zsh 関数 |
+| `mktempd` | 一時ディレクトリを作成して移動する zsh 関数 |
 | `jetbrains-toolbox` | JetBrains Toolbox をバックグラウンドで静かに起動する zsh 関数 |
 | `login-bitwarden` / `unlock-bitwarden` | Bitwarden CLI のログインと、端末ごとの unlock |
 | `kill-ssh-agent` | WSL 用の ssh-agent 中継を停止する zsh 関数 |

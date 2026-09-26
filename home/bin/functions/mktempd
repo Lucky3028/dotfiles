@@ -1,0 +1,7 @@
+#!/bin/zsh
+
+function mktempd() {
+  local temp_dir
+  temp_dir=$(command mktemp -d "$@") || return
+  cd -- "$temp_dir"
+}
