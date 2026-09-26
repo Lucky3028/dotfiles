@@ -126,6 +126,8 @@
 [tag]
   # git tag の結果をソートする
   sort = version:refname
+  # タグ作成時は常に署名する
+  gpgSign = true
 [versionsort]
   prereleaseSuffix = -pre
   prereleaseSuffix = .pre
