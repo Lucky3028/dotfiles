@@ -153,6 +153,16 @@ Codex が書き込む `~/.codex/config.toml` はローカル設定として管�
 
 wrapper は Python 3.11 以降を使います。Python 3.10 では `tomli` が必要です。
 
+Bitwarden CLI を使う場合は、Codex を起動するシェルで次の順に実行します。
+
+```sh
+login-bitwarden && unlock-bitwarden && codex
+```
+
+`unlock-bitwarden` が現在のシェルに `BW_SESSION` を export します。`bw login` や `bw unlock` を直接実行しただけでは、表示されたセッションキーは親シェルに設定されません。
+
+`BW_SESSION` がある場合、wrapper は `--no-daemon` を付け、現在のシェルの環境を持つ Codex を起動します。セッションキーは引数や設定ファイルには保存しません。起動後に別のシェルで unlock した場合は、そのシェルから Codex を起動し直してください。
+
 ### jj とリモート
 
 このリポジトリでは変更管理に jj を使います。GitHub のリモートとの同期には、mise タスクから jj の Git 連携機能を利用します。

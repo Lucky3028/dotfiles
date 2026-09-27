@@ -39,6 +39,11 @@ glob_scan_max_depth = 3
 "~/.cache/gh/**" = "write"
 # Allow uv to use its cache.
 "~/.local/share/uv/tools/**" = "write"
+"~/.cache/uv/**" = "write"
+# Allow Bitwarden CLI to use it.
+"~/.config/Bitwarden CLI/**" = "write"
+# Allow Ansible to use temp dir.
+"~/.ansible/tmp/**" = "write"
 
 [permissions.safe-workspace.filesystem.":workspace_roots"]
 ".git/**" = "write"
@@ -90,4 +95,3 @@ enabled = true
 
 [permissions.safe-workspace.network.domains]
 "*" = "allow"
-
