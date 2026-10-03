@@ -9,6 +9,11 @@ codex_bin=$(mise which codex)
 script_path=$(readlink -f -- "$0")
 script_dir=$(CDPATH='' cd -- "$(dirname -- "$script_path")" && pwd -P)
 
+# Keep a terminal's Bitwarden session local to this Codex process.
+if [ -n "${BW_SESSION:-}" ]; then
+  set -- --no-daemon "$@"
+fi
+
 exec python3 "$script_dir/codex-config-args.py" \
   "$codex_bin" \
   "$script_dir/../.codex/dotfiles.config.toml" \

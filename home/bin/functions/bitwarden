@@ -21,8 +21,10 @@ function login-bitwarden() {
 # 端末ごとの Bitwarden ログインセッションを作成
 function unlock-bitwarden() {
   local session
-  session=$(bw unlock --raw)
-  if [[ -n "$session" ]]; then
-    export BW_SESSION="$session"
+  session=$(bw unlock --raw) || return $?
+  if [[ -z "$session" ]]; then
+    echo "Bitwarden unlock returned an empty session." >&2
+    return 1
   fi
+  export BW_SESSION="$session"
 }
