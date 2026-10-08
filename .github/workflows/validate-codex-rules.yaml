@@ -31,7 +31,7 @@ jobs:
         with:
           persist-credentials: false
       - name: Install Codex CLI
-        run: npm install --global --no-fund --no-audit @openai/codex@0.160.1
+        run: npm install --global --no-fund --no-audit @openai/codex@0.161.0
       - name: Check effective Codex config
         shell: bash
         run: |
