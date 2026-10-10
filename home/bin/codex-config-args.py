@@ -51,6 +51,46 @@ def toml_value(value: object) -> str:
     raise TypeError(f"Unsupported TOML value: {type(value).__name__}")
 
 
+def current_user_runtime_dir() -> str | None:
+    if sys.platform != "linux":
+        return None
+
+    uid = os.getuid()
+    runtime_dir = Path(f"/run/user/{uid}")
+    if os.environ.get("XDG_RUNTIME_DIR") is None:
+        return None
+    if Path(os.environ["XDG_RUNTIME_DIR"]) != runtime_dir:
+        return None
+
+    try:
+        metadata = runtime_dir.stat()
+    except OSError:
+        return None
+
+    if metadata.st_uid != uid or metadata.st_mode & 0o077:
+        return None
+    return str(runtime_dir)
+
+
+def add_current_user_runtime_permission(config: dict[str, object]) -> None:
+    runtime_dir = current_user_runtime_dir()
+    if runtime_dir is None:
+        return
+
+    profile_name = config.get("default_permissions")
+    permissions = config.get("permissions")
+    if not isinstance(profile_name, str) or not isinstance(permissions, dict):
+        return
+
+    profile = permissions.get(profile_name)
+    if not isinstance(profile, dict):
+        return
+
+    filesystem = profile.get("filesystem")
+    if isinstance(filesystem, dict):
+        filesystem[runtime_dir] = "write"
+
+
 def is_runtime_setting(path: tuple[str, ...]) -> bool:
     return (
         path[0] in {"profile", "profiles", "projects"}
@@ -86,6 +126,7 @@ def main() -> None:
 
     with config_path.open("rb") as shared_config:
         config = tomllib.load(shared_config)
+    add_current_user_runtime_permission(config)
 
     overrides: list[str] = []
     for path, value in flatten_config(config):
