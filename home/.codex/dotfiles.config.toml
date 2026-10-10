@@ -14,6 +14,8 @@ extends = ":workspace"
 
 [permissions.safe-workspace.filesystem]
 glob_scan_max_depth = 3
+# Allow Codex to use temp dir.
+"~/.codex/tmp/**" = "write"
 # These SSH metadata files are readable so yui-managed links can be verified.
 "~/.ssh/config" = "read"
 "~/.ssh/allowed_signers" = "read"
