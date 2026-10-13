@@ -24,7 +24,7 @@ jobs:
         uses: taiki-e/install-action@1168f6810a3cb30a3514bf5756a3b7f0422c6df8 # v2.87.28
         with:
           # renovate: datasource=crate depName=yui-cli
-          tool: yui-cli@0.15.0
+          tool: yui-cli@0.17.0
           fallback: cargo-binstall
       - name: List managed files
         run: yui list --no-color
