@@ -25,7 +25,7 @@ doppler = { version = "3.77.1", exe = "doppler" }
 "jjui" = "0.10.12"
 "npm:@openai/codex" = "0.163.0"
 kustomize = "5.8.3"
-"go:github.com/koki-develop/ghasec" = "0.17.0"
+"go:github.com/koki-develop/ghasec" = "0.18.0"
 shellcheck = "0.11.0"
 "github:Lucky3028/cos" = "1.0.5"
 cargo-binstall = "1.26.0"
