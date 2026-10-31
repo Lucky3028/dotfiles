@@ -32,6 +32,7 @@ glob_scan_max_depth = 3
 "~/.cargo/registry/**" = "write"
 "~/.cargo/git/**" = "write"
 "~/.rustup/tmp/**" = "write"
+"~/.rustup/downloads/**" = "write"
 # Allow pnpm to use its cache and package store.
 "~/.cache/pnpm/**" = "write"
 "~/.local/share/pnpm/**" = "write"
