@@ -11,6 +11,11 @@
 - If `git` is available but `jj` is not, ask the user to initialize the repository with `jj` and obtain confirmation before proceeding.
 - Use Conventional Commits for commit messages.
 
+## GitHub
+
+- Prefer the `gh` CLI for GitHub operations. If an operation can be completed with `gh`, use it instead of calling the GitHub API directly.
+- Do not send GitHub operations known to fail with `403: Resource not accessible by integration`. Check the available authentication and repository access first; if the required permissions are unavailable, explain what is needed before proceeding.
+
 ## Working Style
 
 - Read the repository's existing instructions and inspect the current state before making changes.
