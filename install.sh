@@ -52,6 +52,7 @@ find "${script_dir}/home" -type f -name '*.sh' -exec chmod +x {} +
 chmod +x "${script_dir}/home/.githooks/pre-push" \
   "${script_dir}/home/bin/codex" \
   "${script_dir}/home/.codex/bin/ssh" \
+  "${script_dir}/home/bin/rustup-toolchain-gc" \
   "${script_dir}/home/bin/restore-zsh-history" \
   "${script_dir}/home/bin/toast"
 

@@ -1,0 +1,281 @@
+#!/usr/bin/env python3
+"""Remove unreferenced, version-pinned rustup toolchains.
+
+The default mode is a dry run. Pass --apply to uninstall candidates.
+"""
+
+from __future__ import annotations
+
+import argparse
+import os
+import re
+import shutil
+import subprocess
+import sys
+import tomllib
+from pathlib import Path
+
+
+SKIP_DIRS = {
+    ".git",
+    ".hg",
+    ".jj",
+    ".mypy_cache",
+    ".pytest_cache",
+    ".svn",
+    ".tox",
+    ".venv",
+    "build",
+    "dist",
+    "node_modules",
+    "target",
+    "vendor",
+    "venv",
+}
+
+PINNED_TOOLCHAIN = re.compile(
+    r"(?:\d+\.\d+(?:\.\d+)?|(?:nightly|beta)-\d{4}-\d{2}-\d{2})"
+    r"(?:-[A-Za-z0-9_]+(?:-[A-Za-z0-9_]+)*)?"
+)
+
+
+class GcError(Exception):
+    pass
+
+
+def rustup(*args: str) -> str:
+    """Run rustup and return stdout, turning errors into actionable messages."""
+    if shutil.which("rustup") is None:
+        raise GcError("rustup が PATH に見つかりません")
+
+    result = subprocess.run(
+        ["rustup", *args],
+        check=False,
+        capture_output=True,
+        text=True,
+    )
+    if result.returncode != 0:
+        detail = result.stderr.strip() or result.stdout.strip()
+        raise GcError(f"rustup {' '.join(args)} に失敗しました: {detail}")
+    return result.stdout
+
+
+def strip_status(name: str) -> tuple[str, set[str]]:
+    match = re.fullmatch(r"(.+?)\s+\(([^()]*)\)", name.strip())
+    if not match:
+        return name.strip(), set()
+    statuses = {part.strip() for part in match.group(2).split(",")}
+    return match.group(1).strip(), statuses
+
+
+def toolchain_matches(spec: str, installed: str, host: str) -> bool:
+    """Match a channel in a toolchain file to rustup's host-qualified name."""
+    return installed == spec or installed == f"{spec}-{host}"
+
+
+def parse_toolchain_file(path: Path) -> str | None:
+    raw = path.read_text(encoding="utf-8-sig").strip()
+
+    # `rust-toolchain` also supports the legacy one-line channel format.
+    is_legacy_channel = (
+        path.name == "rust-toolchain"
+        and raw
+        and "\n" not in raw
+        and "=" not in raw
+        and not raw.startswith("[")
+    )
+    if is_legacy_channel:
+        return raw
+
+    try:
+        data = tomllib.loads(raw)
+    except tomllib.TOMLDecodeError as exc:
+        raise GcError(f"{path}: TOML を読み取れません: {exc}") from exc
+
+    toolchain = data.get("toolchain")
+    if not isinstance(toolchain, dict):
+        raise GcError(f"{path}: [toolchain] セクションがありません")
+
+    channel = toolchain.get("channel")
+    if channel is not None and not isinstance(channel, str):
+        raise GcError(f"{path}: channel は文字列で指定してください")
+    if channel:
+        return channel
+    if isinstance(toolchain.get("path"), str):
+        # A path toolchain is external to rustup's named toolchain list.
+        return None
+    raise GcError(f"{path}: channel または path がありません")
+
+
+def scan_roots(roots: list[Path]) -> tuple[dict[str, set[Path]], int]:
+    references: dict[str, set[Path]] = {}
+    file_count = 0
+    scan_errors: list[str] = []
+
+    for root in roots:
+        if not root.is_dir():
+            scan_errors.append(f"走査ルートがディレクトリではありません: {root}")
+            continue
+
+        def on_walk_error(error: OSError) -> None:
+            scan_errors.append(str(error))
+
+        for current, dirs, files in os.walk(
+            root,
+            topdown=True,
+            followlinks=False,
+            onerror=on_walk_error,
+        ):
+            dirs[:] = [name for name in dirs if name not in SKIP_DIRS]
+
+            # rust-toolchain takes precedence when both forms are present.
+            filename = "rust-toolchain" if "rust-toolchain" in files else None
+            if filename is None and "rust-toolchain.toml" in files:
+                filename = "rust-toolchain.toml"
+            if filename is None:
+                continue
+
+            path = Path(current) / filename
+            if path.is_symlink():
+                scan_errors.append(f"シンボリックリンクの toolchain ファイルは未対応です: {path}")
+                continue
+
+            file_count += 1
+            try:
+                channel = parse_toolchain_file(path)
+            except (OSError, GcError) as exc:
+                scan_errors.append(str(exc))
+                continue
+            if channel:
+                references.setdefault(channel, set()).add(path)
+
+    if scan_errors:
+        details = "\n".join(f"  - {message}" for message in scan_errors)
+        raise GcError(f"走査に失敗しました。安全のため削除を中止します:\n{details}")
+    return references, file_count
+
+
+def installed_toolchains() -> tuple[list[str], set[str], str]:
+    show = rustup("show")
+    host_match = re.search(r"^Default host:\s*(\S+)", show, re.MULTILINE)
+    if host_match is None:
+        raise GcError("`rustup show` から Default host を取得できません")
+    host = host_match.group(1)
+
+    installed: list[str] = []
+    protected_specs: set[str] = set()
+    for line in rustup("toolchain", "list").splitlines():
+        name, statuses = strip_status(line)
+        if not name or name.lower().startswith("no installed toolchains"):
+            continue
+        installed.append(name)
+        if "default" in statuses:
+            protected_specs.add(name)
+
+    # Protect the active selection, including one selected through the cwd.
+    active_output = rustup("show", "active-toolchain").strip()
+    if active_output and not active_output.lower().startswith("no active toolchain"):
+        active, _ = strip_status(active_output)
+        protected_specs.add(active)
+
+    # Directory overrides are global to rustup, so preserve all of them.
+    for line in rustup("override", "list").splitlines():
+        if " - " not in line:
+            continue
+        _, spec = line.rsplit(" - ", 1)
+        spec = spec.strip()
+        if spec:
+            protected_specs.add(spec)
+
+    return installed, protected_specs, host
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(
+        description=(
+            "プロジェクトから参照されていない固定 Rust toolchain を整理します。"
+            "既定では dry-run です。"
+        )
+    )
+    parser.add_argument(
+        "--root",
+        action="append",
+        type=Path,
+        required=True,
+        help="プロジェクトを含むディレクトリ。複数指定できます。全 checkout を指定してください。",
+    )
+    parser.add_argument(
+        "--keep",
+        action="append",
+        default=[],
+        metavar="TOOLCHAIN",
+        help="手動で残す toolchain。名前または channel を指定（複数指定可）。",
+    )
+    parser.add_argument(
+        "--apply",
+        action="store_true",
+        help="dry-run をやめ、候補を rustup toolchain uninstall で削除します。",
+    )
+    parser.add_argument(
+        "--allow-no-pins",
+        action="store_true",
+        help="走査範囲内に rust-toolchain ファイルがなくても --apply を許可します。",
+    )
+    args = parser.parse_args()
+
+    try:
+        references, file_count = scan_roots(args.root)
+        installed, protected_specs, host = installed_toolchains()
+    except GcError as exc:
+        print(f"エラー: {exc}", file=sys.stderr)
+        return 2
+
+    referenced_names = {
+        name
+        for name in installed
+        if any(toolchain_matches(spec, name, host) for spec in protected_specs)
+        or any(toolchain_matches(spec, name, host) for spec in references)
+        or any(toolchain_matches(spec, name, host) for spec in args.keep)
+    }
+
+    candidates = [
+        name
+        for name in installed
+        if PINNED_TOOLCHAIN.fullmatch(name) and name not in referenced_names
+    ]
+
+    print(f"走査ルート: {len(args.root)} 件 / toolchain ファイル: {file_count} 件")
+    if candidates:
+        print("削除候補:")
+        for name in candidates:
+            print(f"  {name}")
+    else:
+        print("削除候補はありません。")
+
+    if not args.apply or not candidates:
+        if candidates and not args.apply:
+            print("削除するには --apply を付けて再実行してください。")
+        return 0
+
+    if file_count == 0 and not args.allow_no_pins:
+        print(
+            "エラー: 走査範囲に rust-toolchain ファイルがありません。"
+            "全プロジェクトを含む --root を指定するか、意図を確認したうえで"
+            " --allow-no-pins を付けてください。",
+            file=sys.stderr,
+        )
+        return 2
+
+    for name in candidates:
+        print(f"削除中: {name}")
+        try:
+            rustup("toolchain", "uninstall", name)
+        except GcError as exc:
+            print(f"エラー: {exc}", file=sys.stderr)
+            return 1
+    print(f"{len(candidates)} 件を削除しました。")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

@@ -30,4 +30,30 @@ mise prune -y
 
 # Apply sheldon
 sheldon lock --update
+
+# Check unreferenced Rust toolchains. Additional checkout roots can be provided
+# as a colon-separated list in RUSTUP_TOOLCHAIN_GC_ROOTS.
+rustup_toolchain_gc_args=(--root "${dotfiles_dir}")
+ghq_root="$(ghq root)"
+if [[ -d "${ghq_root}" && "${ghq_root}" != "${dotfiles_dir}" ]]; then
+  rustup_toolchain_gc_args+=(--root "${ghq_root}")
+fi
+if [[ -n "${RUSTUP_TOOLCHAIN_GC_ROOTS:-}" ]]; then
+  IFS=: read -r -a extra_roots <<<"${RUSTUP_TOOLCHAIN_GC_ROOTS}"
+  for root in "${extra_roots[@]}"; do
+    [[ -z "${root}" ]] || rustup_toolchain_gc_args+=(--root "${root}")
+  done
+fi
+if [[ -n "${RUSTUP_TOOLCHAIN_GC_KEEP:-}" ]]; then
+  IFS=: read -r -a keep_toolchains <<<"${RUSTUP_TOOLCHAIN_GC_KEEP}"
+  for toolchain in "${keep_toolchains[@]}"; do
+    [[ -z "${toolchain}" ]] || rustup_toolchain_gc_args+=(--keep "${toolchain}")
+  done
+fi
+rustup_toolchain_gc_args+=(--apply)
+if [[ "${RUSTUP_TOOLCHAIN_GC_ALLOW_NO_PINS:-0}" == "1" ]]; then
+  rustup_toolchain_gc_args+=(--allow-no-pins)
+fi
+"${HOME}/bin/rustup-toolchain-gc" "${rustup_toolchain_gc_args[@]}"
+
 info 'Applied dotfiles.'
