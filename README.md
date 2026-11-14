@@ -143,9 +143,22 @@ WSL では、Linux 側の ssh-agent を TCP 経由で Windows 側から利用で
 | `login-bitwarden` / `unlock-bitwarden` | Bitwarden CLI のログインと、端末ごとの unlock |
 | `kill-ssh-agent` | WSL 用の ssh-agent 中継を停止する zsh 関数 |
 | `restore-zsh-history` | 壊れた zsh 履歴を `strings` で復旧する |
+| `rustup-toolchain-gc` | プロジェクトから参照されていない固定 Rust toolchain を検出・削除する |
 | `toast` | WSL から BurntToast を使って Windows 通知を表示する |
 
 `toast` は WSL 専用で、初回実行時に PowerShell の `BurntToast` モジュールを導入します。
+
+`dot:apply-changes` は `rustup-toolchain-gc --apply` も実行し、dotfiles と `ghq root` 以下を走査して未参照の固定版 toolchain を削除します。Python 3.11 以降が必要です。別の場所にも checkout がある場合は、`RUSTUP_TOOLCHAIN_GC_ROOTS` にコロン区切りで追加してください。
+
+```sh
+RUSTUP_TOOLCHAIN_GC_ROOTS="$HOME/src:$HOME/work" mise run dot:apply-changes
+```
+
+`cargo +1.92.0` のように toolchain ファイルを介さず直接使う版は、`RUSTUP_TOOLCHAIN_GC_KEEP` にコロン区切りで指定して保護してください。走査範囲に toolchain ファイルがない場合は削除を中止します。その範囲を確認済みで削除を許可する場合だけ、`RUSTUP_TOOLCHAIN_GC_ALLOW_NO_PINS=1` を指定してください。
+
+```sh
+RUSTUP_TOOLCHAIN_GC_ALLOW_NO_PINS=1 mise run dot:apply-changes
+```
 
 ### Codex
 
