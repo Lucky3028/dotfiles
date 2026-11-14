@@ -10,6 +10,7 @@
 - Do not use `git`; use `jj` instead.
 - If `git` is available but `jj` is not, ask the user to initialize the repository with `jj` and obtain confirmation before proceeding.
 - Use Conventional Commits for commit messages.
+- Never commit to or push directly to the `main`, `develop`, or `master` branches. Make changes on a working branch and integrate them through a reviewed pull request.
 
 ## GitHub
 
