@@ -58,7 +58,6 @@ glob_scan_max_depth = 3
 ".git/**" = "write"
 "**/*.sock" = "deny"
 "**/.kube/**" = "deny"
-"~/.config/gh/hosts.yml" = "deny"
 # Keep common SSH private-key names protected while allowing non-secret SSH metadata.
 "**/.ssh/id_*" = "deny"
 "**/.ssh/*_key" = "deny"
