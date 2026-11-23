@@ -9,3 +9,6 @@ behavior = "own"
 backend = "ssh"
 key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIyOaU2sCb4k6hAHbge9Nr+KAVTH9d0lv80RcL5av5eu"
 backends.ssh.allowed-signers = "~/.ssh/allowed_signers"
+
+[remotes.origin]
+auto-track-bookmarks = "*"
