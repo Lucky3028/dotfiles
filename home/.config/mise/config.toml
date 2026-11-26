@@ -1,6 +1,6 @@
 [tools]
 "github:rossmacarthur/sheldon" = "0.8.5"
-gh = "2.105.0"
+gh = "2.106.0"
 "github:sharkdp/bat" = "0.26.1"
 "github:bitwarden/clients" = { version = "2026.11.1", version_prefix = "cli-v", matching_regex = "^bw-oss-(linux|macos|windows)(-arm64)?-" }
 cargo-make = "0.37.24"
